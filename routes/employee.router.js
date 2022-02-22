@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const employeeModel = require("../models/employees.models.js");
+const employeeModel = require("../models/employees.model.js");
 
 router.post("/", (req, res, next) => {
   employeeModel.create(req.body, (error, data) => {
