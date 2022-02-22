@@ -45,4 +45,7 @@ async function startServer() {
 const employeeRouter = require("./routes/employee.router.js");
 app.use("/employees", employeeRouter);
 
+const eventRouter = require("./routes/event.router.js");
+app.use("/events", eventRouter);
+
 startServer();
