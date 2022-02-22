@@ -1,8 +1,8 @@
 const express = require("express");
-const router = express.Router();
+const eventsRouter = express.Router();
 const eventModel = require("../models/event.model.js");
 
-router.post("/", (req, res, next) => {
+eventsRouter.post("/", (req, res, next) => {
   eventModel.create(req.body, (error, data) => {
     if (error) {
       return next(error);
@@ -12,4 +12,4 @@ router.post("/", (req, res, next) => {
   });
 });
 
-module.exports = router;
+module.exports = eventsRouter;
