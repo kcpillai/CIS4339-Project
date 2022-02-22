@@ -27,7 +27,7 @@ let healthSchema = new Schema({
     },
     foodStampsReason: {
         type: String
-}
+        },
     {
         collection: 'health'
     });
