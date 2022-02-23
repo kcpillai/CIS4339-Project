@@ -10,7 +10,7 @@ let healthSchema = new Schema({
     clientID: {
 		type: String,
       	required: true
-	},
+	  },
     hasHealthInsurance: {
         type: Boolean,
         required: true
@@ -33,4 +33,4 @@ let healthSchema = new Schema({
         collection: 'health'
     });
 
-module.exports = mongoose.model('health', healthSchema);
+module.exports = mongoose.model("health", healthSchema);

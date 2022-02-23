@@ -55,7 +55,7 @@ let employeeSchema = new Schema({
     {
       ClientID: {
         type: Number,
-        required: true,
+        required: false,
       },
     },
   ],

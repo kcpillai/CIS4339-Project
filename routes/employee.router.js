@@ -1,8 +1,8 @@
 const express = require("express");
-const router = express.Router();
+const employeeRouter = express.Router();
 const employeeModel = require("../models/employees.model.js");
 
-router.post("/", (req, res, next) => {
+employeeRouter.post("/", (req, res, next) => {
   employeeModel.create(req.body, (error, data) => {
     if (error) {
       return next(error);
@@ -12,4 +12,4 @@ router.post("/", (req, res, next) => {
   });
 });
 
-module.exports = router;
+module.exports = employeeRouter;
