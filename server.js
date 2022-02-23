@@ -6,10 +6,20 @@ const mongoose = require("mongoose");
 const axios = require("axios");
 const app = express();
 
-mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true });
+mongoose
+  .connect(process.env.MONGO_URL) // Read environment varibale from .env file.
+  .then(() => {
+    console.log("Database connection Success!");
+  })
+  .catch((err) => {
+    console.error("Mongo Connection Error", err);
+  });
 
-const PORT = 3000;
-const server = http.createServer(app);
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log("Server started listening on port: ", PORT);
+});
 
 // Testing if connection works
 mongoose.connection.once("open", () => {
@@ -27,11 +37,6 @@ app.use((req, res, next) => {
   next();
   const delta = Date.now() - start;
   console.log(`${req.method} ${req.baseUrl}${req.url} ${delta}ms`);
-});
-
-//Connecting to MongoDB
-server.listen(PORT, () => {
-  console.log(` is Listening on port ${PORT}...`);
 });
 
 // Setting up routers
