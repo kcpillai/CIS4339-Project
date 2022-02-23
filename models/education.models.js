@@ -2,40 +2,41 @@ const uuid = require('uuid');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-let educationSchema = new Schema({
+let educationSchema = new Schema(
+  {
     _id: {
-        type: String,
-        default: uuid.v1
+      type: String,
+      default: uuid.v1,
     },
     clientID: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     hasAttended: {
-        type: Boolean,
-        required: true
+      type: Boolean,
+      required: true,
     },
     school: {
-        type: String
+      type: String,
     },
     lastGrade: {
-        type: String
+      type: String,
     },
     hasGraduated: {
-        type: Boolean,
-        required: true
+      type: Boolean,
+      required: true,
     },
     degree: {
-        type: String
+      type: String,
     },
     certification: {
-        type: String
-    }
-},
+      type: String,
+    },
+  },
 
-    {
-        collection: 'educations'
-    }
+  {
+    collection: 'educations',
+  }
 );
 
 module.exports = mongoose.model('education', educationSchema);

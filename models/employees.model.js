@@ -1,5 +1,5 @@
-const uuid = require("uuid");
-const mongoose = require("mongoose");
+const uuid = require('uuid');
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const employeeSchema = new Schema(
@@ -9,7 +9,7 @@ const employeeSchema = new Schema(
       default: uuid.v1,
     },
     employeeId: {
-      type: String,
+      type: Number,
       required: true,
     },
     employeeName: [
@@ -58,8 +58,8 @@ const employeeSchema = new Schema(
     ],
   },
   {
-    collection: "employees",
+    collection: 'employees',
   }
 );
 
-module.exports = mongoose.model("employees", employeeSchema);
+module.exports = mongoose.model('employees', employeeSchema);

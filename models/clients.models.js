@@ -2,93 +2,93 @@ const uuid = require('uuid');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-let clientSchema = new Schema({
+let clientSchema = new Schema(
+  {
     _id: {
-        type: String,
-        default: uuid.v1
+      type: String,
+      default: uuid.v1,
     },
     clientID: {
-        type: Number,
-        required: true
+      type: Number,
+      required: true,
     },
-    clientName:{
-      
-        firstName: {
-            type: String,
-            required: true,
-        },
-        middleName: {
-            type: String,
-            required: false
-        },
-        lastName: {
-            type: String,
-            required: true
-        }
-    },
-clientDemographics: {
-
-    gender: {
+    clientName: {
+      firstName: {
         type: String,
-        required: true
-    },
-    birthday: {
+        required: true,
+      },
+      middleName: {
         type: String,
-        required: true
-    },
-    raceEthnicity: {
+        required: false,
+      },
+      lastName: {
         type: String,
-        required: true
+        required: true,
+      },
     },
-    zipCode: {
+    clientDemographics: {
+      gender: {
         type: String,
-        required: true
-    },
-    numChildren: {
+        required: true,
+      },
+      birthday: {
         type: String,
-        required: true
-    },
-    is65orOlder: {
+        required: true,
+      },
+      raceEthnicity: {
+        type: String,
+        required: true,
+      },
+      zipCode: {
+        type: String,
+        required: true,
+      },
+      numChildren: {
+        type: String,
+        required: true,
+      },
+      is65orOlder: {
         type: Boolean,
-        required: true
-    },
-    isVeteran: {
+        required: true,
+      },
+      isVeteran: {
         type: Boolean,
-        required: true
-    }
-},
+        required: true,
+      },
+    },
     ssn: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     phoneNumber: {
-        type: String
+      type: String,
     },
     driverLicense: {
-        type: String,
-        required: true       
+      type: String,
+      required: true,
     },
     isNeedSupport: {
-        type: Boolean,
-        required: true
+      type: Boolean,
+      required: true,
     },
     clientVaccineInfo: {
-        type: String
+      type: String,
     },
     dateTime: {
-        type: String
+      type: String,
     },
     organization: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     employeeID: {
-        type: String,
-        required: true
-    }
-},
-    {
-        collection: 'clients'
-    });
+      type: String,
+      required: true,
+    },
+  },
+  {
+    collection: 'clients',
+  }
+);
 
-module.exports = mongoose.model('client', clientSchema)
+module.exports = mongoose.model('client', clientSchema);
