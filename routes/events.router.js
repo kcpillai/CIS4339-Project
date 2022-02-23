@@ -12,4 +12,16 @@ eventsRouter.post("/", (req, res, next) => {
   });
 });
 
+eventsRouter.get("/", (req, res, next) => {
+  eventModel.find((error, data) => {
+    if (error) {
+      return next(error);
+    } else if (data === null) {
+      res.status(404).json("Employee information not found");
+    } else {
+      res.json(data);
+    }
+  });
+});
+
 module.exports = eventsRouter;

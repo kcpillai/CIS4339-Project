@@ -55,7 +55,7 @@ const employeeSchema = new Schema(
     clients: [
       {
         ClientID: {
-          type: Number,
+          type: String,
           required: false,
         },
       },
