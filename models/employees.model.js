@@ -8,17 +8,13 @@ const employeeSchema = new Schema(
       type: String,
       default: uuid.v1,
     },
-    employeeID: {
+    employeeId: {
       type: String,
       required: true,
     },
     employeeName: [
       {
         lastName: {
-          type: String,
-          required: true,
-        },
-        middleName: {
           type: String,
           required: true,
         },
@@ -54,7 +50,7 @@ const employeeSchema = new Schema(
     },
     clients: [
       {
-        ClientID: {
+        ClientId: {
           type: String,
           required: false,
         },
