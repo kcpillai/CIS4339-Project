@@ -1,6 +1,6 @@
 const express = require("express");
 const eventsRouter = express.Router();
-const eventModel = require("../models/event.model.js");
+const eventModel = require("../models/events.model.js");
 
 eventsRouter.post("/", (req, res, next) => {
   eventModel.create(req.body, (error, data) => {
