@@ -1,5 +1,5 @@
-const uuid = require("uuid");
-const mongoose = require("mongoose");
+const uuid = require('uuid');
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let eventSchema = new Schema(
@@ -8,7 +8,7 @@ let eventSchema = new Schema(
       type: String,
       default: uuid.v1,
     },
-    ClientID: {
+    eventsId: {
       type: String,
       required: true,
     },
@@ -47,8 +47,8 @@ let eventSchema = new Schema(
     ],
   },
   {
-    collection: "events",
+    collection: 'events',
   }
 );
 
-module.exports = mongoose.model("events", eventSchema);
+module.exports = mongoose.model('events', eventSchema);

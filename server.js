@@ -1,6 +1,5 @@
 // Kiran Pillai
 require('dotenv').config();
-const http = require('http');
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
@@ -41,80 +40,23 @@ app.use((req, res, next) => {
 });
 
 // Setting up routers
-// const employeeRouter = require('./routes/employee.router.js');
-// app.use('/employees', employeeRouter);
+const employeeRouter = require('./routes/employee.router.js');
+app.use('/employees', employeeRouter);
 
-// const eventsRouter = require('./routes/events.router.js');
-// app.use('/events', eventsRouter);
+const eventsRouter = require('./routes/events.router.js');
+app.use('/events', eventsRouter);
 
-// const healthRouter = require('./routes/health.router.js');
-// const employeesModel = require('./models/employees.model.js');
-// app.use('/health', healthRouter);
+const healthRouter = require('./routes/health.router.js');
+app.use('health', healthRouter);
 
-// const familiesRouter = require("./routes/families.router.js");
-// app.use("/families", familiesRouter);
+// const familiesRouter = require('./routes/families.router.js');
+// app.use('/families', familiesRouter);
 
-// const educationRouter = require("./routes/employees.router.js");
-// app.use("/education", educationRouter);
+// const educationRouter = require('./routes/employees.router.js');
+// app.use('/education', educationRouter);
 
-// const clientsRouter = require("./routes/clients.router.js");
-// app.use("/clients", clientsRouter);
+// const clientsRouter = require('./routes/clients.router.js');
+// app.use('/clients', clientsRouter);
 
-const employeeModel = require('./models/employees.model.js');
-
-// GET Employees
-app.get('/employees', (req, res, next) => {
-  //very plain way to get all the data from the collection through the mongoose schema
-  employeeModel.find((error, data) => {
-    if (error) {
-      //here we are using a call to next() to send an error message back
-      return next(error);
-    } else {
-      res.json(data);
-    }
-  });
-});
-// ADD Employees
-app.post('/employees', (req, res, next) => {
-  employeeModel.create(req.body, (error, data) => {
-    if (error) {
-      return next(error);
-    } else {
-      res.send('Employee information is added to the database.');
-    }
-  });
-});
-// DELETE Employees
-app.delete('/employees/:id', (req, res, next) => {
-  //mongoose will use studentID of document
-  employeeModel.findOneAndRemove(
-    { employeeId: req.params.id },
-    (error, data) => {
-      if (error) {
-        return next(error);
-      } else {
-        res.status(200).json({
-          msg: data,
-        });
-        res.send('Employee has been deleted');
-      }
-    }
-  );
-});
-// Updating Employee
-app.put('/employee/:id', (req, res, next) => {
-  StudentModel.findOneAndUpdate(
-    { employeeId: req.params.id },
-    {
-      $set: req.body,
-    },
-    (error, data) => {
-      if (error) {
-        return next(error);
-      } else {
-        res.send('Employee is edited via PUT');
-        console.log('Employee has been successfully updated!', data);
-      }
-    }
-  );
-});
+const organziationsRouter = require('./routes/organizations.router.js');
+app.use('/organizations', organziationsRouter);
