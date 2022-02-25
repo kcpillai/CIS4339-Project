@@ -62,6 +62,7 @@ app.use((req, res, next) => {
 
 const employeeModel = require('./models/employees.model.js');
 
+// GET Employees
 app.get('/employees', (req, res, next) => {
   //very plain way to get all the data from the collection through the mongoose schema
   employeeModel.find((error, data) => {
@@ -73,17 +74,17 @@ app.get('/employees', (req, res, next) => {
     }
   });
 });
-
+// ADD Employees
 app.post('/employees', (req, res, next) => {
   employeeModel.create(req.body, (error, data) => {
     if (error) {
       return next(error);
     } else {
-      res.send('Worker information is added to the database.');
+      res.send('Employee information is added to the database.');
     }
   });
 });
-
+// DELETE Employees
 app.delete('/employees/:id', (req, res, next) => {
   //mongoose will use studentID of document
   employeeModel.findOneAndRemove(
