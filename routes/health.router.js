@@ -1,7 +1,7 @@
 //CRUD Op APIs
 const express = require('express');
 const healthRouter = express.Router();
-const healthModel = require('../models/health.models.js');
+const healthModel = require('../models/health.model.js');
 
 
 // GET health
