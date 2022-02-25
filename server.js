@@ -101,3 +101,20 @@ app.delete('/employees/:id', (req, res, next) => {
     }
   );
 });
+// Updating Employee
+app.put('/employee/:id', (req, res, next) => {
+  StudentModel.findOneAndUpdate(
+    { employeeId: req.params.id },
+    {
+      $set: req.body,
+    },
+    (error, data) => {
+      if (error) {
+        return next(error);
+      } else {
+        res.send('Employee is edited via PUT');
+        console.log('Employee has been successfully updated!', data);
+      }
+    }
+  );
+});
