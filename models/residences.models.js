@@ -72,4 +72,4 @@ let residenceSchema = new Schema({
         collection: 'residences'
     });
 
-module.exports = mongoose.model('residence', residenceSchema)
+module.exports = mongoose.model('residences', residenceSchema)
