@@ -60,4 +60,4 @@ let incomeSchema = new Schema({
         collection: 'incomes'
 });
 
-module.exports = mongoose.model('income', incomeSchema)
+module.exports = mongoose.model('incomes', incomeSchema)
