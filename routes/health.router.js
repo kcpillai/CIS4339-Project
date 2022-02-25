@@ -4,11 +4,6 @@ const healthRouter = express.Router();
 const healthModel = require('../models/health.models.js');
 
 
-
-
-
-//////////////health apis
-
 // GET health
 app.get('/health', (req, res, next) => { //retrieve data from the collection using mongoose schema
   healthModel.find((error, data) => {
@@ -26,7 +21,7 @@ app.post('/health', (req, res, next) => {
     if (error) {
       return next(error);
     } else {
-      res.send('Employee information is added to the database.');
+      res.send('new health record added to the database via POST.');
     }
   });
 });
@@ -34,7 +29,7 @@ app.post('/health', (req, res, next) => {
 
 // Update health records given id
 app.put('/health/:id', (req, res, next) => {
-  StudentModel.findOneAndUpdate(
+  healthModel.findOneAndUpdate(
     { healthId: req.params.id },
     {
       $set: req.body,
@@ -43,18 +38,18 @@ app.put('/health/:id', (req, res, next) => {
       if (error) {
         return next(error);
       } else {
-        res.send('health is edited via PUT');
-        console.log('Employee has been successfully updated!', data);
+        res.send('health record edited via PUT');
+        console.log('health record successfully updated via PUT', data);
       }
     }
   );
 });
 
 // DELETE Health records given id
-app.delete('/employees/:id', (req, res, next) => {
-  //mongoose will use studentID of document
-  employeeModel.findOneAndRemove(
-    { employeeId: req.params.id },
+app.delete('/health/:id', (req, res, next) => {
+  //mongoose deletes record based off of document id
+  healthModel.findOneAndRemove(
+    { healthId: req.params.id },
     (error, data) => {
       if (error) {
         return next(error);
@@ -62,30 +57,25 @@ app.delete('/employees/:id', (req, res, next) => {
         res.status(200).json({
           msg: data,
         });
-        res.send('Employee has been deleted');
+        res.send('Health record deleted via DELETE');
       }
     }
   );
 });
 
 
-/////// delete later
-//CREATE(POST) - api endpoint that creates a health document
-healthRouter.post('/', (req, res, next) => {
-  healthModel.create(req.body, (error, data) => {
-    if (error) {
-      return next(error);
-    } else {
-      res.send('Health Info successfully recorded to Database.');
-    }
-  });
-});
+/////// delete later maybe?
+// //CREATE(POST) - api endpoint that creates a health document
+// healthRouter.post('/', (req, res, next) => {
+//   healthModel.create(req.body, (error, data) => {
+//     if (error) {
+//       return next(error);
+//     } else {
+//       res.send('Health Info successfully recorded to Database.');
+//     }
+//   });
+// });
 
-//READ
-
-//UPDATE
-
-//DELETE
 
 //server app
 
