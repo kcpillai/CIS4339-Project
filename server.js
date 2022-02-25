@@ -1,6 +1,5 @@
 // Kiran Pillai
 require('dotenv').config();
-const http = require('http');
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
@@ -50,14 +49,14 @@ app.use('/events', eventsRouter);
 const healthRouter = require('./routes/health.router.js');
 app.use('health', healthRouter);
 
-const familiesRouter = require('./routes/families.router.js');
-app.use('/families', familiesRouter);
+// const familiesRouter = require('./routes/families.router.js');
+// app.use('/families', familiesRouter);
 
-const educationRouter = require('./routes/employees.router.js');
-app.use('/education', educationRouter);
+// const educationRouter = require('./routes/employees.router.js');
+// app.use('/education', educationRouter);
 
-const clientsRouter = require('./routes/clients.router.js');
-app.use('/clients', clientsRouter);
+// const clientsRouter = require('./routes/clients.router.js');
+// app.use('/clients', clientsRouter);
 
 const organziationsRouter = require('./routes/organizations.router.js');
 app.use('/organizations', organziationsRouter);
