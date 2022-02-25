@@ -1,26 +1,34 @@
 // Kiran Pillai
-const http = require("http");
-const express = require("express");
-const mongoose = require("mongoose");
-
-// Connection string for MongoDB
-const MONGO_URL =
-  "mongodb+srv://group14:cis4339@projectcluster.kd8kw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-
-mongoose.connect(MONGO_URL);
-
+require('dotenv').config();
+const http = require('http');
+const express = require('express');
+const mongoose = require('mongoose');
 const app = express();
 
-const PORT = 3000;
-const server = http.createServer(app);
+mongoose
+  .connect(process.env.MONGO_URL) // Read environment varibale from .env file.
+  .then(() => {
+    console.log('Database connection Success!');
+  })
+  .catch(err => {
+    console.error('Mongo Connection Error', err);
+  });
+
+const PORT = process.env.PORT || 3000;
+
+app.use(express.json()); //allows us to access request body as req.body
+
+app.listen(PORT, () => {
+  console.log('Server started listening on port: ', PORT);
+});
 
 // Testing if connection works
-mongoose.connection.once("open", () => {
-  console.log("MongoDB connection ready!");
+mongoose.connection.once('open', () => {
+  console.log('MongoDB connectioned!');
 });
 
 // logging if there is an error connecting to the MongoDB
-mongoose.connection.on("error", (err) => {
+mongoose.connection.on('error', err => {
   console.error(err);
 });
 
@@ -32,17 +40,64 @@ app.use((req, res, next) => {
   console.log(`${req.method} ${req.baseUrl}${req.url} ${delta}ms`);
 });
 
-//Connecting to MongoDB
-async function startServer() {
-  await mongoose.connect(MONGO_URL);
-
-  server.listen(PORT, () => {
-    console.log(` is Listening on port ${PORT}...`);
-  });
-}
-
 // Setting up routers
-const employeeRouter = require("./routes/employee.router.js");
-app.use("/employees", employeeRouter);
+// const employeeRouter = require('./routes/employee.router.js');
+// app.use('/employees', employeeRouter);
 
-startServer();
+// const eventsRouter = require('./routes/events.router.js');
+// app.use('/events', eventsRouter);
+
+// const healthRouter = require('./routes/health.router.js');
+// const employeesModel = require('./models/employees.model.js');
+// app.use('/health', healthRouter);
+
+// const familiesRouter = require("./routes/families.router.js");
+// app.use("/families", familiesRouter);
+
+// const educationRouter = require("./routes/employees.router.js");
+// app.use("/education", educationRouter);
+
+// const clientsRouter = require("./routes/clients.router.js");
+// app.use("/clients", clientsRouter);
+
+const employeeModel = require('./models/employees.model.js');
+
+// GET Employees
+app.get('/employees', (req, res, next) => {
+  //very plain way to get all the data from the collection through the mongoose schema
+  employeeModel.find((error, data) => {
+    if (error) {
+      //here we are using a call to next() to send an error message back
+      return next(error);
+    } else {
+      res.json(data);
+    }
+  });
+});
+// ADD Employees
+app.post('/employees', (req, res, next) => {
+  employeeModel.create(req.body, (error, data) => {
+    if (error) {
+      return next(error);
+    } else {
+      res.send('Employee information is added to the database.');
+    }
+  });
+});
+// DELETE Employees
+app.delete('/employees/:id', (req, res, next) => {
+  //mongoose will use studentID of document
+  employeeModel.findOneAndRemove(
+    { employeeId: req.params.id },
+    (error, data) => {
+      if (error) {
+        return next(error);
+      } else {
+        res.status(200).json({
+          msg: data,
+        });
+        res.send('Employee has been deleted');
+      }
+    }
+  );
+});
