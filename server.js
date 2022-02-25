@@ -102,8 +102,8 @@ app.delete('/employees/:id', (req, res, next) => {
   );
 });
 // Updating Employee
-app.put('/employee/:id', (req, res, next) => {
-  StudentModel.findOneAndUpdate(
+app.put('/employees/:id', (req, res, next) => {
+  employeeModel.findOneAndUpdate(
     { employeeId: req.params.id },
     {
       $set: req.body,
@@ -114,6 +114,123 @@ app.put('/employee/:id', (req, res, next) => {
       } else {
         res.send('Employee is edited via PUT');
         console.log('Employee has been successfully updated!', data);
+      }
+    }
+  );
+});
+
+// Events Collection
+const eventsModel = require('./models/employees.model.js');
+
+// GET events
+app.get('/events', (req, res, next) => {
+  //very plain way to get all the data from the collection through the mongoose schema
+  eventsModel.find((error, data) => {
+    if (error) {
+      //here we are using a call to next() to send an error message back
+      return next(error);
+    } else {
+      res.json(data);
+    }
+  });
+});
+// ADD Events
+app.post('/events', (req, res, next) => {
+  eventsModel.create(req.body, (error, data) => {
+    if (error) {
+      return next(error);
+    } else {
+      res.send('Events information is added to the database.');
+    }
+  });
+});
+// DELETE Events
+app.delete('/events/:id', (req, res, next) => {
+  //mongoose will use studentID of document
+  eventsModel.findOneAndRemove({ employeeId: req.params.id }, (error, data) => {
+    if (error) {
+      return next(error);
+    } else {
+      res.status(200).json({
+        msg: data,
+      });
+      res.send('Employee has been deleted');
+    }
+  });
+});
+// Updating Events
+app.put('/events/:id', (req, res, next) => {
+  eventsModel.findOneAndUpdate(
+    { eventsId: req.params.id },
+    {
+      $set: req.body,
+    },
+    (error, data) => {
+      if (error) {
+        return next(error);
+      } else {
+        res.send('Employee is edited via PUT');
+        console.log('Employee has been successfully updated!', data);
+      }
+    }
+  );
+});
+
+// Organizations
+const organizationsModel = require('./models/employees.model.js');
+
+// GET organizations
+app.get('/organizations', (req, res, next) => {
+  //very plain way to get all the data from the collection through the mongoose schema
+  organizationsModel.find((error, data) => {
+    if (error) {
+      //here we are using a call to next() to send an error message back
+      return next(error);
+    } else {
+      res.json(data);
+    }
+  });
+});
+// ADD organizations
+app.post('/organizations', (req, res, next) => {
+  organizationsModel.create(req.body, (error, data) => {
+    if (error) {
+      return next(error);
+    } else {
+      res.send('organizations information is added to the database.');
+    }
+  });
+});
+// DELETE organizations
+app.delete('/organizations/:id', (req, res, next) => {
+  //mongoose will use studentID of document
+  organizationsModel.findOneAndRemove(
+    { organizationsId: req.params.id },
+    (error, data) => {
+      if (error) {
+        return next(error);
+      } else {
+        res.status(200).json({
+          msg: data,
+        });
+        res.send('organization has been deleted');
+      }
+    }
+  );
+});
+// Updating organizations
+app.put('/organizations/:id', (req, res, next) => {
+  eventsModel.findOneAndUpdate(
+    { eventsId: req.params.id },
+    {
+      $set: req.body,
+    },
+    (error, data) => {
+      if (error) {
+        return next(error);
+      } else {
+        res.send('organization is edited via PUT');
+        console.log('organization has been successfully updated!', data);
       }
     }
   );
