@@ -5,7 +5,7 @@ const residencesModel = require('../models/residences.model.js');
 
 
 // GET all residences
-app.get('/residences', (req, res, next) => { //retrieve data from the collection using mongoose schema
+residencesRouter.get('/residences', (req, res, next) => { //retrieve data from the collection using mongoose schema
     residencesModel.find((error, data) => {
     if (error) {
       // using a call to next() function to send out error message if error is encountered
@@ -16,7 +16,7 @@ app.get('/residences', (req, res, next) => { //retrieve data from the collection
   });
 });
 // ADD residences
-app.post('/residences', (req, res, next) => {
+residencesRouter.post('/residences', (req, res, next) => {
     residencesModel.create(req.body, (error, data) => {
     if (error) {
       return next(error);
@@ -28,7 +28,7 @@ app.post('/residences', (req, res, next) => {
 
 
 // Update residences with residence id
-app.put('/residences/:id', (req, res, next) => {
+residencesRouter.put('/residences/:id', (req, res, next) => {
     residencesModel.findOneAndUpdate(
     { residencesId: req.params.id },
     {
@@ -46,7 +46,7 @@ app.put('/residences/:id', (req, res, next) => {
 });
 
 // DELETE residence records given id
-app.delete('/residences/:id', (req, res, next) => {
+residencesRouter.delete('/residences/:id', (req, res, next) => {
   //mongoose deletes record based off of document id
   residencesModel.findOneAndRemove(
     { residencesId: req.params.id },

@@ -1,11 +1,11 @@
 //CRUD Op APIs
 const express = require('express');
 const educationRouter = express.Router();
-const educationModel = require('../models/education.models.js');
+const educationModel = require('../models/education.model.js');
 
 
 // GET education
-app.get('/education', (req, res, next) => { //retrieve data from the collection using mongoose schema
+educationRouter.get('/education', (req, res, next) => { //retrieve data from the collection using mongoose schema
   educationModel.find((error, data) => {
     if (error) {
       // using a call to next() function to send out error message if error is encountered
@@ -16,7 +16,7 @@ app.get('/education', (req, res, next) => { //retrieve data from the collection 
   });
 });
 // ADD education records
-app.post('/education', (req, res, next) => {
+educationRouter.post('/education', (req, res, next) => {
   educationModel.create(req.body, (error, data) => {
     if (error) {
       return next(error);
@@ -28,7 +28,7 @@ app.post('/education', (req, res, next) => {
 
 
 // Update education records given id
-app.put('/education/:id', (req, res, next) => {
+educationRouter.put('/education/:id', (req, res, next) => {
   educationModel.findOneAndUpdate(
     { educationId: req.params.id },
     {
@@ -46,7 +46,7 @@ app.put('/education/:id', (req, res, next) => {
 });
 
 // DELETE Health records given id
-app.delete('/education/:id', (req, res, next) => {
+educationRouter.delete('/education/:id', (req, res, next) => {
   //mongoose deletes record based off of document id
   educationModel.findOneAndRemove(
     { educationId: req.params.id },

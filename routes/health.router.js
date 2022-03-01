@@ -5,7 +5,7 @@ const healthModel = require('../models/health.model.js');
 
 
 // // GET health
-// app.get('/health', (req, res, next) => { //retrieve data from the collection using mongoose schema
+// healthRouter.get('/health', (req, res, next) => { //retrieve data from the collection using mongoose schema
 //   healthModel.find((error, data) => {
 //     if (error) {
 //       // using a call to next() function to send out error message if error is encountered
@@ -17,7 +17,7 @@ const healthModel = require('../models/health.model.js');
 // });
 
 // // ADD health records
-// app.post('/health', (req, res, next) => {
+// healthRouter.post('/health', (req, res, next) => {
 //   healthModel.create(req.body, (error, data) => {
 //     if (error) {
 //       return next(error);
@@ -29,7 +29,7 @@ const healthModel = require('../models/health.model.js');
 
 
 // // Update health records given id
-// app.put('/health/:id', (req, res, next) => {
+// healthRouter.put('/health/:id', (req, res, next) => {
 //   healthModel.findOneAndUpdate(
 //     { healthId: req.params.id },
 //     {
@@ -47,7 +47,7 @@ const healthModel = require('../models/health.model.js');
 // });
 
 // // DELETE Health records given id
-// app.delete('/health/:id', (req, res, next) => {
+// healthRouter.delete('/health/:id', (req, res, next) => {
 //   //mongoose deletes record based off of document id
 //   healthModel.findOneAndRemove(
 //     { healthId: req.params.id },
@@ -78,10 +78,10 @@ const healthModel = require('../models/health.model.js');
 // });
 
 
-//server app
+//server healthRouter
 
 //error handler
-// app.use(function (err, req, res, next) {
+// healthRouter.use(function (err, req, res, next) {
 //   console.error(err.message);
 //   if (!err.statusCode) err.statusCode = 500;
 //   res.status(err.statusCode).send(err.message);

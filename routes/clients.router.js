@@ -1,7 +1,7 @@
 //CRUD Op APIs
 const express = require('express');
 const clientsRouter = express.Router();
-const clientsModel = require('../models/clients.models.js');
+const clientsModel = require('../models/clients.model.js');
 
 
 // GET clients
