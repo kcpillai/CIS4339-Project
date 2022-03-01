@@ -5,7 +5,7 @@ const clientvaccineinfoModel = require('../models/clientvaccineinfo.model.js');
 
 
 // GET all client vaccine info
-app.get('/clientvaccineinfo', (req, res, next) => { //retrieve data from the collection using mongoose schema
+clientvaccineinfoRouter.get('/clientvaccineinfo', (req, res, next) => { //retrieve data from the collection using mongoose schema
     clientvaccineinfoModel.find((error, data) => {
     if (error) {
       // using a call to next() function to send out error message if error is encountered
@@ -16,7 +16,7 @@ app.get('/clientvaccineinfo', (req, res, next) => { //retrieve data from the col
   });
 });
 // ADD client vaccine info
-app.post('/clientvaccineinfo', (req, res, next) => {
+clientvaccineinfoRouter.post('/clientvaccineinfo', (req, res, next) => {
     residencesModel.create(req.body, (error, data) => {
     if (error) {
       return next(error);
@@ -28,7 +28,7 @@ app.post('/clientvaccineinfo', (req, res, next) => {
 
 
 // Update client vaccine info with client vaccine info id
-app.put('/clientvaccineinfo/:id', (req, res, next) => {
+clientvaccineinfoRouter.put('/clientvaccineinfo/:id', (req, res, next) => {
     clientvaccineinfoModel.findOneAndUpdate(
     { clientvaccineinfoId: req.params.id },
     {
@@ -46,7 +46,7 @@ app.put('/clientvaccineinfo/:id', (req, res, next) => {
 });
 
 // DELETE client vaccine info records given id
-app.delete('/clientvaccineinfo/:id', (req, res, next) => {
+clientvaccineinfoRouter.delete('/clientvaccineinfo/:id', (req, res, next) => {
   //mongoose deletes record based off of document id
   clientvaccineinfoModel.findOneAndRemove(
     { clientvaccineinfoId: req.params.id },
