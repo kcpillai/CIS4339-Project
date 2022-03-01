@@ -6,7 +6,7 @@ const healthRouter = express.Router();
 const healthModel = require('../models/health.model.js');
 
 // GET health
-healthRouter.get('/health', (req, res, next) => { //retrieve data from the collection using mongoose schema
+healthRouter.get('/', (req, res, next) => { //retrieve data from the collection using mongoose schema
   healthModel.find((error, data) => {
     if (error) {
       // using a call to next() function to send out error message if error is encountered
@@ -19,7 +19,7 @@ healthRouter.get('/health', (req, res, next) => { //retrieve data from the colle
 
 
 // ADD health records
-healthRouter.post('/health', (req, res, next) => {
+healthRouter.post('/', (req, res, next) => {
   healthModel.create(req.body, (error, data) => {
     if (error) {
       return next(error);

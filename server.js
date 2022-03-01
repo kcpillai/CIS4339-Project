@@ -44,8 +44,8 @@ app.use('/employees', employeeRouter);
 const eventsRouter = require('./routes/events.router.js');
 app.use('/events', eventsRouter);
 
-// const healthRouter = require('./routes/health.router.js');
-// app.use('health', healthRouter);
+const healthRouter = require('./routes/health.router.js');
+app.use('health', healthRouter);
 
 const familiesRouter = require('./routes/families.router.js');
 app.use('/families', familiesRouter);

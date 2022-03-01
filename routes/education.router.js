@@ -5,7 +5,7 @@ const educationModel = require('../models/education.model.js');
 
 
 // GET education
-educationRouter.get('/education', (req, res, next) => { //retrieve data from the collection using mongoose schema
+educationRouter.get('/', (req, res, next) => { //retrieve data from the collection using mongoose schema
   educationModel.find((error, data) => {
     if (error) {
       // using a call to next() function to send out error message if error is encountered
@@ -16,7 +16,7 @@ educationRouter.get('/education', (req, res, next) => { //retrieve data from the
   });
 });
 // ADD education records
-educationRouter.post('/education', (req, res, next) => {
+educationRouter.post('/', (req, res, next) => {
   educationModel.create(req.body, (error, data) => {
     if (error) {
       return next(error);

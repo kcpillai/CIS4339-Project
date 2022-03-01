@@ -5,7 +5,7 @@ const clientsModel = require('../models/clients.model.js');
 
 
 // GET clients
-app.get('/clients', (req, res, next) => { //retrieve data from the collection using mongoose schema
+clientsRouter.get('/', (req, res, next) => { //retrieve data from the collection using mongoose schema
   clientsModel.find((error, data) => {
     if (error) {
       // using a call to next() function to send out error message if error is encountered
@@ -16,7 +16,7 @@ app.get('/clients', (req, res, next) => { //retrieve data from the collection us
   });
 });
 // ADD clients records
-app.post('/clients', (req, res, next) => {
+clientsRouter.post('/', (req, res, next) => {
   clientsModel.create(req.body, (error, data) => {
     if (error) {
       return next(error);
@@ -28,7 +28,7 @@ app.post('/clients', (req, res, next) => {
 
 
 // Update clients records given id
-app.put('/clients/:id', (req, res, next) => {
+clientsRouter.put('/clients/:id', (req, res, next) => {
   clientsModel.findOneAndUpdate(
     { clientsId: req.params.id },
     {
@@ -46,7 +46,7 @@ app.put('/clients/:id', (req, res, next) => {
 });
 
 // DELETE Health records given id
-app.delete('/clients/:id', (req, res, next) => {
+clientsRouter.delete('/clients/:id', (req, res, next) => {
   //mongoose deletes record based off of document id
   clientsModel.findOneAndRemove(
     { clientsId: req.params.id },
