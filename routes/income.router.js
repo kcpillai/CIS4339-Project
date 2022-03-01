@@ -5,8 +5,8 @@ const incomeModel = require('../models/incomes.model.js');
 
 
 // GET income
-incomeRouter.get('/income', (req, res, next) => { //retrieve data from the collection using mongoose schema
-    residencesModel.find((error, data) => {
+incomeRouter.get('/', (req, res, next) => { //retrieve data from the collection using mongoose schema
+    incomeModel.find((error, data) => {
     if (error) {
       // using a call to next() function to send out error message if error is encountered
       return next(error);
@@ -16,8 +16,8 @@ incomeRouter.get('/income', (req, res, next) => { //retrieve data from the colle
   });
 });
 // ADD income
-incomeRouter.post('/income', (req, res, next) => {
-    residencesModel.create(req.body, (error, data) => {
+incomeRouter.post('/', (req, res, next) => {
+    incomeModel.create(req.body, (error, data) => {
     if (error) {
       return next(error);
     } else {

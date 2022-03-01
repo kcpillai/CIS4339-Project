@@ -59,3 +59,11 @@ app.use('/families', familiesRouter);
 const organziationsRouter = require('./routes/organizations.router.js');
 app.use('/organizations', organziationsRouter);
 
+const incomeRouter = require('./routes/income.router.js');
+app.use('/income', incomeRouter);
+
+const residencesRouter = require('./routes/residences.router.js');
+app.use('/residences', residencesRouter);
+
+const clientvaccineinfoRouter = require('./routes/clientvaccineinfo.router.js');
+app.use('/clientvaccineinfo', clientvaccineinfoRouter);
