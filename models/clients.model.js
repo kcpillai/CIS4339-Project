@@ -91,4 +91,4 @@ let clientSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model('client', clientSchema);
+module.exports = mongoose.model('clients', clientSchema);

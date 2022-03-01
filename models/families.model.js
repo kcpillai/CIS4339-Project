@@ -58,4 +58,4 @@ let familySchema = new Schema({
         collection: 'families'
     });
 
-    module.exports = mongoose.model('family', familySchema)
+    module.exports = mongoose.model('families', familySchema)
