@@ -24,7 +24,7 @@ let eventSchema = new Schema(
     eventInfo: [
       {
         eventDate: {
-          type: String,
+          type: Date,
           required: true,
         },
         address: {
@@ -40,7 +40,7 @@ let eventSchema = new Schema(
           required: true,
         },
         zipcode: {
-          type: String,
+          type: Number,
           required: true,
         },
       },

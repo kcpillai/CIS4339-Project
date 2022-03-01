@@ -1,9 +1,9 @@
 const express = require('express');
-const organziationsRouter = express.Router();
+const organizationsRouter = express.Router();
 const organizationsModel = require('../models/organizations.model.js');
 
 // Getting all the organziations
-organziationsRouter.get('/', (req, res, next) => {
+organizationsRouter.get('/', (req, res, next) => {
   //very plain way to get all the data from the collection through the mongoose schema
   organizationsModel.find((error, data) => {
     if (error) {
@@ -16,7 +16,7 @@ organziationsRouter.get('/', (req, res, next) => {
 });
 
 // // POST(CREATE): an endpoint that will insert an organziations info into DB.
-organziationsRouter.post('/', (req, res, next) => {
+organizationsRouter.post('/', (req, res, next) => {
   organizationsModel.create(req.body, (error, data) => {
     if (error) {
       return next(error);
@@ -27,7 +27,7 @@ organziationsRouter.post('/', (req, res, next) => {
 });
 
 // Updating organziations
-organziationsRouter.put('/employees/:id', (req, res, next) => {
+organizationsRouter.put('/employees/:id', (req, res, next) => {
   organizationsModel.findOneAndUpdate(
     { organizationsId: req.params.id },
     {
@@ -45,9 +45,9 @@ organziationsRouter.put('/employees/:id', (req, res, next) => {
 });
 
 // DELETE: an endpoint to delete a organziations  record
-organziationsRouter.delete('/:id', (req, res, next) => {
-  organizationsModel.remove(
-    { organizationId: req.params.id },
+organizationsRouter.delete('/', (req, res, next) => {
+  organizationsModel.deleteOne(
+    { organizationId: req.body.id },
     (error, data) => {
       if (error) {
         return next(error);
@@ -60,4 +60,4 @@ organziationsRouter.delete('/:id', (req, res, next) => {
   );
 });
 
-module.exports = organziationsRouter;
+module.exports = organizationsRouter;
