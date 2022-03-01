@@ -50,11 +50,11 @@ app.use('/health', healthRouter);
 const familiesRouter = require('./routes/families.router.js');
 app.use('/families', familiesRouter);
 
-// const educationRouter = require('./routes/employees.router.js');
-// app.use('/education', educationRouter);
+const educationRouter = require('./routes/education.router.js');
+app.use('/education', educationRouter);
 
-// const clientsRouter = require('./routes/clients.router.js');
-// app.use('/clients', clientsRouter);
+const clientsRouter = require('./routes/clients.router.js');
+app.use('/clients', clientsRouter);
 
 const organziationsRouter = require('./routes/organizations.router.js');
 app.use('/organizations', organziationsRouter);
