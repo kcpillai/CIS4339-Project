@@ -35,7 +35,7 @@ let educationSchema = new Schema(
   },
 
   {
-    collection: 'educations',
+    collection: 'education',
   }
 );
 
