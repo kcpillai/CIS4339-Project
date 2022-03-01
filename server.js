@@ -49,8 +49,8 @@ app.use('/events', eventsRouter);
 // const healthRouter = require('./routes/health.router.js');
 // app.use('health', healthRouter);
 
-// const familiesRouter = require('./routes/families.router.js');
-// app.use('/families', familiesRouter);
+const familiesRouter = require('./routes/families.router.js');
+app.use('/families', familiesRouter);
 
 // const educationRouter = require('./routes/employees.router.js');
 // app.use('/education', educationRouter);

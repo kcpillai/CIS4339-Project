@@ -1,11 +1,11 @@
 //CRUD Op APIs
 const express = require('express');
 const familiesRouter = express.Router();
-const familiesModel = require('../models/families.models.js');
-
+const familiesModel = require('../models/families.model.js');
 
 // GET families
-app.get('/families', (req, res, next) => { //retrieve data from the collection using mongoose schema
+familiesRouter.get('/', (req, res, next) => {
+  //retrieve data from the collection using mongoose schema
   familiesModel.find((error, data) => {
     if (error) {
       // using a call to next() function to send out error message if error is encountered
@@ -16,7 +16,7 @@ app.get('/families', (req, res, next) => { //retrieve data from the collection u
   });
 });
 // ADD families records
-app.post('/families', (req, res, next) => {
+familiesRouter.post('/', (req, res, next) => {
   familiesModel.create(req.body, (error, data) => {
     if (error) {
       return next(error);
@@ -26,9 +26,8 @@ app.post('/families', (req, res, next) => {
   });
 });
 
-
 // Update families records given id
-app.put('/families/:id', (req, res, next) => {
+familiesRouter.put('/:id', (req, res, next) => {
   familiesModel.findOneAndUpdate(
     { familiesId: req.params.id },
     {
@@ -46,7 +45,7 @@ app.put('/families/:id', (req, res, next) => {
 });
 
 // DELETE Health records given id
-app.delete('/families/:id', (req, res, next) => {
+familiesRouter.delete('/:id', (req, res, next) => {
   //mongoose deletes record based off of document id
   familiesModel.findOneAndRemove(
     { familiesId: req.params.id },
