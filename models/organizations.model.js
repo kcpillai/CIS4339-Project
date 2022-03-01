@@ -35,7 +35,7 @@ let organizationSchema = new Schema(
           required: false,
         },
         zipcode: {
-          type: String,
+          type: Number,
           required: false,
         },
       },

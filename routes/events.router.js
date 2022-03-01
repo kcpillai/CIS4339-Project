@@ -26,7 +26,7 @@ eventsRouter.post('/', (req, res, next) => {
   });
 });
 
-// Updating Employee
+// Updating Events
 eventsRouter.put('/events/:id', (req, res, next) => {
   eventModel.findOneAndUpdate(
     { employeeId: req.params.id },
@@ -44,9 +44,9 @@ eventsRouter.put('/events/:id', (req, res, next) => {
   );
 });
 
-// DELETE: an endpoint to delete a client employment record by client ID.
-eventsRouter.delete('/:id', (req, res, next) => {
-  eventModel.remove({ eventsId: req.params.id }, (error, data) => {
+// Delete Event based on Event ID
+eventsRouter.delete('/', (req, res, next) => {
+  eventModel.deleteOne({ eventsId: req.body.id }, (error, data) => {
     if (error) {
       return next(error);
     } else {
