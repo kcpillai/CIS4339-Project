@@ -5,7 +5,7 @@ const residencesModel = require('../models/residences.model.js');
 
 
 // GET all residences
-residencesRouter.get('/residences', (req, res, next) => { //retrieve data from the collection using mongoose schema
+residencesRouter.get('/', (req, res, next) => { //retrieve data from the collection using mongoose schema
     residencesModel.find((error, data) => {
     if (error) {
       // using a call to next() function to send out error message if error is encountered
@@ -16,7 +16,7 @@ residencesRouter.get('/residences', (req, res, next) => { //retrieve data from t
   });
 });
 // ADD residences
-residencesRouter.post('/residences', (req, res, next) => {
+residencesRouter.post('/', (req, res, next) => {
     residencesModel.create(req.body, (error, data) => {
     if (error) {
       return next(error);
