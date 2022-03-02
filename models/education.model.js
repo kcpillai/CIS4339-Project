@@ -9,7 +9,7 @@ let educationSchema = new Schema(
       default: uuid.v1,
     },
     clientID: {
-      type: String,
+      type: Number,
       required: true,
     },
     hasAttended: {
