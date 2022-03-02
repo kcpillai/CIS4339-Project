@@ -19,6 +19,22 @@ healthRouter.get('/', (req, res, next) => { //retrieve data from the collection 
 });
 
 //DONE
+// GET a specific health based on healthID
+healthRouter.get('/:id', (req, res, next) => {
+  const id = req.params.id;
+  healthModel.findOne({ clientID: id }, (error, data) => {
+    if (error) {
+      return next(error);
+    } else if (data === null) {
+      res.status(404).send('health record not found');
+    } else {
+      res.json(data);
+    }
+  });
+});
+
+
+//DONE
 // ADD health records
 healthRouter.post('/', (req, res, next) => {
   healthModel.create(req.body, (error, data) => {

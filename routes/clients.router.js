@@ -18,6 +18,21 @@ clientsRouter.get('/', (req, res, next) => {
   });
 });
 
+
+// GET a specific clients based on clientsID
+clientsRouter.get('/:id', (req, res, next) => {
+  const id = req.params.id;
+  clientsModel.findOne({ clientID: id }, (error, data) => {
+    if (error) {
+      return next(error);
+    } else if (data === null) {
+      res.status(404).send('client not found');
+    } else {
+      res.json(data);
+    }
+  });
+});
+
 //DONE
 // ADD clients records
 clientsRouter.post('/', (req, res, next) => {

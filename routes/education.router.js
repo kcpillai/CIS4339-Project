@@ -15,6 +15,22 @@ educationRouter.get('/', (req, res, next) => { //retrieve data from the collecti
     }
   });
 });
+
+
+// GET a specific education based on educationID
+educationRouter.get('/:id', (req, res, next) => {
+  const id = req.params.id;
+  educationModel.findOne({ clientID: id }, (error, data) => {
+    if (error) {
+      return next(error);
+    } else if (data === null) {
+      res.status(404).send('education record not found');
+    } else {
+      res.json(data);
+    }
+  });
+});
+
 //DONE
 // ADD education records
 educationRouter.post('/', (req, res, next) => {

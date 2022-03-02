@@ -21,6 +21,22 @@ familiesRouter.get('/', (req, res, next) => {
 });
 
 //DONE
+// GET a specific families based on familiesID
+familiesRouter.get('/:id', (req, res, next) => {
+  const id = req.params.id;
+  familiesModel.findOne({ clientID: id }, (error, data) => {
+    if (error) {
+      return next(error);
+    } else if (data === null) {
+      res.status(404).send('families record not found');
+    } else {
+      res.json(data);
+    }
+  });
+});
+
+
+//DONE
 // ADD families records
 familiesRouter.post('/', (req, res, next) => {
   familiesModel.create(req.body, (error, data) => {
