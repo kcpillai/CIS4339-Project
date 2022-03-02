@@ -31,30 +31,13 @@ healthRouter.post('/', (req, res, next) => {
 });
 
 
-// // patch method instead of put
-// healthRouter.patch('/:clientID', (req, res, next) => {
-//   healthModel.findOneAndUpdate(
-//     { _id: req.params.clientID },
-//     {
-//       $set: req.body,
-//     },
-//     (error, data) => {
-//       if (error) {
-//         return next(error);
-//       } else {
-//         res.send('health record edited via PUT');
-//         console.log('health record successfully updated via PUT', data);
-//       }
-//     }
-//   );
-// });
-
+// DONE
 // // Update health records given id
 
 healthRouter.put('/:id', (req, res) => {
   const id = parseInt(req.params.id);
   healthModel.findOneAndUpdate(
-    { clientId: id },
+    { clientID: id },
     {
       $set: req.body,
     },
@@ -69,11 +52,13 @@ healthRouter.put('/:id', (req, res) => {
   );
 });
 
+//DONE
 // DELETE Health records given id
-healthRouter.delete('/health/:id', (req, res, next) => {
+
+healthRouter.delete('/:id', (req, res, next) => {
   //mongoose deletes record based off of document id
-  healthModel.findOneAndRemove(
-    { healthId: req.params.id },
+  healthModel.deleteOne(
+    { clientID: req.params.id },
     (error, data) => {
       if (error) {
         return next(error);
@@ -81,27 +66,10 @@ healthRouter.delete('/health/:id', (req, res, next) => {
         res.status(200).json({
           msg: data,
         });
-        res.send('Health record deleted via DELETE');
       }
     }
   );
 });
-
-
-///// delete later maybe?
-//CREATE(POST) - api endpoint that creates a health document
-healthRouter.post('/', (req, res, next) => {
-  healthModel.create(req.body, (error, data) => {
-    if (error) {
-      return next(error);
-    } else {
-      res.send('Health Info successfully recorded to Database.');
-    }
-  });
-});
-
-
-//server healthRouter
 
 //error handler
 // healthRouter.use(function (err, req, res, next) {

@@ -31,29 +31,13 @@ familiesRouter.post('/', (req, res, next) => {
     }
   });
 });
-
-// //put v2
-// familiesRouter.put('/:clientID', function (req, res) {
-//   var clientID = req.clientID;
-
-//   clientID = _.extend(clientID, req.body);
-
-//   clientID.save(function(err) {
-//   if (err) {
-//       return res.send('/families', {
-//           errors: err.errors,
-//           clientID: clientID
-//       });
-//   } else {
-//       res.jsonp(clientID);
-//   }
-// });
-
+//DONE
 // Update families records given id
-familiesRouter.put('/{clientID}', (req, res, next) => {
+
+familiesRouter.put('/:id', (req, res) => {
+  const id = parseInt(req.params.id);
   familiesModel.findOneAndUpdate(
- // { familiesId: req.params.id },
-    { clientID: req.body.clientID },
+    { clientID: id },
     {
       $set: req.body,
     },
@@ -61,19 +45,20 @@ familiesRouter.put('/{clientID}', (req, res, next) => {
       if (error) {
         return next(error);
       } else {
-        res.send('families record edited via PUT');
-        console.log('families record successfully updated via PUT', data);
+        res.send('families record is edited via PUT');
+        console.log('families record has been successfully updated!', data);
       }
     }
   );
 });
 
-// DELETE v1
+//DONE
+// DELETE by client id
 
-familiesRouter.delete('/:clientID', (req, res, next) => {
+familiesRouter.delete('/:id', (req, res, next) => {
   //mongoose deletes record based off of document id
-  familiesModel.findOneAndRemove(
-    { familiesId: req.body.id }, //change others
+  familiesModel.deleteOne(
+    { clientID: req.params.id },
     (error, data) => {
       if (error) {
         return next(error);
@@ -81,29 +66,10 @@ familiesRouter.delete('/:clientID', (req, res, next) => {
         res.status(200).json({
           msg: data,
         });
-        res.send('families record deleted via DELETE');
       }
     }
   );
 });
 
-
-// // DELETE families records given id v2
-// familiesRouter.delete('/', (req, res, next) => {
-//   //mongoose deletes record based off of document id
-//   familiesModel.findOneAndRemove(
-//     { familiesId: req.body.id }, //change others
-//     (error, data) => {
-//       if (error) {
-//         return next(error);
-//       } else {
-//         res.status(200).json({
-//           msg: data,
-//         });
-//         res.send('families record deleted via DELETE');
-//       }
-//     }
-//   );
-// });
 
 module.exports = familiesRouter;
