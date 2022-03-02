@@ -27,9 +27,10 @@ eventsRouter.post('/', (req, res, next) => {
 });
 
 // Updating Events
-eventsRouter.put('/events/:id', (req, res, next) => {
+eventsRouter.put('/:id', (req, res) => {
+  const id = parseInt(req.params.id);
   eventModel.findOneAndUpdate(
-    { employeeId: req.params.id },
+    { eventId: id },
     {
       $set: req.body,
     },
@@ -37,16 +38,16 @@ eventsRouter.put('/events/:id', (req, res, next) => {
       if (error) {
         return next(error);
       } else {
-        res.send('Employee is edited via PUT');
-        console.log('Employee has been successfully updated!', data);
+        res.send('Events is edited via PUT');
+        console.log('Events has been successfully updated!', data);
       }
     }
   );
 });
 
 // Delete Event based on Event ID
-eventsRouter.delete('/', (req, res, next) => {
-  eventModel.deleteOne({ eventsId: req.body.id }, (error, data) => {
+eventsRouter.delete('/:id', (req, res, next) => {
+  eventModel.deleteOne({ eventsId: req.params.id }, (error, data) => {
     if (error) {
       return next(error);
     } else {
