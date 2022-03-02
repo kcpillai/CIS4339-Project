@@ -94,7 +94,7 @@ Possible errors
   <h3>2.1.2 GET One Employee</h3>
    GET ONE EMPLOYEE: Getting one the employees and their information based on employeeId 
   
-  GET http://localhost:3000/employees/5
+  GET http://localhost:3000/employees/:id
   
    Example Response:
    GET /employees/5 200 54.207 ms - 400
@@ -203,6 +203,77 @@ Possible errors
 | :---           |          ---: |
 | 404      | The URL is incorrect      |
 
-    
+ 
+<h3>2.1.4 PUT Updating One Employee</h3>
+    Updating one employee and their information to the employees collection 
+  
+  PUT http://localhost:3000/employees/:id
+  
+     
+   Example Body:
+     
+     {
+    "employeeName": [{
+    "lastName":"Paul ",
+    "firstName":"Tom"
+    }]
+     }
+     
+   Example Response:
+    PUT /employees/5 200 64.628 ms - 31     
+     
+     Employee is edited via PUT.
+     
+Where Employee Object is
+     
+| Field      | Type | Description     |
+| :---        |    :----:   |          ---: |
+| _id      | String       | auto generated uuid   |
+| employeeId   | Number   | The employee id number     |
+| lastName   | String   | Employee last name     |
+| firstName   | String   | Employee first name     |
+| organizationName   | String   | The name of organization     |
+| jobTitle   | String   | Employee Job title     |
+| employeeEmail   | String   | The employees email     |
+| startDate   | Date   | When the employee started     |
+| EndDate   | Date   | When the employee ended working      |
+| phoneNumber   | Number   | The employees phone number     |
+| clientId   | Number   | Client ID     |
+ 
+Possible errors
+     
+| Error Code       | Description     |
+| :---           |          ---: |
+| 404      | Employee does not exist      |
+     
+     
+<h3>2.1.5 DELETE Deleteing One Employee</h3>
+    Deleing one employee and their information from the employees collection 
+  
+  DELETE http://localhost:3000/employees/:id
+     
+   Example Response:
+    DELETE /employees/5 200 64.628 ms - 31     
+     
+     {
+        "msg": {
+             "deletedCount":1
+        }
+     }
+     
+ The employee Id is what is used to select the employee that will be deleted
+     
+| Field      | Type | Description     |
+| :---        |    :----:   |          ---: |
+| employeeId   | Number   | The employee id number     |
+  
+     
+Possible errors
+     
+| Error Code       | Description     |
+| :---           |          ---: |
+| 404      | Employee does not exist      |
+
+  
      
      
