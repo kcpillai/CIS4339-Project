@@ -3,6 +3,8 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
+//Adding better logging functionality
+const morgan = require('morgan');
 
 mongoose
   .connect(process.env.MONGO_URL) // Read environment varibale from .env file.
@@ -17,6 +19,8 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json()); //allows us to access request body as req.body
 
+app.use(morgan('dev')); //enable incoming request logging in dev mode
+
 app.listen(PORT, () => {
   console.log('Server started listening on port: ', PORT);
 });
@@ -24,14 +28,6 @@ app.listen(PORT, () => {
 // Testing if connection works
 mongoose.connection.once('open', () => {
   console.log('MongoDB connectioned!');
-});
-
-// Middleware
-app.use((req, res, next) => {
-  const start = Date.now();
-  next();
-  const delta = Date.now() - start;
-  console.log(`${req.method} ${req.baseUrl}${req.url} ${delta}ms`);
 });
 
 // Setting up routers
@@ -55,15 +51,12 @@ app.use('/clients', clientsRouter);
 
 const organziationsRouter = require('./routes/organizations.router.js');
 app.use('/organizations', organziationsRouter);
-<<<<<<< HEAD
-=======
 
 const incomeRouter = require('./routes/income.router.js');
-app.use('/income', incomeRouter);
+app.use('/incomes', incomeRouter);
 
 const residencesRouter = require('./routes/residences.router.js');
 app.use('/residences', residencesRouter);
 
 const clientvaccineinfoRouter = require('./routes/clientvaccineinfo.router.js');
 app.use('/clientvaccineinfo', clientvaccineinfoRouter);
->>>>>>> 6a58985baa4a583ad5080f3a9b633e256b4d1e0a

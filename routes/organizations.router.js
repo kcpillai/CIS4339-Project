@@ -27,7 +27,7 @@ organizationsRouter.post('/', (req, res, next) => {
 });
 
 // Updating organziations
-organizationsRouter.put('/employees/:id', (req, res, next) => {
+organizationsRouter.put('/', (req, res, next) => {
   organizationsModel.findOneAndUpdate(
     { organizationsId: req.params.id },
     {
