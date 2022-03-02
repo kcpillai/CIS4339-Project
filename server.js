@@ -65,5 +65,5 @@ app.use('/income', incomeRouter);
 const residencesRouter = require('./routes/residences.router.js');
 app.use('/residences', residencesRouter);
 
-const clientvaccineinfoRouter = require('./routes/clientvaccineinfo.router.js');
-app.use('/clientvaccineinfo', clientvaccineinfoRouter);
+const clientVaccineInfoRouter = require('./routes/clientVaccineInfo.router.js');
+app.use('/clientvaccineinfo', clientVaccineInfoRouter);
