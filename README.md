@@ -480,3 +480,240 @@ Possible errors
 | Error Code       | Description     |
 | :---           |          ---: |
 | 404      | events does not exist      |
+  
+  
+
+<h2>2.3 Organizations<h2>
+  <h3>2.3.1 GET All Organizations</h3>
+   GET ALL Organizations: Getting all the Organizations and their information  
+  
+  GET http://localhost:3000/organizations
+  
+   Example Response:
+  
+  GET /organizations 200 59.269 ms - 536  
+     
+  ```
+  [
+    {
+        "_id": "e9a91bd0-99e4-11ec-99c0-113ecace86eb",
+        "organizationNameId": "22",
+        "organizationDesc": "Food Donation Organization",
+        "organizationAddress": [
+            {
+                "address1": "2310 Passing Lane",
+                "city": "Houston",
+                "state": "Texas",
+                "zipcode": 770044,
+                "_id": "621ef8a38c4976fa26e2773a"
+            }
+        ],
+        "__v": 0
+    },
+    {
+        "_id": "fbf31d90-99e4-11ec-99c0-113ecace86eb",
+        "organizationNameId": "12",
+        "organizationDesc": "Homeless Relocation Help",
+        "organizationAddress": [
+            {
+                "address1": "2684 Oxford Loop",
+                "city": "Houston",
+                "state": "Texas",
+                "zipcode": 770044,
+                "_id": "621ef8c28c4976fa26e2773c"
+            }
+        ],
+        "__v": 0
+    }
+]
+  ```
+  
+ Where Organizations Object is
+ 
+ | Field      | Type | Description     |
+| :---        |    :----:   |          ---: |
+| _id      | String       | auto generated uuid   |
+| organizationNameId   | Number   | The events id number     |
+| organizationDesc   | String   | The program name     |
+| address1   | String   | The events street address    |
+| address2   | String   | The events street address 2 if needed   |
+| city   | String   | The city the organization is located    |
+| state   | String   | The state the organization is located     |
+| zipcode   | Number   | The zipcode the organization is located     |
+
+ 
+Possible errors
+     
+| Error Code       | Description     |
+| :---           |          ---: |
+| 404      | The Url is incorrect       |
+
+  
+  
+ <h3>2.3.2 GET One Organization</h3>
+   GET ONE Organization: Getting one the Organizations and their information based on organizationNameId 
+  
+  GET http://localhost:3000/organizations/:id
+  
+   Example Response:
+   GET /organizations/12 200 58.576 ms - 265
+     
+```
+{
+    "_id": "fbf31d90-99e4-11ec-99c0-113ecace86eb",
+    "organizationNameId": "12",
+    "organizationDesc": "Homeless Relocation Help",
+    "organizationAddress": [
+        {
+            "address1": "2684 Oxford Loop",
+            "city": "Houston",
+            "state": "Texas",
+            "zipcode": 770044,
+            "_id": "621ef8c28c4976fa26e2773c"
+        }
+    ],
+    "__v": 0
+}
+  ```
+  
+ Where Organizations Object is
+ 
+ | Field      | Type | Description     |
+| :---        |    :----:   |          ---: |
+| _id      | String       | auto generated uuid   |
+| organizationNameId   | Number   | The events id number     |
+| organizationDesc   | String   | The program name     |
+| address1   | String   | The events street address    |
+| address2   | String   | The events street address 2 if needed   |
+| city   | String   | The city the organization is located    |
+| state   | String   | The state the organization is located     |
+| zipcode   | Number   | The zipcode the organization is located     |
+
+ 
+Possible errors
+     
+| Error Code       | Description     |
+| :---           |          ---: |
+| 404      | Organization does not exist       |
+  
+  
+  
+  <h3>2.3.3 POST Adding One Organization</h3>
+    Adding one event and their information to the Organizations collection 
+  
+  POST http://localhost:3000/organizations
+  
+     
+   Example Body:
+     
+{
+    "eventsId": 7,
+    "program": "Unknown",
+    "eventDescription": "Clothing donation drive",
+    "eventDate":"2022-04-05",
+    "address": "8134 Birdsing Lane",
+    "city": "Houston",
+    "state": "Texas",
+    "zipcode":77004
+}
+  
+ 
+Example Response:
+  POST /organizations 200 57.730 ms – 51   
+  
+     Organizations info is added to the database.
+
+ Where Organizations Object is
+ 
+ | Field      | Type | Description     |
+| :---        |    :----:   |          ---: |
+| _id      | String       | auto generated uuid   |
+| organizationNameId   | Number   | The events id number     |
+| organizationDesc   | String   | The program name     |
+| address1   | String   | The events street address    |
+| address2   | String   | The events street address 2 if needed   |
+| city   | String   | The city the organization is located    |
+| state   | String   | The state the organization is located     |
+| zipcode   | Number   | The zipcode the organization is located     |
+
+ 
+Possible errors
+     
+| Error Code       | Description     |
+| :---           |          ---: |
+| 404      | The Url is incorrect       |
+  
+  
+<h3>2.3.4 PUT Updating One Organization</h3>
+    Updating one Organization and their information to the Organizations collection 
+  
+  PUT http://localhost:3000/organizations/:id
+  
+     
+ Example Body:
+  ```
+{
+    "organizationNameId": "47",
+    "organizationDesc":"Test",
+    "organizationAddress": [{
+        "address1": "4444 Testing Lane",
+        "city":"Houston",
+        "state":"Texas",
+        "zipcode": 770044
+    }]
+}
+  
+```
+  
+  
+   Example Response:
+    PUT /organizations/47 200 53.450 ms - 265    
+     
+     Events is edited via PUT.
+  
+  Where Organizations Object is
+ 
+ | Field      | Type | Description     |
+| :---        |    :----:   |          ---: |
+| _id      | String       | auto generated uuid   |
+| organizationNameId   | Number   | The events id number     |
+| organizationDesc   | String   | The program name     |
+| address1   | String   | The events street address    |
+| address2   | String   | The events street address 2 if needed   |
+| city   | String   | The city the organization is located    |
+| state   | String   | The state the organization is located     |
+| zipcode   | Number   | The zipcode the organization is located     |
+
+ 
+Possible errors
+     
+| Error Code       | Description     |
+| :---           |          ---: |
+| 404      | Organization does not exist     |
+  
+<h3>2.3.5 DELETE Deleteing One Organization</h3>
+    Deleing one organization and their information from the organizations collection 
+  
+  DELETE http://localhost:3000/organizations/:id
+     
+   Example Response:
+    DELETE /organizations/47 200 53.890 ms - 146
+     
+     {
+        "msg": {
+             "deletedCount":1
+        }
+     }
+     
+ The organizationNameId is what is used to select the organization that will be deleted
+     
+| Field      | Type | Description     |
+| :---        |    :----:   |          ---: |
+| organizationNameId   | Number   | The organizations id number     |
+  
+     
+Possible errors
+     
+| Error Code       | Description     |
+| :---           |          ---: |
+| 404      | organizations does not exist      |
