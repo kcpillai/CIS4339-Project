@@ -13,6 +13,20 @@ organizationsRouter.get('/', (req, res, next) => {
   });
 });
 
+// GET a specific organization based on organizationId
+organizationsRouter.get('/:id', (req, res, next) => {
+  const id = req.params.id;
+  organizationsModel.findOne({ organizationId: id }, (error, data) => {
+    if (error) {
+      return next(error);
+    } else if (data === null) {
+      res.status(404).send('Organization not found');
+    } else {
+      res.json(data);
+    }
+  });
+});
+
 // // Adding a Organization
 organizationsRouter.post('/', (req, res, next) => {
   organizationsModel.create(req.body, (error, data) => {
