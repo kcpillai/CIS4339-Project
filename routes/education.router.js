@@ -49,11 +49,13 @@ educationRouter.put('/:id', (req, res) => {
   );
 });
 
+//DONE
 // DELETE Education records given id
-educationRouter.delete('/education/:id', (req, res, next) => {
+
+educationRouter.delete('/:id', (req, res, next) => {
   //mongoose deletes record based off of document id
-  educationModel.findOneAndRemove(
-    { educationId: req.params.id },
+  educationModel.deleteOne(
+    { clientID: req.params.id },
     (error, data) => {
       if (error) {
         return next(error);
@@ -61,7 +63,6 @@ educationRouter.delete('/education/:id', (req, res, next) => {
         res.status(200).json({
           msg: data,
         });
-        res.send('Health record deleted via DELETE');
       }
     }
   );

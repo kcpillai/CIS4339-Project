@@ -51,11 +51,12 @@ clientsRouter.put('/:id', (req, res) => {
   );
 });
 
+//DONE
 // DELETE Health records given id
-clientsRouter.delete('/clients/:id', (req, res, next) => {
+clientsRouter.delete('/:id', (req, res, next) => {
   //mongoose deletes record based off of document id
-  clientsModel.findOneAndRemove(
-    { clientsId: req.params.id },
+  clientsModel.deleteOne(
+    { clientID: req.params.id },
     (error, data) => {
       if (error) {
         return next(error);
@@ -63,10 +64,11 @@ clientsRouter.delete('/clients/:id', (req, res, next) => {
         res.status(200).json({
           msg: data,
         });
-        res.send('Health record deleted via DELETE');
       }
     }
   );
 });
+
+
 
 module.exports = clientsRouter;
