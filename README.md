@@ -10,4 +10,6 @@ http://localhost:3000/.
   GET ALL EMPLOYEES: Getting all the employees and their information
   GET http://localhost:3000/employees
   Example Response
-   GET /employees 200 61.347 ms – 682
+   <GET> /employees 200 61.347 ms – 682
+
+  
