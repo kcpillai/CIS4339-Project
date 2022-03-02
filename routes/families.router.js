@@ -12,7 +12,10 @@ familiesRouter.get('/', (req, res, next) => {
       // using a call to next() function to send out error message if error is encountered
       return next(error);
     } else {
+      
       res.json(data);
+      // return_families = res.json(data);
+      // console.log(return_families); // console log error message
     }
   });
 });
@@ -29,11 +32,28 @@ familiesRouter.post('/', (req, res, next) => {
   });
 });
 
+// //put v2
+// familiesRouter.put('/:clientID', function (req, res) {
+//   var clientID = req.clientID;
+
+//   clientID = _.extend(clientID, req.body);
+
+//   clientID.save(function(err) {
+//   if (err) {
+//       return res.send('/families', {
+//           errors: err.errors,
+//           clientID: clientID
+//       });
+//   } else {
+//       res.jsonp(clientID);
+//   }
+// });
 
 // Update families records given id
-familiesRouter.put('/:id', (req, res, next) => {
+familiesRouter.put('/{clientID}', (req, res, next) => {
   familiesModel.findOneAndUpdate(
-    { familiesId: req.params.id },
+ // { familiesId: req.params.id },
+    { clientID: req.body.clientID },
     {
       $set: req.body,
     },

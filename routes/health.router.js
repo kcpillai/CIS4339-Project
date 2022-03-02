@@ -31,10 +31,10 @@ healthRouter.post('/', (req, res, next) => {
 });
 
 
-// Update health records given id
-healthRouter.put('/health/:id', (req, res, next) => {
+// patch method instead of put
+healthRouter.patch('/:clientID', (req, res, next) => {
   healthModel.findOneAndUpdate(
-    { healthId: req.params.id },
+    { _id: req.params.clientID },
     {
       $set: req.body,
     },
@@ -48,6 +48,24 @@ healthRouter.put('/health/:id', (req, res, next) => {
     }
   );
 });
+
+// // Update health records given id
+// healthRouter.put('/:clientID', (req, res, next) => {
+//   healthModel.findOneAndUpdate(
+//     { clientID: req.params.id },
+//     {
+//       $set: req.body,
+//     },
+//     (error, data) => {
+//       if (error) {
+//         return next(error);
+//       } else {
+//         res.send('health record edited via PUT');
+//         console.log('health record successfully updated via PUT', data);
+//       }
+//     }
+//   );
+// });
 
 
 // DELETE Health records given id
