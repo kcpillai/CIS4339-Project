@@ -41,8 +41,9 @@ employeeRouter.post('/', (req, res, next) => {
 });
 
 // Updating Employee
-employeeRouter.put('/:id', (req, res) => {
+employeeRouter.put('/:id', (req, res, next) => {
   const id = parseInt(req.params.id);
+  console.log(id);
   employeeModel.findOneAndUpdate(
     { employeeId: id },
     {

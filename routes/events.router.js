@@ -41,10 +41,10 @@ eventsRouter.post('/', (req, res, next) => {
 });
 
 // Updating Events
-eventsRouter.put('/:id', (req, res) => {
+eventsRouter.put('/:id', (req, res, next) => {
   const id = parseInt(req.params.id);
   eventModel.findOneAndUpdate(
-    { eventId: id },
+    { eventsId: id },
     {
       $set: req.body,
     },

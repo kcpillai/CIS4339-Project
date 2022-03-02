@@ -13,10 +13,10 @@ organizationsRouter.get('/', (req, res, next) => {
   });
 });
 
-// GET a specific organization based on organizationId
+// GET a specific organization based on organizationNameId
 organizationsRouter.get('/:id', (req, res, next) => {
   const id = req.params.id;
-  organizationsModel.findOne({ organizationId: id }, (error, data) => {
+  organizationsModel.findOne({ organizationNameId: id }, (error, data) => {
     if (error) {
       return next(error);
     } else if (data === null) {
@@ -42,7 +42,7 @@ organizationsRouter.post('/', (req, res, next) => {
 organizationsRouter.put('/:id', (req, res) => {
   const id = parseInt(req.params.id);
   organizationsModel.findOneAndUpdate(
-    { organizationId: id },
+    { organizationNameId: id },
     {
       $set: req.body,
     },
@@ -60,7 +60,7 @@ organizationsRouter.put('/:id', (req, res) => {
 // DELETE: an endpoint to delete a organziations  record
 organizationsRouter.delete('/:id', (req, res, next) => {
   organizationsModel.deleteOne(
-    { organizationId: req.params.id },
+    { organizationNameId: req.params.id },
     (error, data) => {
       if (error) {
         return next(error);
