@@ -16,8 +16,8 @@ employeeRouter.get('/', (req, res, next) => {
 });
 
 // GET a specific employee based on employeeID
-employeeRouter.get('/:employeeId', (req, res, next) => {
-  employeeModel.findOne({ employeeId: req.params.id }, (error, data) => {
+employeeRouter.get('/:id', (req, res, next) => {
+  employeeModel.findOne({ employeeId: req.body.id }, (error, data) => {
     if (error) {
       return next(error);
     } else if (data === null) {
@@ -40,9 +40,10 @@ employeeRouter.post('/', (req, res, next) => {
 });
 
 // Updating Employee
-employeeRouter.put('/', (req, res, next) => {
+employeeRouter.put('/:id', (req, res) => {
+  const id = parseInt(req.params.id);
   employeeModel.findOneAndUpdate(
-    { employeeId: req.params.employeeId },
+    { employeeId: id },
     {
       $set: req.body,
     },
@@ -58,7 +59,7 @@ employeeRouter.put('/', (req, res, next) => {
 });
 
 // Deleting an Employee based on EmployeeID
-employeeRouter.delete('/:employeeId', (req, res, next) => {
+employeeRouter.delete('/:id', (req, res, next) => {
   employeeModel.deleteOne({ employeeId: req.params.id }, (error, data) => {
     if (error) {
       return next(error);
