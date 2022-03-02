@@ -3,10 +3,10 @@
 Group 14’s API is node-based APIs, and all requests are made with the endpoints beginning 
 http://localhost:3000/.
 
-<h3>2. Resources</h3>
+<h2>2. Resources</h2>
 
-<h4>2.1. Employees<h4>
-  <h5>2.1.1 GET All Employees</h5>
+<h2>2.1. Employees<h2>
+  <h3>2.1.1 GET All Employees</h3>
    GET ALL EMPLOYEES: Getting all the employees and their information  
   
   GET http://localhost:3000/employees
@@ -88,6 +88,64 @@ Possible errors
      
 | Error Code       | Description     |
 | :---           |          ---: |
-| 404      | The Url is inccorect       |
+| 404      | The Url is incorrect       |
+
+
+  <h3>2.1.2 GET one Employee</h3>
+   GET ONE EMPLOYEE: Getting one the employees and their information based on employeeId 
+  
+  GET http://localhost:3000/employees/5
+  
+   Example Response:
+   GET /employees/5 200 54.207 ms - 400
      
+```
+     {
+    "_id": "dce833b0-99dd-11ec-99c0-113ecace86eb",
+    "employeeId": 5,
+    "employeeName": [
+        {
+            "lastName": "Johnson",
+            "firstName": "Luke",
+            "_id": "621eeccf8c4976fa26e2771e"
+        }
+    ],
+    "organizationName": "BOL",
+    "jobTitle": "HR",
+    "employeeEmail": "ljohnson@gmail.com",
+    "startDate": "2018-08-22T05:00:00.000Z",
+    "endDate": "2021-07-04T05:00:00.000Z",
+    "phoneNumber": 7136548345,
+    "clients": [
+        {
+            "clientId": 3,
+            "_id": "621eeccf8c4976fa26e2771f"
+        }
+    ],
+    "__v": 0
+}
+
+```
+Where Employee Object is
+     
+| Field      | Type | Description     |
+| :---        |    :----:   |          ---: |
+| _id      | String       | auto generated uuid   |
+| employeeId   | Number   | The employee id number     |
+| lastName   | String   | Employee last name     |
+| firstName   | String   | Employee first name     |
+| organizationName   | String   | The name of organization     |
+| jobTitle   | String   | Employee Job title     |
+| employeeEmail   | String   | The employees email     |
+| startDate   | Date   | When the employee started     |
+| EndDate   | Date   | When the employee ended working      |
+| phoneNumber   | Number   | The employees phone number     |
+| clientId   | Number   | Client ID     |
+ 
+Possible errors
+     
+| Error Code       | Description     |
+| :---           |          ---: |
+| 404      | The Employee does not exist       |
+  
      
