@@ -91,7 +91,7 @@ Possible errors
 | 404      | The Url is incorrect       |
 
 
-  <h3>2.1.2 GET one Employee</h3>
+  <h3>2.1.2 GET One Employee</h3>
    GET ONE EMPLOYEE: Getting one the employees and their information based on employeeId 
   
   GET http://localhost:3000/employees/5
@@ -148,4 +148,61 @@ Possible errors
 | :---           |          ---: |
 | 404      | The Employee does not exist       |
   
+   
+<h3>2.1.3 POST Adding One Employee</h3>
+    Adding one  employee and their information to the employees collection 
+  
+  POST http://localhost:3000/employees
+  
+     
+   Example Body:
+     
+    
+     {
+    "employeeId":"5",
+    "employeeName": [{
+    "lastName":"Johnson",
+    "firstName":"Luke"
+    }],
+    "organizationName": "BOL",
+    "jobTitle": "HR",
+    "employeeEmail": "ljohnson@gmail.com",
+    "startDate": "08-22-2018",
+    "endDate": "07-04-2021",
+    "phoneNumber": "7136548345",
+    "clients":[{
+    "clientId":"3"
+    }]
+     }
+     
+   Example Response:
+     POST /employees 200 66.054 ms – 44
+     
+     Worker information is added to the database.
+     
+     
+Where Employee Object is
+     
+| Field      | Type | Description     |
+| :---        |    :----:   |          ---: |
+| _id      | String       | auto generated uuid   |
+| employeeId   | Number   | The employee id number     |
+| lastName   | String   | Employee last name     |
+| firstName   | String   | Employee first name     |
+| organizationName   | String   | The name of organization     |
+| jobTitle   | String   | Employee Job title     |
+| employeeEmail   | String   | The employees email     |
+| startDate   | Date   | When the employee started     |
+| EndDate   | Date   | When the employee ended working      |
+| phoneNumber   | Number   | The employees phone number     |
+| clientId   | Number   | Client ID     |
+ 
+Possible errors
+     
+| Error Code       | Description     |
+| :---           |          ---: |
+| 404      | The URL is incorrect      |
+
+    
+     
      
