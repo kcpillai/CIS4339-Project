@@ -4,7 +4,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 
-
 mongoose
   .connect(process.env.MONGO_URL) // Read environment varibale from .env file.
   .then(() => {
@@ -27,7 +26,6 @@ mongoose.connection.once('open', () => {
   console.log('MongoDB connectioned!');
 });
 
-
 // Middleware
 app.use((req, res, next) => {
   const start = Date.now();
@@ -35,7 +33,6 @@ app.use((req, res, next) => {
   const delta = Date.now() - start;
   console.log(`${req.method} ${req.baseUrl}${req.url} ${delta}ms`);
 });
-
 
 // Setting up routers
 const employeeRouter = require('./routes/employee.router.js');
@@ -45,7 +42,7 @@ const eventsRouter = require('./routes/events.router.js');
 app.use('/events', eventsRouter);
 
 const healthRouter = require('./routes/health.router.js');
-app.use('health', healthRouter);
+app.use('/health', healthRouter);
 
 const familiesRouter = require('./routes/families.router.js');
 app.use('/families', familiesRouter);
@@ -58,4 +55,3 @@ app.use('/families', familiesRouter);
 
 const organziationsRouter = require('./routes/organizations.router.js');
 app.use('/organizations', organziationsRouter);
-
