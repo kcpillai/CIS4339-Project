@@ -18,6 +18,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json()); //allows us to access request body as req.body
 
+
 app.listen(PORT, () => {
   console.log('Server started listening on port: ', PORT);
 });
