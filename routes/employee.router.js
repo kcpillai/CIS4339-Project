@@ -17,7 +17,8 @@ employeeRouter.get('/', (req, res, next) => {
 
 // GET a specific employee based on employeeID
 employeeRouter.get('/:id', (req, res, next) => {
-  employeeModel.findOne({ employeeId: req.body.id }, (error, data) => {
+  const id = req.params.id;
+  employeeModel.findOne({ employeeId: id }, (error, data) => {
     if (error) {
       return next(error);
     } else if (data === null) {

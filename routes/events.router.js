@@ -15,6 +15,20 @@ eventsRouter.get('/', (req, res, next) => {
   });
 });
 
+// GET a specific event based on eventId
+eventsRouter.get('/:id', (req, res, next) => {
+  const id = req.params.id;
+  eventModel.findOne({ eventId: id }, (error, data) => {
+    if (error) {
+      return next(error);
+    } else if (data === null) {
+      res.status(404).send('Event not found');
+    } else {
+      res.json(data);
+    }
+  });
+});
+
 // Add Events
 eventsRouter.post('/', (req, res, next) => {
   eventModel.create(req.body, (error, data) => {
