@@ -3,7 +3,7 @@ const express = require('express');
 const clientsRouter = express.Router();
 const clientsModel = require('../models/clients.model.js');
 
-
+//DONE
 // GET clients
 
 clientsRouter.get('/', (req, res, next) => {
@@ -18,6 +18,7 @@ clientsRouter.get('/', (req, res, next) => {
   });
 });
 
+//DONE
 // ADD clients records
 clientsRouter.post('/', (req, res, next) => {
   clientsModel.create(req.body, (error, data) => {
@@ -29,11 +30,13 @@ clientsRouter.post('/', (req, res, next) => {
   });
 });
 
+//DONE
+// // Update clients records given id
 
-// Update clients records given id
-clientsRouter.put('/clients/:id', (req, res, next) => {
+clientsRouter.put('/:id', (req, res) => {
+  const id = parseInt(req.params.id);
   clientsModel.findOneAndUpdate(
-    { clientsId: req.params.id },
+    { clientID: id },
     {
       $set: req.body,
     },
@@ -41,8 +44,8 @@ clientsRouter.put('/clients/:id', (req, res, next) => {
       if (error) {
         return next(error);
       } else {
-        res.send('clients record edited via PUT');
-        console.log('clients record successfully updated via PUT', data);
+        res.send('clients record is edited via PUT');
+        console.log('clients record has been successfully updated!', data);
       }
     }
   );

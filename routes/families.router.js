@@ -31,29 +31,13 @@ familiesRouter.post('/', (req, res, next) => {
     }
   });
 });
-
-// //put v2
-// familiesRouter.put('/:clientID', function (req, res) {
-//   var clientID = req.clientID;
-
-//   clientID = _.extend(clientID, req.body);
-
-//   clientID.save(function(err) {
-//   if (err) {
-//       return res.send('/families', {
-//           errors: err.errors,
-//           clientID: clientID
-//       });
-//   } else {
-//       res.jsonp(clientID);
-//   }
-// });
-
+//DONE
 // Update families records given id
-familiesRouter.put('/{clientID}', (req, res, next) => {
+
+familiesRouter.put('/:id', (req, res) => {
+  const id = parseInt(req.params.id);
   familiesModel.findOneAndUpdate(
- // { familiesId: req.params.id },
-    { clientID: req.body.clientID },
+    { clientID: id },
     {
       $set: req.body,
     },
@@ -61,12 +45,13 @@ familiesRouter.put('/{clientID}', (req, res, next) => {
       if (error) {
         return next(error);
       } else {
-        res.send('families record edited via PUT');
-        console.log('families record successfully updated via PUT', data);
+        res.send('families record is edited via PUT');
+        console.log('families record has been successfully updated!', data);
       }
     }
   );
 });
+
 
 // DELETE v1
 

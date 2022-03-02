@@ -31,30 +31,13 @@ healthRouter.post('/', (req, res, next) => {
 });
 
 
-// // patch method instead of put
-// healthRouter.patch('/:clientID', (req, res, next) => {
-//   healthModel.findOneAndUpdate(
-//     { _id: req.params.clientID },
-//     {
-//       $set: req.body,
-//     },
-//     (error, data) => {
-//       if (error) {
-//         return next(error);
-//       } else {
-//         res.send('health record edited via PUT');
-//         console.log('health record successfully updated via PUT', data);
-//       }
-//     }
-//   );
-// });
-
+// DONE
 // // Update health records given id
 
 healthRouter.put('/:id', (req, res) => {
   const id = parseInt(req.params.id);
   healthModel.findOneAndUpdate(
-    { clientId: id },
+    { clientID: id },
     {
       $set: req.body,
     },
