@@ -12,7 +12,7 @@ let clientSchema = new Schema(
       type: Number,
       required: true,
     },
-    clientName: {
+    clientName: [{
       firstName: {
         type: String,
         required: true,
@@ -25,11 +25,15 @@ let clientSchema = new Schema(
         type: String,
         required: true,
       },
-    },
-    clientDemographics: {
+    }],
+    clientDemographics: [{
       gender: {
         type: String,
         required: true,
+      },
+        age: {
+        type: Number,
+        required: true,      
       },
       birthday: {
         type: String,
@@ -55,7 +59,7 @@ let clientSchema = new Schema(
         type: Boolean,
         required: true,
       },
-    },
+    }],
     ssn: {
       type: String,
       required: true,

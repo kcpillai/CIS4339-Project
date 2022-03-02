@@ -28,9 +28,9 @@ clientVaccineInfoRouter.post('/', (req, res, next) => {
 
 
 // Update client vaccine info with client vaccine info id
-clientVaccineInfoRouter.put('/clientvaccineinfo/:id', (req, res, next) => {
-    clientVaccineInfoModel.findOneAndUpdate(
-    { clientVaccineInfoId: req.params.id },
+clientvaccineinfoRouter.put('/:id', (req, res, next) => {
+    clientvaccineinfoModel.findOneAndUpdate(
+    { clientvaccineinfoId: req.params.id },
     {
       $set: req.body,
     },
@@ -46,7 +46,7 @@ clientVaccineInfoRouter.put('/clientvaccineinfo/:id', (req, res, next) => {
 });
 
 // DELETE client vaccine info records given id
-clientVaccineInfoRouter.delete('/clientvaccineinfo/:id', (req, res, next) => {
+clientvaccineinfoRouter.delete('/:id', (req, res, next) => {
   //mongoose deletes record based off of document id
   clientVaccineInfoModel.findOneAndRemove(
     { clientVaccineInfoId: req.params.id },

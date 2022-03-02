@@ -12,10 +12,29 @@ familiesRouter.get('/', (req, res, next) => {
       // using a call to next() function to send out error message if error is encountered
       return next(error);
     } else {
+      
+      res.json(data);
+      // return_families = res.json(data);
+      // console.log(return_families); // console log error message
+    }
+  });
+});
+
+//DONE
+// GET a specific families based on familiesID
+familiesRouter.get('/:id', (req, res, next) => {
+  const id = req.params.id;
+  familiesModel.findOne({ clientID: id }, (error, data) => {
+    if (error) {
+      return next(error);
+    } else if (data === null) {
+      res.status(404).send('families record not found');
+    } else {
       res.json(data);
     }
   });
 });
+
 
 //DONE
 // ADD families records
@@ -28,12 +47,13 @@ familiesRouter.post('/', (req, res, next) => {
     }
   });
 });
-
-
+//DONE
 // Update families records given id
-familiesRouter.put('/:id', (req, res, next) => {
+
+familiesRouter.put('/:id', (req, res) => {
+  const id = parseInt(req.params.id);
   familiesModel.findOneAndUpdate(
-    { familiesId: req.params.id },
+    { clientID: id },
     {
       $set: req.body,
     },
@@ -41,19 +61,20 @@ familiesRouter.put('/:id', (req, res, next) => {
       if (error) {
         return next(error);
       } else {
-        res.send('families record edited via PUT');
-        console.log('families record successfully updated via PUT', data);
+        res.send('families record is edited via PUT');
+        console.log('families record has been successfully updated!', data);
       }
     }
   );
 });
 
-// DELETE v1
+//DONE
+// DELETE by client id
 
-familiesRouter.delete('/:clientID', (req, res, next) => {
+familiesRouter.delete('/:id', (req, res, next) => {
   //mongoose deletes record based off of document id
-  familiesModel.findOneAndRemove(
-    { familiesId: req.body.id }, //change others
+  familiesModel.deleteOne(
+    { clientID: req.params.id },
     (error, data) => {
       if (error) {
         return next(error);
@@ -61,29 +82,10 @@ familiesRouter.delete('/:clientID', (req, res, next) => {
         res.status(200).json({
           msg: data,
         });
-        res.send('families record deleted via DELETE');
       }
     }
   );
 });
 
-
-// // DELETE families records given id v2
-// familiesRouter.delete('/', (req, res, next) => {
-//   //mongoose deletes record based off of document id
-//   familiesModel.findOneAndRemove(
-//     { familiesId: req.body.id }, //change others
-//     (error, data) => {
-//       if (error) {
-//         return next(error);
-//       } else {
-//         res.status(200).json({
-//           msg: data,
-//         });
-//         res.send('families record deleted via DELETE');
-//       }
-//     }
-//   );
-// });
 
 module.exports = familiesRouter;

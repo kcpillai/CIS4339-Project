@@ -9,7 +9,7 @@ let eventSchema = new Schema(
       default: uuid.v1,
     },
     eventsId: {
-      type: String,
+      type: Number,
       required: true,
     },
     program: {

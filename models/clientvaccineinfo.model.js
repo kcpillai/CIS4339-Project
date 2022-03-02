@@ -2,31 +2,32 @@ const uuid = require('uuid');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-let clientvaccineinfoSchema = new Schema({
+let clientvaccineinfoSchema = new Schema(
+  {
     _id: {
-        type: String,
-        default: uuid.v1
+      type: String,
+      default: uuid.v1,
     },
     clientID: {
-        type: Number,
-        required: true
+      type: Number,
+      required: true,
     },
     isGettingVaccine: {
-        type: Boolean,
-        required: true
+      type: Boolean,
+      required: true,
     },
     isVaccinated: {
-        type: Boolean,
-        required: true
+      type: Boolean,
+      required: true,
     },
     vacccinePreference: {
-        type: String,
-        required: true
-    }
+      type: String,
+      required: true,
     },
-    {
-        collection: 'clientvaccineinfo'
-    
-    });
+  },
+  {
+    collection: 'clientVaccineInfo',
+  }
+);
 
-module.exports = mongoose.model('clientvaccineinfo', clientvaccineinfoSchema)
+module.exports = mongoose.model('clientVaccineInfo', clientvaccineinfoSchema);

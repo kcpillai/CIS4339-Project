@@ -15,6 +15,20 @@ eventsRouter.get('/', (req, res, next) => {
   });
 });
 
+// GET a specific event based on eventId
+eventsRouter.get('/:id', (req, res, next) => {
+  const id = req.params.id;
+  eventModel.findOne({ eventId: id }, (error, data) => {
+    if (error) {
+      return next(error);
+    } else if (data === null) {
+      res.status(404).send('Event not found');
+    } else {
+      res.json(data);
+    }
+  });
+});
+
 // Add Events
 eventsRouter.post('/', (req, res, next) => {
   eventModel.create(req.body, (error, data) => {
@@ -27,9 +41,10 @@ eventsRouter.post('/', (req, res, next) => {
 });
 
 // Updating Events
-eventsRouter.put('/events/:id', (req, res, next) => {
+eventsRouter.put('/:id', (req, res, next) => {
+  const id = parseInt(req.params.id);
   eventModel.findOneAndUpdate(
-    { employeeId: req.params.id },
+    { eventsId: id },
     {
       $set: req.body,
     },
@@ -37,16 +52,16 @@ eventsRouter.put('/events/:id', (req, res, next) => {
       if (error) {
         return next(error);
       } else {
-        res.send('Employee is edited via PUT');
-        console.log('Employee has been successfully updated!', data);
+        res.send('Events is edited via PUT');
+        console.log('Events has been successfully updated!', data);
       }
     }
   );
 });
 
 // Delete Event based on Event ID
-eventsRouter.delete('/', (req, res, next) => {
-  eventModel.deleteOne({ eventsId: req.body.id }, (error, data) => {
+eventsRouter.delete('/:id', (req, res, next) => {
+  eventModel.deleteOne({ eventsId: req.params.id }, (error, data) => {
     if (error) {
       return next(error);
     } else {

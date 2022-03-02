@@ -3,9 +3,11 @@ const express = require('express');
 const clientsRouter = express.Router();
 const clientsModel = require('../models/clients.model.js');
 
-
+//DONE
 // GET clients
-clientsRouter.get('/', (req, res, next) => { //retrieve data from the collection using mongoose schema
+
+clientsRouter.get('/', (req, res, next) => {
+  //retrieve data from the collection using mongoose schema
   clientsModel.find((error, data) => {
     if (error) {
       // using a call to next() function to send out error message if error is encountered
@@ -15,6 +17,23 @@ clientsRouter.get('/', (req, res, next) => { //retrieve data from the collection
     }
   });
 });
+
+
+// GET a specific clients based on clientsID
+clientsRouter.get('/:id', (req, res, next) => {
+  const id = req.params.id;
+  clientsModel.findOne({ clientID: id }, (error, data) => {
+    if (error) {
+      return next(error);
+    } else if (data === null) {
+      res.status(404).send('client not found');
+    } else {
+      res.json(data);
+    }
+  });
+});
+
+//DONE
 // ADD clients records
 clientsRouter.post('/', (req, res, next) => {
   clientsModel.create(req.body, (error, data) => {
@@ -26,11 +45,13 @@ clientsRouter.post('/', (req, res, next) => {
   });
 });
 
+//DONE
+// // Update clients records given id
 
-// Update clients records given id
-clientsRouter.put('/clients/:id', (req, res, next) => {
+clientsRouter.put('/:id', (req, res) => {
+  const id = parseInt(req.params.id);
   clientsModel.findOneAndUpdate(
-    { clientsId: req.params.id },
+    { clientID: id },
     {
       $set: req.body,
     },
@@ -38,18 +59,19 @@ clientsRouter.put('/clients/:id', (req, res, next) => {
       if (error) {
         return next(error);
       } else {
-        res.send('clients record edited via PUT');
-        console.log('clients record successfully updated via PUT', data);
+        res.send('clients record is edited via PUT');
+        console.log('clients record has been successfully updated!', data);
       }
     }
   );
 });
 
+//DONE
 // DELETE Health records given id
-clientsRouter.delete('/clients/:id', (req, res, next) => {
+clientsRouter.delete('/:id', (req, res, next) => {
   //mongoose deletes record based off of document id
-  clientsModel.findOneAndRemove(
-    { clientsId: req.params.id },
+  clientsModel.deleteOne(
+    { clientID: req.params.id },
     (error, data) => {
       if (error) {
         return next(error);
@@ -57,10 +79,11 @@ clientsRouter.delete('/clients/:id', (req, res, next) => {
         res.status(200).json({
           msg: data,
         });
-        res.send('Health record deleted via DELETE');
       }
     }
   );
 });
+
+
 
 module.exports = clientsRouter;

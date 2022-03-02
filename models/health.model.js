@@ -8,7 +8,7 @@ let healthSchema = new Schema({
         default: uuid.v1
     },
     clientID: {
-		type: String,
+		type: Number,
       	required: true
 	  },
     hasHealthInsurance: {
