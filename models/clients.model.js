@@ -77,7 +77,7 @@ let clientSchema = new Schema(
     dateTime: {
       type: String,
     },
-    organization: {
+    organizationNameId: {
       type: String,
       required: true,
     },
