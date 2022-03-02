@@ -72,7 +72,7 @@ Where Employee Object is
      
 | Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
-| _id      | Title       | Here's this   |
+| _id      | String       | auto generated uuid   |
 | employeeId   | Number   | The employee id number     |
 | lastName   | String   | Employee last name     |
 | firstName   | String   | Employee first name     |
@@ -83,6 +83,11 @@ Where Employee Object is
 | EndDate   | Date   | When the employee ended working      |
 | phoneNumber   | Number   | The employees phone number     |
 | clientId   | Number   | Client ID     |
+ 
+Possible errors
      
+| Error Code       | Description     |
+| :---           |          ---: |
+| 404      | The Url is inccorect       |
      
      
