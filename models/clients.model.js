@@ -31,6 +31,10 @@ let clientSchema = new Schema(
         type: String,
         required: true,
       },
+        age: {
+        type: Number,
+        required: true,      
+      },
       birthday: {
         type: String,
         required: true,
