@@ -1,10 +1,11 @@
-//CRUD Op APIs -Hsiang-Ju Chen
+//CRUD Op APIs -Hsiang-Ju (Julia) Chen
 
 //declare variables
 const express = require('express');
 const healthRouter = express.Router();
 const healthModel = require('../models/health.model.js');
 
+//DONE
 // GET health
 healthRouter.get('/', (req, res, next) => { //retrieve data from the collection using mongoose schema
   healthModel.find((error, data) => {
@@ -17,7 +18,7 @@ healthRouter.get('/', (req, res, next) => { //retrieve data from the collection 
   });
 });
 
-
+//DONE
 // ADD health records
 healthRouter.post('/', (req, res, next) => {
   healthModel.create(req.body, (error, data) => {

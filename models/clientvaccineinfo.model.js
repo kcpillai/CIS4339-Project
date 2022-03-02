@@ -22,8 +22,8 @@ let clientvaccineinfoSchema = new Schema({
     vacccinePreference: {
         type: String,
         required: true
-    }
     },
+},
     {
         collection: 'clientvaccineinfo'
     

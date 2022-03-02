@@ -5,7 +5,7 @@ const clientvaccineinfoModel = require('../models/clientvaccineinfo.model.js');
 
 
 // GET all client vaccine info
-clientvaccineinfoRouter.get('/clientvaccineinfo', (req, res, next) => { //retrieve data from the collection using mongoose schema
+clientvaccineinfoRouter.get('/', (req, res, next) => { //retrieve data from the collection using mongoose schema
     clientvaccineinfoModel.find((error, data) => {
     if (error) {
       // using a call to next() function to send out error message if error is encountered
@@ -16,8 +16,8 @@ clientvaccineinfoRouter.get('/clientvaccineinfo', (req, res, next) => { //retrie
   });
 });
 // ADD client vaccine info
-clientvaccineinfoRouter.post('/clientvaccineinfo', (req, res, next) => {
-    residencesModel.create(req.body, (error, data) => {
+clientvaccineinfoRouter.post('/', (req, res, next) => {
+    clientvaccineinfoModel.create(req.body, (error, data) => {
     if (error) {
       return next(error);
     } else {

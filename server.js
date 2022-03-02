@@ -47,11 +47,23 @@ app.use('/health', healthRouter);
 const familiesRouter = require('./routes/families.router.js');
 app.use('/families', familiesRouter);
 
-// const educationRouter = require('./routes/employees.router.js');
-// app.use('/education', educationRouter);
+const educationRouter = require('./routes/education.router.js');
+app.use('/education', educationRouter);
 
-// const clientsRouter = require('./routes/clients.router.js');
-// app.use('/clients', clientsRouter);
+const clientsRouter = require('./routes/clients.router.js');
+app.use('/clients', clientsRouter);
 
 const organziationsRouter = require('./routes/organizations.router.js');
 app.use('/organizations', organziationsRouter);
+<<<<<<< HEAD
+=======
+
+const incomeRouter = require('./routes/income.router.js');
+app.use('/income', incomeRouter);
+
+const residencesRouter = require('./routes/residences.router.js');
+app.use('/residences', residencesRouter);
+
+const clientvaccineinfoRouter = require('./routes/clientvaccineinfo.router.js');
+app.use('/clientvaccineinfo', clientvaccineinfoRouter);
+>>>>>>> 6a58985baa4a583ad5080f3a9b633e256b4d1e0a

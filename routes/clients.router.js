@@ -5,7 +5,9 @@ const clientsModel = require('../models/clients.model.js');
 
 
 // GET clients
-clientsRouter.get('/', (req, res, next) => { //retrieve data from the collection using mongoose schema
+
+clientsRouter.get('/', (req, res, next) => {
+  //retrieve data from the collection using mongoose schema
   clientsModel.find((error, data) => {
     if (error) {
       // using a call to next() function to send out error message if error is encountered
@@ -15,6 +17,7 @@ clientsRouter.get('/', (req, res, next) => { //retrieve data from the collection
     }
   });
 });
+
 // ADD clients records
 clientsRouter.post('/', (req, res, next) => {
   clientsModel.create(req.body, (error, data) => {
