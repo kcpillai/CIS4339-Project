@@ -64,15 +64,14 @@ residencesRouter.put('/:id', (req, res, next) => {
 residencesRouter.delete('/:id', (req, res, next) => {
   //mongoose deletes record based off of document id
   residencesModel.findOneAndRemove(
-    { residencesId: req.params.id },
+    { clientID: req.params.id },
     (error, data) => {
       if (error) {
         return next(error);
       } else {
         res.status(200).json({
-          msg: data,
+          msg: data
         });
-        res.send('Residence is deleted.');
       }
     }
   );

@@ -44,7 +44,7 @@ clientVaccineInfoRouter.post('/', (req, res, next) => {
 
 // Update client vaccine info with client vaccine info id
 clientVaccineInfoRouter.put('/:id', (req, res, next) => {
-  clientvaccineinfoModel.findOneAndUpdate(
+  clientVaccineInfoModel.findOneAndUpdate(
     { clientvaccineinfoId: req.params.id },
     {
       $set: req.body,

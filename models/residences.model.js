@@ -62,10 +62,6 @@ let residenceSchema = new Schema({
     isSingleParent: {
         type: Boolean,
         required: true
-    },
-    modifyAt: {
-        type: Date,
-        required: true
     }
 },
     {
