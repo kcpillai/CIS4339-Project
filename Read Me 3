@@ -168,3 +168,5 @@ Possible errors
 | :---           |          ---: |
 | 404      | The Url is incorrect       |
 
+Example Response: PUT /clientvaccineinfo/578 200 501.407 ms - 34
+client vaccine info edited via PUT
