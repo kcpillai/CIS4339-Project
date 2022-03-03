@@ -45,7 +45,7 @@ residencesRouter.post('/', (req, res, next) => {
 // Update residences with residence id
 residencesRouter.put('/:id', (req, res, next) => {
     residencesModel.findOneAndUpdate(
-    { residencesId: req.params.id },
+    { residencesID: req.params.id },
     {
       $set: req.body,
     },
