@@ -2345,8 +2345,8 @@ Possible errors:
 ```
   
   
-  <h3>2.8. Incomes </h3>
-  <h3>2.8.1 GET All Incomes</h3>
+  ### 2.8. Incomes 
+  ## 2.8.1 GET All Incomes
 GET ALL Incomes: Getting income information
 GET http://localhost:3000/incomes
 
@@ -2354,7 +2354,7 @@ Example Response: /incomes 200 320.389 ms - 269
 
 Example Body:
 
-
+```
     {
         "_id": "62144cc4c1de9d07f2742f7f",
         "clientID": 123,
@@ -2388,7 +2388,8 @@ Example Body:
         },
         "otherIncome": 78978
     }
-
+```
+  
 
 | Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
@@ -2412,7 +2413,7 @@ Possible errors
 | :---           |          ---: |
 | 404      | The Url is incorrect       |
 
-<h3>2.8.2 POST Adding Income</h3>
+### 2.8.2 POST Adding Income
     Adding Income
   
   POST http://localhost:3000/incomes
@@ -2422,6 +2423,8 @@ Possible errors
   income added.
   
   Example Body:
+  
+  ```
   
     {
         "_id": "7f898u9j98j9876",
@@ -2440,6 +2443,8 @@ Possible errors
         "otherIncome": 43288
     }
 
+  ```
+  
 | Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
 | _id      | String       | Auto Generated uuid   |
@@ -2462,7 +2467,7 @@ Possible errors
 | :---           |          ---: |
 | Syntax Error      | Unexpected number in JSON at position 126     |
 
-<h3>2.8.3PUT Income</h3>
+### 2.8.3PUT Income 
 Edit Client's information using Client ID
 PUT http://localhost:3000/incomes/190
 
@@ -2470,12 +2475,15 @@ Example Response: PUT /incomes/190 200 73.654 ms - 21
 
 income edited via PUT
 
+  ```
   Example Body:
 [
     {
         "otherIncome": 98798
     }
 ]
+  ```
+  
 
 | Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
@@ -2499,7 +2507,7 @@ Possible errors
 | :---           |          ---: |
 | Client does not exist      | Invalid ID       |
 
-<h3>2.8.4 DELETE Income</h3>
+### 2.8.4 DELETE Income
 Delete a category from Income
 DELETE http://localhost:3000/incomes/:id
 
@@ -2508,13 +2516,15 @@ DELETE /incomes/230 200 79.789 ms - 21
 
 income is deleted.
 
+```
 {
         "msg": {
              "deletedCount":1
         }
      }
      
-     
+```
+  
 | Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
 | clientId   | Number   | clients ID    |
@@ -2528,14 +2538,14 @@ Possible errors
 
 
    
-  <h3>2.9. Client Vaccine Information </h3>
-<h3>2.9.1 GET all Client Vaccine Information</h3>
+ ## 2.9. Client Vaccine Information
+### 2.9.1 GET all Client Vaccine Information
 GET ALL Client Vaccine Information: Getting vaccine information for all clients
 GET http://localhost:3000/clientvaccineinfo
 
 Example Response: /clientvaccineinfo 200 50.833 ms - 283
 
-
+```
     {
         "_id": "62144b4ac1de9d07f2742f72",
         "clientID": 123,
@@ -2550,7 +2560,8 @@ Example Response: /clientvaccineinfo 200 50.833 ms - 283
         "isVaccinated": false,
         "vaccinePreference": "does not want to be vaccinated"
     }
-
+```
+  
 
 | Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
@@ -2566,7 +2577,7 @@ Possible errors
 | :---           |          ---: |
 | 404      | The Url is incorrect       |
 
-<h3>2.9.2 POST Adding Client Vaccine Info</h3>
+###2.9.2 POST Adding Client Vaccine Info
 Adding a client's vaccine information
 
 POST http://localhost:3000/clientvaccineinfo
@@ -2577,6 +2588,7 @@ client vaccine info has been added.
 
 Example Body:
 
+  ```
 {
         "_id": "62144b4ac1de9d07f2742f72",
         "clientID": 376,
@@ -2584,7 +2596,7 @@ Example Body:
         "isVaccinated": false,
         "vaccinePreference": "wants to get vacciated"
  }
-
+```
 
 | Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
@@ -2602,7 +2614,7 @@ Possible errors
 
 
 
-<h3>2.9.3 PUT Editing a Client's Vaccine Information</h3>
+### 2.9.3 PUT Editing a Client's Vaccine Information
 Editing/Updating Vaccine Information for a specific client
 
 PUT http://localhost:3000/clientvaccineinfo/:id
@@ -2611,8 +2623,11 @@ Example Response: PUT /clientvaccineinfo/578 200 501.407 ms - 34
 client vaccine info edited via PUT
 
 Example Body:
-{"vaccinePreference": "wants to be vaccinated"}
 
+```
+  {"vaccinePreference": "wants to be vaccinated"}
+```
+  
 | Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
 | _id      | String       | Auto Generated uuid   |
@@ -2627,7 +2642,7 @@ Possible errors
 | :---           |          ---: |
 | not found      | The ID is incorrect       |
 
-<h3>2.9.4 DELETE Client Vaccine Information</h3>
+### 2.9.4 DELETE Client Vaccine Information
 Deleting a client's vaccine information
 
 DELETE http://localhost:3000/clientvaccineinfo/:id
@@ -2636,12 +2651,15 @@ Example Response:
     DELETE /clientvaccineinfo/47 200 76.780 ms - 46
     client vaccine info is deleted.
      
+  ```
      {
         "msg": {
              "deletedCount":1
         }
      }
      
+  ```
+  
 | Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
 | clientId   | Number   | Client's ID     |
