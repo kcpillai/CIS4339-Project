@@ -2344,9 +2344,9 @@ Possible errors:
 | SyntaxError | Body payload may be missing one or several characters. |
 ```
   
-  
-  ### 2.8. Incomes 
-  ## 2.8.1 GET All Incomes
+
+## 2.8. Incomes 
+### 2.8.1 GET All Incomes
 GET ALL Incomes: Getting income information
 GET http://localhost:3000/incomes
 
