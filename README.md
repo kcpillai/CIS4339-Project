@@ -1,7 +1,26 @@
 <h1>CIS 4339 Group 14 API Documentation</h1>
-<h2>1. Overview</h2>
+<h2>1. Overview and Setup</h2>
 Group 14’s API is node-based APIs, and all requests are made with the endpoints beginning 
 http://localhost:3000/.
+
+To start up local server and begin connection to database, first install the necessasry packages from the package.json file using the following command in your terminal on VS Code: 
+
+```
+npm install.
+```
+
+Then, to run the server using Nodemon, use the following command on your terminal:
+
+```
+npm run devStart
+```
+
+The following string is the connection string to our cloud Mongo database:
+
+```
+MONGO_URL = mongodb+srv://group14:cis4339@projectcluster.kd8kw.mongodb.net/4339-Project-1?retryWrites=true&w=majority
+```
+
 
 <h2>2. Resources</h2>
 
