@@ -235,7 +235,7 @@ GET /clients/2 200 56.787 ms - 573
 }
 ```
 
-Where Client Object is
+Where Client Object is:
 
 | Field | Type | Description |
 | --- | --- | --- |
@@ -313,7 +313,7 @@ POST /clients 200 94.042 ms - 50
 new clients record added to the database via POST.
 ```
 
-Where Client Object is
+Where Client Object is:
 
 | Field | Type | Description |
 | --- | --- | --- |
@@ -340,7 +340,7 @@ Where Client Object is
 | organization | String | The client’s first organization that they made contact. |
 | employeeID | String | The unique identification number for the worker that first made contact with the client. |
 
-Possible errors
+Possible errors:
 
 | Error Code | Description |
 | --- | --- |
@@ -375,7 +375,7 @@ PUT /clients/2 200 203.591 ms - 32
 clients record is edited via PUT
 ```
 
-Where Client Object is
+Where Client Object is:
 
 | Field | Type | Description |
 | --- | --- | --- |
@@ -402,7 +402,7 @@ Where Client Object is
 | organization | String | The client’s first organization that they made contact. |
 | employeeID | String | The unique identification number for the worker that first made contact with the client. |
 
-Possible errors
+Possible errors:
 
 | Error Code | Description |
 | --- | --- |
