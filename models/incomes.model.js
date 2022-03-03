@@ -50,10 +50,6 @@ let incomeSchema = new Schema({
     otherIncome: { 
         type: Number,
         required: true
-    },
-    modifyAt: {
-        type: Date,
-        required: true
     }
 },
     {
