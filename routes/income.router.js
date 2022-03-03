@@ -3,7 +3,7 @@ const express = require('express');
 const incomeRouter = express.Router();
 const incomeModel = require('../models/incomes.model.js');
 
-
+// Done
 // GET income
 incomeRouter.get('/', (req, res, next) => { //retrieve data from the collection using mongoose schema
     incomeModel.find((error, data) => {

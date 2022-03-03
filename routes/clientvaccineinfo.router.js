@@ -1,12 +1,12 @@
 //CRUD APIs
 const express = require('express');
-const clientvaccineinfoRouter = express.Router();
-const clientvaccineinfoModel = require('../models/clientvaccineinfo.model.js');
+const clientVaccineInfoRouter = express.Router();
+const clientVaccineInfoModel = require('../models/clientVaccineInfo.model.js');
 
-
+// only has brackets
 // GET all client vaccine info
-clientvaccineinfoRouter.get('/', (req, res, next) => { //retrieve data from the collection using mongoose schema
-    clientvaccineinfoModel.find((error, data) => {
+clientVaccineInfoRouter.get('/', (req, res, next) => { //retrieve data from the collection using mongoose schema
+    clientVaccineInfoModel.find((error, data) => {
     if (error) {
       // using a call to next() function to send out error message if error is encountered
       return next(error);
@@ -16,8 +16,8 @@ clientvaccineinfoRouter.get('/', (req, res, next) => { //retrieve data from the 
   });
 });
 // ADD client vaccine info
-clientvaccineinfoRouter.post('/', (req, res, next) => {
-    clientvaccineinfoModel.create(req.body, (error, data) => {
+clientVaccineInfoRouter.post('/', (req, res, next) => {
+    clientVaccineInfoModel.create(req.body, (error, data) => {
     if (error) {
       return next(error);
     } else {
@@ -48,8 +48,8 @@ clientvaccineinfoRouter.put('/:id', (req, res, next) => {
 // DELETE client vaccine info records given id
 clientvaccineinfoRouter.delete('/:id', (req, res, next) => {
   //mongoose deletes record based off of document id
-  clientvaccineinfoModel.findOneAndRemove(
-    { clientvaccineinfoId: req.params.id },
+  clientVaccineInfoModel.findOneAndRemove(
+    { clientVaccineInfoId: req.params.id },
     (error, data) => {
       if (error) {
         return next(error);
@@ -63,4 +63,4 @@ clientvaccineinfoRouter.delete('/:id', (req, res, next) => {
   );
 });
 
-module.exports = clientvaccineinfoRouter;
+module.exports = clientVaccineInfoRouter;

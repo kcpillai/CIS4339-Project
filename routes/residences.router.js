@@ -3,7 +3,7 @@ const express = require('express');
 const residencesRouter = express.Router();
 const residencesModel = require('../models/residences.model.js');
 
-
+//done
 // GET all residences
 residencesRouter.get('/', (req, res, next) => { //retrieve data from the collection using mongoose schema
     residencesModel.find((error, data) => {
