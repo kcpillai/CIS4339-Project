@@ -27,7 +27,7 @@ organizationsRouter.get('/:id', (req, res, next) => {
   });
 });
 
-// // Adding a Organization
+// Adding an Organization
 organizationsRouter.post('/', (req, res, next) => {
   organizationsModel.create(req.body, (error, data) => {
     if (error) {
@@ -57,7 +57,7 @@ organizationsRouter.put('/:id', (req, res) => {
   );
 });
 
-// DELETE: an endpoint to delete a organziations  record
+// Delete a organziations  record
 organizationsRouter.delete('/:id', (req, res, next) => {
   organizationsModel.deleteOne(
     { organizationNameId: req.params.id },

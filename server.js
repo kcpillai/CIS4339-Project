@@ -30,7 +30,7 @@ mongoose.connection.once('open', () => {
   console.log('MongoDB connectioned!');
 });
 
-// Setting up routers
+// Setting up the routers
 const employeeRouter = require('./routes/employee.router.js');
 app.use('/employees', employeeRouter);
 
