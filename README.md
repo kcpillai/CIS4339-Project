@@ -1,7 +1,26 @@
 <h1>CIS 4339 Group 14 API Documentation</h1>
-<h2>1. Overview</h2>
+<h2>1. Overview and Setup</h2>
 Group 14’s API is node-based APIs, and all requests are made with the endpoints beginning 
 http://localhost:3000/.
+
+To start up local server and begin connection to database, first install the necessasry packages from the package.json file using the following command in your terminal on VS Code: 
+
+```
+npm install.
+```
+
+Then, to run the server using Nodemon, use the following command on your terminal:
+
+```
+npm run devStart
+```
+
+The following string is the connection string to our cloud Mongo database:
+
+```
+MONGO_URL = mongodb+srv://group14:cis4339@projectcluster.kd8kw.mongodb.net/4339-Project-1?retryWrites=true&w=majority
+```
+
 
 <h2>2. Resources</h2>
 
@@ -1951,6 +1970,288 @@ DELETE /health/999 200 65.163 ms - 26
 ```
 
 The ClientID is what is used to select the Client that will be deleted:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| clientID | Number | Unique identifier for the client. |
+
+Possible errors:
+
+| Error Code | Description |
+| --- | --- |
+| 404 Cannot DELETE/ | URL may be missing one or several characters. |
+| SyntaxError | Body payload may be missing one or several characters. |
+  
+  ## 2.7. Residences
+
+### 2.7.1 GET All Residences
+
+## GET ALL Residences: Getting All Residences Collection
+
+Fetch all Documents from Residences Collection:
+
+GET [http://localhost:3000/residences](http://localhost:3000/employees)
+
+Example Response:
+
+GET /residences 200 65.692 ms - 619
+
+```
+[
+    {
+        "_id": "62144f42c1de9d07f2742f82",
+        "clientID": 123,
+        "address": "7676 Holly Hall St. ",
+        "city": "Houston",
+        "state": "TX",
+        "county": "Harris",
+        "zip": 77054,
+        "totalRent": 1470,
+        "timeofResidence": {
+            "residenceYear": "5",
+            "residenceMonth": "3"
+        },
+        "livingArrangement": "alone",
+        "hasUtilities": true,
+        "isSubsidized": true,
+        "isSingleParent": false
+    },
+    {
+        "_id": "6220075c2012b3b414c445ac",
+        "clientID": 456,
+        "address": "7865 Calhoun Rd",
+        "city": "Houston",
+        "state": "TX",
+        "county": "Harris",
+        "zip": 77204,
+        "totalRent": 21345,
+        "timeofResidence": {
+            "residenceYear": 7,
+            "residenceMonth": 8
+        },
+        "livingArrangement": "family",
+        "hasUtillities": true,
+        "isSubsidized": true,
+        "isSingleParent": false
+    }
+]
+```
+
+With the following fields:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| __id | String | auto-generated uuid |
+| clientID | Number | Unique identifier for the client. |
+| address | String | Client's residential address. |
+| city | String | Client's city of residence. |
+| state | String | Client's state of residence. |
+| county | String | Client's country of residence. |
+| zip | Number | Client's residential zip code. |
+| totalRent | Number | Total rent expenses of the client. |
+| timeOfResidence | String | How long the client has stayed at their current residence. |
+| residenceYear | Number | How many years the client has resided in their current location. |
+| residenceMonth | Number | How many months the client has resided in their current location. |
+| livingArrangemets | String | Any special notes related to client's current living arrangements. |
+| hasUtilities | Boolean | Indicates whether the client has utilities at their residence. |
+| isSubsidized | Boolean | Indicates whether the client's living situation is subsidized. |
+| isSingleParent | Boolean | Indicates whether the client is a single parent. |
+
+Possible Errors:
+
+| Error Code | Description |
+| --- | --- |
+| 404 Cannot GET / | URL may be missing one or several characters. |
+
+### 2.7.2 GET One Residences Document
+
+## GET ONE Residences Document With clientID
+
+GET [http://localhost:3000/residences/:id](http://localhost:3000/employees/:id)
+
+**Example: Getting documents where clientID=456:**
+
+GET [http://localhost:3000/residences/456](http://localhost:3000/employees/:id)
+
+Example Response:
+
+GET /residences/456 200 73.399 ms - 305
+
+```
+{
+    "_id": "6220075c2012b3b414c445ac",
+    "clientID": 456,
+    "address": "7865 Calhoun Rd",
+    "city": "Houston",
+    "state": "TX",
+    "county": "Harris",
+    "zip": 77204,
+    "totalRent": 21345,
+    "timeofResidence": {
+        "residenceYear": 7,
+        "residenceMonth": 8
+    },
+    "livingArrangement": "family",
+    "hasUtillities": true,
+    "isSubsidized": true,
+    "isSingleParent": false
+}
+```
+
+Where Residences Document is:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| __id | String | auto-generated uuid |
+| clientID | Number | Unique identifier for the client. |
+| address | String | Client's residential address. |
+| city | String | Client's city of residence. |
+| state | String | Client's state of residence. |
+| county | String | Client's country of residence. |
+| zip | Number | Client's residential zip code. |
+| totalRent | Number | Total rent expenses of the client. |
+| timeOfResidence | String | How long the client has stayed at their current residence. |
+| residenceYear | Number | How many years the client has resided in their current location. |
+| residenceMonth | Number | How many months the client has resided in their current location. |
+| livingArrangemets | String | Any special notes related to client's current living arrangements. |
+| hasUtilities | Boolean | Indicates whether the client has utilities at their residence. |
+| isSubsidized | Boolean | Indicates whether the client's living situation is subsidized. |
+| isSingleParent | Boolean | Indicates whether the client is a single parent. |
+
+Possible errors:
+
+| Error Code | Description |
+| --- | --- |
+| 404 Cannot GET / | URL may be missing one or several characters. |
+
+### 2.7.3 POST Adding One Residences Document
+
+## Inserting New Residences Document
+
+POST [http://localhost:3000/residences](http://localhost:3000/employees)
+
+Example Body:
+
+Adding a new Residence where clientID=999:
+
+```
+{
+    "clientID": 999,
+    "address": "7865 Calhoun Rd",
+    "city": "Houston",
+    "state": "TX",
+    "county": "Harris",
+    "zip": 77204,
+    "totalRent": 21345,
+    "timeOfResidence": "5",
+    "residenceYear": 2007,
+    "residenceMonth": 8,
+    "livingArrangemets": "family",
+    "hasUtilities": true,
+    "isSubsidized": true,
+    "isSingleParent": false
+}
+```
+
+Example Response:
+
+POST /residences 200 141.570 ms - 27
+
+```
+Residences have been added.
+```
+
+Where Residences Object is:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| __id | String | auto-generated uuid |
+| clientID | Number | Unique identifier for the client. |
+| address | String | Client's residential address. |
+| city | String | Client's city of residence. |
+| state | String | Client's state of residence. |
+| county | String | Client's country of residence. |
+| zip | Number | Client's residential zip code. |
+| totalRent | Number | Total rent expenses of the client. |
+| timeOfResidence | String | How long the client has stayed at their current residence. |
+| residenceYear | Number | How many years the client has resided in their current location. |
+| residenceMonth | Number | How many months the client has resided in their current location. |
+| livingArrangemets | String | Any special notes related to client's current living arrangements. |
+| hasUtilities | Boolean | Indicates whether the client has utilities at their residence. |
+| isSubsidized | Boolean | Indicates whether the client's living situation is subsidized. |
+| isSingleParent | Boolean | Indicates whether the client is a single parent. |
+
+Possible errors:
+
+| Error Code | Description |
+| --- | --- |
+| 404 Cannot POST / | URL may be missing one or several characters. |
+| SyntaxError | Body payload may be missing one or several characters. |
+
+### 2.7.4 PUT - Updating Existing Residences Document
+
+## Updating one Residences in Residences Collection with clientiD
+
+PUT [http://localhost:3000/residences/:id](http://localhost:3000/employees/:id)
+
+Example Input:
+
+Editing a Document with clientID = 888:
+
+PUT [http://localhost:3000/residences/888](http://localhost:3000/clients/2)
+
+Example Body:
+
+```
+{
+"livingArrangemets": "State Housing"
+}
+```
+
+Example Response:
+
+PUT /residences/999 200 74.701 ms - 25
+
+```
+residences edited via PUT
+```
+
+Where Residences Object is:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| livingArrangemets | String | Any special notes related to client's current living arrangements. |
+
+Possible errors:
+
+| Error Code | Description |
+| --- | --- |
+| 404 Cannot PUT / | URL may be missing one or several characters. |
+| SyntaxError | Body payload may be missing one or several characters. |
+
+### 2.7.5 DELETE Deleting One Residences Document
+
+## Deleting one Residences Document by clientID
+
+DELETE [http://localhost:3000/residences/:id](http://localhost:3000/employees/:id)
+
+**Example: Deleting a Residences document with clientID=999:**
+
+DEL [http://localhost:3000/residences/999](http://localhost:3000/families/999)
+
+**Example Response:**
+
+DELETE /residences/999 200 65.163 ms - 26
+
+```
+ {
+    "msg": {
+         "deletedCount":1
+    }
+ } 
+```
+
+The ClientID is what is used to select the Document that will be deleted:
 
 | Field | Type | Description |
 | --- | --- | --- |
