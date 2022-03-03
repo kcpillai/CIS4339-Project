@@ -69,6 +69,10 @@ Possible errors
   
   POST http://localhost:3000/incomes
   
+  Example Response:
+  POST /incomes 200 69.655 ms - 13
+  income added.
+  
   Example Body:
   
     {
@@ -88,7 +92,27 @@ Possible errors
         "otherIncome": 43288
     }
 
+| Field      | Type | Description     |
+| :---        |    :----:   |          ---: |
+| _id      | String       | Auto Generated uuid   |
+| clientId   | Number   | The client id number     |
+| isHeadofHousehold   | String   | States if client is the head of household    |
+| monthlyIncome   | Number   | Client's Monthly Income     |
+| spousalSupport   | Number   | Support from Spouse     |
+| childSupport   | Number   | Child Support    |
+| workComp   | Number   | Workers Compensation    |
+| incomeFederalAid   | Number   | Federal Aid Income     |
+| tanf  | Number   | Temporary Assistance for Needy Families      |
+| ssi   | Number   | Social Security Administration    |
+| unemployment   | Number   | Unemployment Number    |
+| socialSecurity  | Number   | Social Security Number |
+| otherIncome  | Number    |  Any other income info |
 
+Possible errors
+     
+| Error Code       | Description     |
+| :---           |          ---: |
+| Syntax Error      | Unexpected number in JSON at position 126     |
 
 <h3>PUT Income</h3>
 Edit Client's information using Client ID
@@ -243,7 +267,7 @@ Example Response: /clientvaccineinfo 200 50.833 ms - 283
         "clientID": 578,
         "isGettingVaccinated": false,
         "isVaccinated": false,
-        "vaccinePreferance": "does not want to be vaccinated"
+        "vaccinePreference": "does not want to be vaccinated"
     }
 
 
@@ -261,5 +285,91 @@ Possible errors
 | :---           |          ---: |
 | 404      | The Url is incorrect       |
 
+<h3>POST Adding Client Vaccine Info</h3>
+Adding a client's vaccine information
+
+POST http://localhost:3000/clientvaccineinfo
+
+Example Response:
+POST /clientvaccineinfo 200 63.854 ms - 35
+client vaccine info has been added.
+
+Example Body:
+
+{
+        "_id": "62144b4ac1de9d07f2742f72",
+        "clientID": 376,
+        "isGettingVaccine": true,
+        "isVaccinated": false,
+        "vaccinePreference": "wants to get vacciated"
+ }
+
+
+| Field      | Type | Description     |
+| :---        |    :----:   |          ---: |
+| _id      | String       | Auto Generated uuid   |
+| clientId   | Number   | The client id number     |
+| isGettingVaccinated   | Boolean   | States if Client is Going to Get Vaccinated    |
+| isVaccinated  | Boolean   | States if the Client is Vaccinationed     |
+| vaccinePreferance   | String   | Vaccine Preferance    |
+
+Possible errors
+     
+| Error Code       | Description     |
+| :---           |          ---: |
+| Vallidation Error      | The Url is incorrect       |
+
+
+
+<h3>PUT Editing a Client's Vaccine Information</h3>
+Editing/Updating Vaccine Information for a specific client
+
+PUT http://localhost:3000/clientvaccineinfo/:id
+
 Example Response: PUT /clientvaccineinfo/578 200 501.407 ms - 34
 client vaccine info edited via PUT
+
+Example Body:
+{"vaccinePreference": "wants to be vaccinated"}
+
+| Field      | Type | Description     |
+| :---        |    :----:   |          ---: |
+| _id      | String       | Auto Generated uuid   |
+| clientId   | Number   | The client id number     |
+| isGettingVaccinated   | Boolean   | States if Client is Going to Get Vaccinated    |
+| isVaccinated  | Boolean   | States if the Client is Vaccinationed     |
+| vaccinePreferance   | String   | Vaccine Preferance    |
+
+Possible errors
+     
+| Error Code       | Description     |
+| :---           |          ---: |
+| not found      | The ID is incorrect       |
+
+<h3>DELETE Client Vaccine Information</h3>
+Deleting a client's vaccine information
+
+DELETE http://localhost:3000/clientvaccineinfo/:id
+
+Example Response:
+    DELETE /clientvaccineinfo/47 200 76.780 ms - 46
+    client vaccine info is deleted.
+     
+     {
+        "msg": {
+             "deletedCount":1
+        }
+     }
+     
+| Field      | Type | Description     |
+| :---        |    :----:   |          ---: |
+| clientId   | Number   | Client's ID     |
+  
+     
+Possible errors
+     
+| Error Code       | Description     |
+| :---           |          ---: |
+| not found      | client id does not exist      |
+
+

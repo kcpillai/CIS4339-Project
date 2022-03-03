@@ -28,3 +28,5 @@ axios
   .catch(error => {
     console.log(error);
   });
+
+  // reference: https://stackoverflow.com/questions/40222563/how-to-make-a-external-api-call-inside-express-server
