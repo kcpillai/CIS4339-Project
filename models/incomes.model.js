@@ -56,10 +56,6 @@ let incomeSchema = new Schema(
       type: Number,
       required: true,
     },
-    modifyAt: {
-      type: Date,
-      required: true,
-    },
   },
   {
     collection: 'incomes',
