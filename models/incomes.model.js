@@ -24,11 +24,11 @@ let incomeSchema = new Schema(
       type: Number,
       required: true,
     },
-    workComp: {
+    childSupport: {
       type: Number,
       required: true,
     },
-    childSupport: {
+    workComp: {
       type: Number,
       required: true,
     },
