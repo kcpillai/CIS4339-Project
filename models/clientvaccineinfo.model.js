@@ -20,7 +20,7 @@ let clientvaccineinfoSchema = new Schema(
       type: Boolean,
       required: true,
     },
-    vacccinePreference: {
+    vaccinePreference: {
       type: String,
       required: true,
     },
