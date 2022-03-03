@@ -5,8 +5,9 @@ const clientVaccineInfoModel = require('../models/clientVaccineInfo.model.js');
 
 // only has brackets
 // GET all client vaccine info
-clientVaccineInfoRouter.get('/', (req, res, next) => { //retrieve data from the collection using mongoose schema
-    clientVaccineInfoModel.find((error, data) => {
+clientVaccineInfoRouter.get('/', (req, res, next) => {
+  //retrieve data from the collection using mongoose schema
+  clientVaccineInfoModel.find((error, data) => {
     if (error) {
       // using a call to next() function to send out error message if error is encountered
       return next(error);
@@ -15,9 +16,24 @@ clientVaccineInfoRouter.get('/', (req, res, next) => { //retrieve data from the 
     }
   });
 });
+
+// GET a specific Client vaccine info based on clientId
+clientVaccineInfoRouter.get('/:id', (req, res, next) => {
+  const id = req.params.id;
+  clientVaccineInfoModel.findOne({ clientId: id }, (error, data) => {
+    if (error) {
+      return next(error);
+    } else if (data === null) {
+      res.status(404).send('Client not found');
+    } else {
+      res.json(data);
+    }
+  });
+});
+
 // ADD client vaccine info
 clientVaccineInfoRouter.post('/', (req, res, next) => {
-    clientVaccineInfoModel.create(req.body, (error, data) => {
+  clientVaccineInfoModel.create(req.body, (error, data) => {
     if (error) {
       return next(error);
     } else {
@@ -26,11 +42,10 @@ clientVaccineInfoRouter.post('/', (req, res, next) => {
   });
 });
 
-
 // Update client vaccine info with client vaccine info id
 clientVaccineInfoRouter.put('/:id', (req, res, next) => {
-    clientVaccineInfoModel.findOneAndUpdate(
-    { clientVaccineInfoId: req.params.id },
+  clientvaccineinfoModel.findOneAndUpdate(
+    { clientvaccineinfoId: req.params.id },
     {
       $set: req.body,
     },
