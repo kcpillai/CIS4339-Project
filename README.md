@@ -2344,6 +2344,8 @@ Possible errors:
 | SyntaxError | Body payload may be missing one or several characters. |
 ```
   
+  
+  
 
 ## 2.8. Incomes 
 ### 2.8.1 GET All Incomes
@@ -2424,7 +2426,7 @@ Possible errors
   
   Example Body:
   
-  ```
+```
   
     {
         "_id": "7f898u9j98j9876",
@@ -2443,7 +2445,7 @@ Possible errors
         "otherIncome": 43288
     }
 
-  ```
+```
   
 | Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
@@ -2475,14 +2477,14 @@ Example Response: PUT /incomes/190 200 73.654 ms - 21
 
 income edited via PUT
 
-  ```
+```
   Example Body:
 [
     {
         "otherIncome": 98798
     }
 ]
-  ```
+```
   
 
 | Field      | Type | Description     |
@@ -2588,7 +2590,7 @@ client vaccine info has been added.
 
 Example Body:
 
-  ```
+```
 {
         "_id": "62144b4ac1de9d07f2742f72",
         "clientID": 376,
@@ -2624,8 +2626,11 @@ client vaccine info edited via PUT
 
 Example Body:
 
+  
 ```
+  
   {"vaccinePreference": "wants to be vaccinated"}
+  
 ```
   
 | Field      | Type | Description     |
@@ -2651,14 +2656,14 @@ Example Response:
     DELETE /clientvaccineinfo/47 200 76.780 ms - 46
     client vaccine info is deleted.
      
-  ```
+```
      {
         "msg": {
              "deletedCount":1
         }
      }
      
-  ```
+```
   
 | Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
