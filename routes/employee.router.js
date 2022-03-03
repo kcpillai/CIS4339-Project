@@ -4,10 +4,8 @@ const employeeModel = require('../models/employees.model.js');
 
 // GET all Employees
 employeeRouter.get('/', (req, res, next) => {
-  //very plain way to get all the data from the collection through the mongoose schema
   employeeModel.find((error, data) => {
     if (error) {
-      //here we are using a call to next() to send an error message back
       return next(error);
     } else {
       res.json(data);

@@ -90,7 +90,6 @@ Possible errors
 | :---           |          ---: |
 | 404      | The Url is incorrect       |
 
-
   <h3>2.1.2 GET One Employee</h3>
    GET ONE EMPLOYEE: Getting one the employees and their information based on employeeId 
   
@@ -127,7 +126,7 @@ Possible errors
 
 ```
 Where Employee Object is
-     
+
 | Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
 | _id      | String       | auto generated uuid   |
@@ -141,23 +140,23 @@ Where Employee Object is
 | EndDate   | Date   | When the employee ended working      |
 | phoneNumber   | Number   | The employees phone number     |
 | clientId   | Number   | Client ID     |
- 
+
 Possible errors
-     
+
 | Error Code       | Description     |
 | :---           |          ---: |
 | 404      | The Employee does not exist       |
-  
-   
+
+
 <h3>2.1.3 POST Adding One Employee</h3>
-    Adding one  employee and their information to the employees collection 
-  
+    Adding one  employee and their information to the employees collection
+
   POST http://localhost:3000/employees
-  
-     
+
+
    Example Body:
-     
-    
+
+
      {
     "employeeId":"5",
     "employeeName": [{
@@ -174,15 +173,15 @@ Possible errors
     "clientId":"3"
     }]
      }
-     
+
    Example Response:
      POST /employees 200 66.054 ms – 44
-     
+
      Worker information is added to the database.
-     
-     
+
+
 Where Employee Object is
-     
+
 | Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
 | _id      | String       | auto generated uuid   |
@@ -196,36 +195,36 @@ Where Employee Object is
 | EndDate   | Date   | When the employee ended working      |
 | phoneNumber   | Number   | The employees phone number     |
 | clientId   | Number   | Client ID     |
- 
+
 Possible errors
-     
+
 | Error Code       | Description     |
 | :---           |          ---: |
 | 404      | The URL is incorrect      |
 
- 
+
 <h3>2.1.4 PUT Updating One Employee</h3>
-    Updating one employee and their information to the employees collection 
-  
+    Updating one employee and their information to the employees collection
+
   PUT http://localhost:3000/employees/:id
-  
-     
+
+
    Example Body:
-     
+
      {
     "employeeName": [{
     "lastName":"Paul ",
     "firstName":"Tom"
     }]
      }
-     
+
    Example Response:
-    PUT /employees/5 200 64.628 ms - 31     
-     
+    PUT /employees/5 200 64.628 ms - 31
+
      Employee is edited via PUT.
-     
+
 Where Employee Object is
-     
+
 | Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
 | _id      | String       | auto generated uuid   |
@@ -239,76 +238,78 @@ Where Employee Object is
 | EndDate   | Date   | When the employee ended working      |
 | phoneNumber   | Number   | The employees phone number     |
 | clientId   | Number   | Client ID     |
- 
+
 Possible errors
-     
+
 | Error Code       | Description     |
 | :---           |          ---: |
 | 404      | Employee does not exist      |
-     
-     
+
+
 <h3>2.1.5 DELETE Deleteing One Employee</h3>
-    Deleing one employee and their information from the employees collection 
-  
+    Deleing one employee and their information from the employees collection
+
   DELETE http://localhost:3000/employees/:id
-     
+
    Example Response:
-    DELETE /employees/5 200 64.628 ms - 31     
-     
+    DELETE /employees/5 200 64.628 ms - 31
+
      {
         "msg": {
              "deletedCount":1
         }
      }
-     
+
  The employee Id is what is used to select the employee that will be deleted
-     
+
 | Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
 | employeeId   | Number   | The employee id number     |
-  
-     
+
+
 Possible errors
-     
+
 | Error Code       | Description     |
 | :---           |          ---: |
 | 404      | Employee does not exist      |
 
-     
-  
+
+
 <h2>2.2 Events<h2>
-  
+
   <h3>2.2.1 GET All Events</h3>
-   GET ALL EMPLOYEES: Getting all the employees and their information  
-  
+   GET ALL EMPLOYEES: Getting all the employees and their information
+
   GET http://localhost:3000/events
-  
+
    Example Response:
    GET /events 200 45.017 ms - 539
-  
-  ```
+
+```
+
 [
-    {
-        "_id": "1d6a7490-99e1-11ec-99c0-113ecace86eb",
-        "eventsId": 1,
-        "program": "Unknown",
-        "eventDescription": "A food dive in Houston",
-        "eventInfo": [],
-        "__v": 0
-    },
-    {
-        "_id": "4b64e6f0-9a5e-11ec-80fa-eb21938b5602",
-        "eventsId": 7,
-        "program": "Unknown",
-        "eventDescription": "Clothing donation drive",
-        "eventInfo": [],
-        "__v": 0
-    },
+{
+"\_id": "1d6a7490-99e1-11ec-99c0-113ecace86eb",
+"eventsId": 1,
+"program": "Unknown",
+"eventDescription": "A food dive in Houston",
+"eventInfo": [],
+"**v": 0
+},
+{
+"\_id": "4b64e6f0-9a5e-11ec-80fa-eb21938b5602",
+"eventsId": 7,
+"program": "Unknown",
+"eventDescription": "Clothing donation drive",
+"eventInfo": [],
+"**v": 0
+},
 ]
-  ```
-  
+
+```
+
 Where Events Object is
-     
+
 | Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
 | _id      | String       | auto generated uuid   |
@@ -319,35 +320,37 @@ Where Events Object is
 | city   | String   | The city the event is located    |
 | state   | String   | The state the event is located     |
 | zipcode   | Number   | The zipcode the event is located     |
-  
+
 Possible errors
-     
+
 | Error Code       | Description     |
 | :---           |          ---: |
 | 404      | URL is inccorrect     |
-  
 
- <h3>2.2.2 GET One Event</h3>
-   GET ONE Event: Getting one the Events and their information based on eventsId 
-  
-  GET http://localhost:3000/events/:id
-  
-   Example Response:
-   GET /events/1 200 53.890 ms - 146
-     
+
+<h3>2.2.2 GET One Event</h3>
+ GET ONE Event: Getting one the Events and their information based on eventsId
+
+GET http://localhost:3000/events/:id
+
+ Example Response:
+ GET /events/1 200 53.890 ms - 146
+
 ```
+
 {
-    "_id": "1d6a7490-99e1-11ec-99c0-113ecace86eb",
-    "eventsId": 1,
-    "program": "Unknown",
-    "eventDescription": "A food dive in Houston",
-    "eventInfo": [],
-    "__v": 0
+"\_id": "1d6a7490-99e1-11ec-99c0-113ecace86eb",
+"eventsId": 1,
+"program": "Unknown",
+"eventDescription": "A food dive in Houston",
+"eventInfo": [],
+"\_\_v": 0
 }
-  ```
-  
- Where Events Object is
-     
+
+```
+
+Where Events Object is
+
 | Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
 | _id      | String       | auto generated uuid   |
@@ -358,41 +361,41 @@ Possible errors
 | city   | String   | The city the event is located    |
 | state   | String   | The state the event is located     |
 | zipcode   | Number   | The zipcode the event is located     |
-  
+
 Possible errors
-     
+
 | Error Code       | Description     |
 | :---           |          ---: |
 | 404      | Event does not exist     |
-  
-  
-  
-  <h3>2.2.3 POST Adding One Event</h3>
-    Adding one event and their information to the events collection 
-  
-  POST http://localhost:3000/events
-  
-     
-   Example Body:
-     
-    {
-    "eventsId": 7,
-    "program": "Unknown",
-    "eventDescription": "Clothing donation drive",
-    "eventDate":"2022-04-05",
-    "address": "8134 Birdsing Lane",
-    "city": "Houston",
-    "state": "Texas",
-    "zipcode":77004
+
+
+
+<h3>2.2.3 POST Adding One Event</h3>
+  Adding one event and their information to the events collection
+
+POST http://localhost:3000/events
+
+
+ Example Body:
+
+  {
+  "eventsId": 7,
+  "program": "Unknown",
+  "eventDescription": "Clothing donation drive",
+  "eventDate":"2022-04-05",
+  "address": "8134 Birdsing Lane",
+  "city": "Houston",
+  "state": "Texas",
+  "zipcode":77004
 }
 
 Example Response:
-    POST /events 200 48.728 ms – 36    
-  
-     Events info is added to the database.
-  
+  POST /events 200 48.728 ms – 36
+
+   Events info is added to the database.
+
 Where Events Object is
-     
+
 | Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
 | _id      | String       | auto generated uuid   |
@@ -403,39 +406,40 @@ Where Events Object is
 | city   | String   | The city the event is located    |
 | state   | String   | The state the event is located     |
 | zipcode   | Number   | The zipcode the event is located     |
-  
+
 Possible errors
-     
+
 | Error Code       | Description     |
 | :---           |          ---: |
 | 404      | The URL is incorrect   |
-  
-  
+
+
 <h3>2.2.4 PUT Updating One Event</h3>
-    Updating one event and their information to the events collection 
-  
-  PUT http://localhost:3000/events/:id
-  
-     
- Example Body:
-  ```
- {
-    "program": "Unknown",
-    "eventDescription": "Food donation drive",
-    "eventDate":"2022-06-15",
-    "address": "2352 Hollows Drive"
-}
-  
+  Updating one event and their information to the events collection
+
+PUT http://localhost:3000/events/:id
+
+
+Example Body:
 ```
-  
-  
+
+{
+"program": "Unknown",
+"eventDescription": "Food donation drive",
+"eventDate":"2022-06-15",
+"address": "2352 Hollows Drive"
+}
+
+```
+
+
    Example Response:
-    PUT /events/5 200 64.628 ms - 31     
-     
+    PUT /events/5 200 64.628 ms - 31
+
      Events is edited via PUT.
-  
+
  Where Events Object is
-     
+
 | Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
 | _id      | String       | auto generated uuid   |
@@ -446,91 +450,93 @@ Possible errors
 | city   | String   | The city the event is located    |
 | state   | String   | The state the event is located     |
 | zipcode   | Number   | The zipcode the event is located     |
-  
+
 Possible errors
-     
+
 | Error Code       | Description     |
 | :---           |          ---: |
 | 404      | Event does not exist     |
-  
-  
+
+
 <h3>2.2.5 DELETE Deleteing One Event</h3>
-    Deleing one event and their information from the events collection 
-  
+    Deleing one event and their information from the events collection
+
   DELETE http://localhost:3000/events/:id
-     
+
    Example Response:
-    DELETE /events/5 200 55.161 ms - 26    
-     
+    DELETE /events/5 200 55.161 ms - 26
+
      {
         "msg": {
              "deletedCount":1
         }
      }
-     
+
  The event Id is what is used to select the event that will be deleted
-     
+
 | Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
 | eventsId   | Number   | The events id number     |
-  
-     
+
+
 Possible errors
-     
+
 | Error Code       | Description     |
 | :---           |          ---: |
 | 404      | events does not exist      |
-  
-  
+
+
 
 <h2>2.3 Organizations<h2>
   <h3>2.3.1 GET All Organizations</h3>
-   GET ALL Organizations: Getting all the Organizations and their information  
-  
+   GET ALL Organizations: Getting all the Organizations and their information
+
   GET http://localhost:3000/organizations
-  
+
    Example Response:
-  
-  GET /organizations 200 59.269 ms - 536  
-     
-  ```
-  [
-    {
-        "_id": "e9a91bd0-99e4-11ec-99c0-113ecace86eb",
-        "organizationNameId": "22",
-        "organizationDesc": "Food Donation Organization",
-        "organizationAddress": [
-            {
-                "address1": "2310 Passing Lane",
-                "city": "Houston",
-                "state": "Texas",
-                "zipcode": 770044,
-                "_id": "621ef8a38c4976fa26e2773a"
-            }
-        ],
-        "__v": 0
-    },
-    {
-        "_id": "fbf31d90-99e4-11ec-99c0-113ecace86eb",
-        "organizationNameId": "12",
-        "organizationDesc": "Homeless Relocation Help",
-        "organizationAddress": [
-            {
-                "address1": "2684 Oxford Loop",
-                "city": "Houston",
-                "state": "Texas",
-                "zipcode": 770044,
-                "_id": "621ef8c28c4976fa26e2773c"
-            }
-        ],
-        "__v": 0
-    }
+
+  GET /organizations 200 59.269 ms - 536
+
+```
+
+[
+{
+"\_id": "e9a91bd0-99e4-11ec-99c0-113ecace86eb",
+"organizationNameId": "22",
+"organizationDesc": "Food Donation Organization",
+"organizationAddress": [
+{
+"address1": "2310 Passing Lane",
+"city": "Houston",
+"state": "Texas",
+"zipcode": 770044,
+"_id": "621ef8a38c4976fa26e2773a"
+}
+],
+"**v": 0
+},
+{
+"\_id": "fbf31d90-99e4-11ec-99c0-113ecace86eb",
+"organizationNameId": "12",
+"organizationDesc": "Homeless Relocation Help",
+"organizationAddress": [
+{
+"address1": "2684 Oxford Loop",
+"city": "Houston",
+"state": "Texas",
+"zipcode": 770044,
+"_id": "621ef8c28c4976fa26e2773c"
+}
+],
+"**v": 0
+}
 ]
-  ```
-  
- Where Organizations Object is
- 
- | Field      | Type | Description     |
+
+```
+
+Where Organizations Object is
+
+| Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
 | _id      | String       | auto generated uuid   |
 | organizationNameId   | Number   | The events id number     |
@@ -541,44 +547,46 @@ Possible errors
 | state   | String   | The state the organization is located     |
 | zipcode   | Number   | The zipcode the organization is located     |
 
- 
+
 Possible errors
-     
+
 | Error Code       | Description     |
 | :---           |          ---: |
 | 404      | The Url is incorrect       |
 
-  
-  
- <h3>2.3.2 GET One Organization</h3>
-   GET ONE Organization: Getting one the Organizations and their information based on organizationNameId 
-  
-  GET http://localhost:3000/organizations/:id
-  
-   Example Response:
-   GET /organizations/12 200 58.576 ms - 265
-     
+
+
+<h3>2.3.2 GET One Organization</h3>
+ GET ONE Organization: Getting one the Organizations and their information based on organizationNameId
+
+GET http://localhost:3000/organizations/:id
+
+ Example Response:
+ GET /organizations/12 200 58.576 ms - 265
+
 ```
+
 {
-    "_id": "fbf31d90-99e4-11ec-99c0-113ecace86eb",
-    "organizationNameId": "12",
-    "organizationDesc": "Homeless Relocation Help",
-    "organizationAddress": [
-        {
-            "address1": "2684 Oxford Loop",
-            "city": "Houston",
-            "state": "Texas",
-            "zipcode": 770044,
-            "_id": "621ef8c28c4976fa26e2773c"
-        }
-    ],
-    "__v": 0
+"\_id": "fbf31d90-99e4-11ec-99c0-113ecace86eb",
+"organizationNameId": "12",
+"organizationDesc": "Homeless Relocation Help",
+"organizationAddress": [
+{
+"address1": "2684 Oxford Loop",
+"city": "Houston",
+"state": "Texas",
+"zipcode": 770044,
+"_id": "621ef8c28c4976fa26e2773c"
 }
-  ```
-  
- Where Organizations Object is
- 
- | Field      | Type | Description     |
+],
+"\_\_v": 0
+}
+
+```
+
+Where Organizations Object is
+
+| Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
 | _id      | String       | auto generated uuid   |
 | organizationNameId   | Number   | The events id number     |
@@ -589,43 +597,43 @@ Possible errors
 | state   | String   | The state the organization is located     |
 | zipcode   | Number   | The zipcode the organization is located     |
 
- 
+
 Possible errors
-     
+
 | Error Code       | Description     |
 | :---           |          ---: |
 | 404      | Organization does not exist       |
-  
-  
-  
-  <h3>2.3.3 POST Adding One Organization</h3>
-    Adding one event and their information to the Organizations collection 
-  
-  POST http://localhost:3000/organizations
-  
-     
-   Example Body:
-     
-{
-    "eventsId": 7,
-    "program": "Unknown",
-    "eventDescription": "Clothing donation drive",
-    "eventDate":"2022-04-05",
-    "address": "8134 Birdsing Lane",
-    "city": "Houston",
-    "state": "Texas",
-    "zipcode":77004
-}
-  
- 
-Example Response:
-  POST /organizations 200 57.730 ms – 51   
-  
-     Organizations info is added to the database.
 
- Where Organizations Object is
- 
- | Field      | Type | Description     |
+
+
+<h3>2.3.3 POST Adding One Organization</h3>
+  Adding one event and their information to the Organizations collection
+
+POST http://localhost:3000/organizations
+
+
+ Example Body:
+
+{
+  "eventsId": 7,
+  "program": "Unknown",
+  "eventDescription": "Clothing donation drive",
+  "eventDate":"2022-04-05",
+  "address": "8134 Birdsing Lane",
+  "city": "Houston",
+  "state": "Texas",
+  "zipcode":77004
+}
+
+
+Example Response:
+POST /organizations 200 57.730 ms – 51
+
+   Organizations info is added to the database.
+
+Where Organizations Object is
+
+| Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
 | _id      | String       | auto generated uuid   |
 | organizationNameId   | Number   | The events id number     |
@@ -636,43 +644,44 @@ Example Response:
 | state   | String   | The state the organization is located     |
 | zipcode   | Number   | The zipcode the organization is located     |
 
- 
+
 Possible errors
-     
+
 | Error Code       | Description     |
 | :---           |          ---: |
 | 404      | The Url is incorrect       |
-  
-  
+
+
 <h3>2.3.4 PUT Updating One Organization</h3>
-    Updating one Organization and their information to the Organizations collection 
-  
-  PUT http://localhost:3000/organizations/:id
-  
-     
- Example Body:
-  ```
-{
-    "organizationNameId": "47",
-    "organizationDesc":"Test",
-    "organizationAddress": [{
-        "address1": "4444 Testing Lane",
-        "city":"Houston",
-        "state":"Texas",
-        "zipcode": 770044
-    }]
-}
-  
+  Updating one Organization and their information to the Organizations collection
+
+PUT http://localhost:3000/organizations/:id
+
+
+Example Body:
 ```
-  
-  
+
+{
+"organizationNameId": "47",
+"organizationDesc":"Test",
+"organizationAddress": [{
+"address1": "4444 Testing Lane",
+"city":"Houston",
+"state":"Texas",
+"zipcode": 770044
+}]
+}
+
+```
+
+
    Example Response:
-    PUT /organizations/47 200 53.450 ms - 265    
-     
+    PUT /organizations/47 200 53.450 ms - 265
+
      Events is edited via PUT.
-  
+
   Where Organizations Object is
- 
+
  | Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
 | _id      | String       | auto generated uuid   |
@@ -684,41 +693,41 @@ Possible errors
 | state   | String   | The state the organization is located     |
 | zipcode   | Number   | The zipcode the organization is located     |
 
- 
+
 Possible errors
-     
+
 | Error Code       | Description     |
 | :---           |          ---: |
 | 404      | Organization does not exist     |
-  
+
 <h3>2.3.5 DELETE Deleteing One Organization</h3>
-    Deleing one organization and their information from the organizations collection 
-  
+    Deleing one organization and their information from the organizations collection
+
   DELETE http://localhost:3000/organizations/:id
-     
+
    Example Response:
     DELETE /organizations/47 200 53.890 ms - 146
-     
+
      {
         "msg": {
              "deletedCount":1
         }
      }
-     
+
  The organizationNameId is what is used to select the organization that will be deleted
-     
+
 | Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
 | organizationNameId   | Number   | The organizations id number     |
-  
-     
+
+
 Possible errors
-     
+
 | Error Code       | Description     |
 | :---           |          ---: |
 | 404      | organizations does not exist      |
 
-  
+
 ## 2.4. Clients
 
 ### 2.4.1 GET All Clients
@@ -732,142 +741,144 @@ Example Response:
 GET /clients 200 64.125 ms – 1723
 
 ```
+
 [
-    {
-        "_id": "62145a568b53b1352a47665f",
-        "clientID": 123,
-        "clientName": [
-            {
-                "_id": "621fad6e295c1536e105a751",
-                "firstName": "First Name",
-                "middleName": "Middle Name",
-                "lastName": "Last Name"
-            }
-        ],
-        "clientDemographics": [
-            {
-                "_id": "621fad6e295c1536e105a752",
-                "gender": "Gender",
-                "age": 30,
-                "birthday": "1985-03-12",
-                "raceEthnicity": "Hispanic",
-                "zipCode": "12345",
-                "is65orOlder": true,
-                "isVeteran": false
-            }
-        ],
-        "phoneNumber": "1234567890",
-        "driverLicense": "1234567",
-        "isNeedSupport": true,
-        "clientVaccineInfo": "clientVaccineInfoID",
-        "dateTime": "2010-01-12",
-        "organization": "organizationNameID",
-        "employeeID": "employeeID",
-        "ssn": "1234567890"
-    },
-    {
-        "_id": "a9db85f0-99d6-11ec-9fb4-f31fb6cb6866",
-        "clientID": 1,
-        "clientName": [
-            {
-                "firstName": "Debra",
-                "middleName": "Jones",
-                "lastName": "Smith",
-                "_id": "621ee0bbb728f6a33a71d4ac"
-            }
-        ],
-        "clientDemographics": [
-            {
-                "gender": "female",
-                "age": 20,
-                "birthday": "1995-02-02",
-                "raceEthnicity": "Hispanic",
-                "zipCode": "77099",
-                "numChildren": "0",
-                "is65orOlder": false,
-                "isVeteran": false,
-                "_id": "621ee0bbb728f6a33a71d4ad"
-            }
-        ],
-        "ssn": "123-45-6789",
-        "phoneNumber": "123-456-7890",
-        "driverLicense": "123456789",
-        "isNeedSupport": true,
-        "clientVaccineInfo": "null",
-        "dateTime": "null",
-        "organization": "Cool Org.",
-        "employeeID": "12345",
-        "__v": 0
-    },
-    {
-        "_id": "d0bad900-99d6-11ec-9fb4-f31fb6cb6866",
-        "clientID": 2,
-        "clientName": [
-            {
-                "firstName": "Susan",
-                "middleName": "Jay",
-                "lastName": "Hingeberry",
-                "_id": "621f1d8c3a00830b5eae3802"
-            }
-        ],
-        "clientDemographics": [
-            {
-                "gender": "female",
-                "age": 40,
-                "birthday": "1995-02-02",
-                "raceEthnicity": "Hispanic",
-                "zipCode": "77099",
-                "numChildren": "0",
-                "is65orOlder": false,
-                "isVeteran": false,
-                "_id": "621ee0fcb728f6a33a71d4b5"
-            }
-        ],
-        "ssn": "123-45-6789",
-        "phoneNumber": "123-456-7890",
-        "driverLicense": "123456789",
-        "isNeedSupport": false,
-        "clientVaccineInfo": "null",
-        "dateTime": "null",
-        "organization": "Cool Org.",
-        "employeeID": "12345",
-        "__v": 0
-    },
-    {
-        "_id": "6b1fcc70-9a50-11ec-9558-dfd4acf3ad5f",
-        "clientID": 999,
-        "clientName": [
-            {
-                "firstName": "Debra",
-                "middleName": "Jones",
-                "lastName": "Smith",
-                "_id": "621fad00295c1536e105a749"
-            }
-        ],
-        "clientDemographics": [
-            {
-                "gender": "female",
-                "age": 45,
-                "birthday": "1995-02-02",
-                "raceEthnicity": "Hispanic",
-                "zipCode": "77099",
-                "numChildren": "0",
-                "is65orOlder": false,
-                "isVeteran": false,
-                "_id": "621fad00295c1536e105a74a"
-            }
-        ],
-        "ssn": "123-45-6789",
-        "phoneNumber": "123-456-7890",
-        "driverLicense": "123456789",
-        "isNeedSupport": true,
-        "clientVaccineInfo": "null",
-        "dateTime": "null",
-        "organization": "Cool Org.",
-        "employeeID": "12345",
-        "__v": 0
-    }
+{
+"\_id": "62145a568b53b1352a47665f",
+"clientID": 123,
+"clientName": [
+{
+"_id": "621fad6e295c1536e105a751",
+"firstName": "First Name",
+"middleName": "Middle Name",
+"lastName": "Last Name"
+}
+],
+"clientDemographics": [
+{
+"_id": "621fad6e295c1536e105a752",
+"gender": "Gender",
+"age": 30,
+"birthday": "1985-03-12",
+"raceEthnicity": "Hispanic",
+"zipCode": "12345",
+"is65orOlder": true,
+"isVeteran": false
+}
+],
+"phoneNumber": "1234567890",
+"driverLicense": "1234567",
+"isNeedSupport": true,
+"clientVaccineInfo": "clientVaccineInfoID",
+"dateTime": "2010-01-12",
+"organization": "organizationNameID",
+"employeeID": "employeeID",
+"ssn": "1234567890"
+},
+{
+"\_id": "a9db85f0-99d6-11ec-9fb4-f31fb6cb6866",
+"clientID": 1,
+"clientName": [
+{
+"firstName": "Debra",
+"middleName": "Jones",
+"lastName": "Smith",
+"_id": "621ee0bbb728f6a33a71d4ac"
+}
+],
+"clientDemographics": [
+{
+"gender": "female",
+"age": 20,
+"birthday": "1995-02-02",
+"raceEthnicity": "Hispanic",
+"zipCode": "77099",
+"numChildren": "0",
+"is65orOlder": false,
+"isVeteran": false,
+"_id": "621ee0bbb728f6a33a71d4ad"
+}
+],
+"ssn": "123-45-6789",
+"phoneNumber": "123-456-7890",
+"driverLicense": "123456789",
+"isNeedSupport": true,
+"clientVaccineInfo": "null",
+"dateTime": "null",
+"organization": "Cool Org.",
+"employeeID": "12345",
+"**v": 0
+},
+{
+"\_id": "d0bad900-99d6-11ec-9fb4-f31fb6cb6866",
+"clientID": 2,
+"clientName": [
+{
+"firstName": "Susan",
+"middleName": "Jay",
+"lastName": "Hingeberry",
+"_id": "621f1d8c3a00830b5eae3802"
+}
+],
+"clientDemographics": [
+{
+"gender": "female",
+"age": 40,
+"birthday": "1995-02-02",
+"raceEthnicity": "Hispanic",
+"zipCode": "77099",
+"numChildren": "0",
+"is65orOlder": false,
+"isVeteran": false,
+"_id": "621ee0fcb728f6a33a71d4b5"
+}
+],
+"ssn": "123-45-6789",
+"phoneNumber": "123-456-7890",
+"driverLicense": "123456789",
+"isNeedSupport": false,
+"clientVaccineInfo": "null",
+"dateTime": "null",
+"organization": "Cool Org.",
+"employeeID": "12345",
+"**v": 0
+},
+{
+"\_id": "6b1fcc70-9a50-11ec-9558-dfd4acf3ad5f",
+"clientID": 999,
+"clientName": [
+{
+"firstName": "Debra",
+"middleName": "Jones",
+"lastName": "Smith",
+"_id": "621fad00295c1536e105a749"
+}
+],
+"clientDemographics": [
+{
+"gender": "female",
+"age": 45,
+"birthday": "1995-02-02",
+"raceEthnicity": "Hispanic",
+"zipCode": "77099",
+"numChildren": "0",
+"is65orOlder": false,
+"isVeteran": false,
+"_id": "621fad00295c1536e105a74a"
+}
+],
+"ssn": "123-45-6789",
+"phoneNumber": "123-456-7890",
+"driverLicense": "123456789",
+"isNeedSupport": true,
+"clientVaccineInfo": "null",
+"dateTime": "null",
+"organization": "Cool Org.",
+"employeeID": "12345",
+"\_\_v": 0
+}
 ]
+
 ```
 
 With the following fields:
@@ -918,40 +929,42 @@ Example Response:
 GET /clients/2 200 56.787 ms - 573
 
 ```
+
 {
-    "_id": "d0bad900-99d6-11ec-9fb4-f31fb6cb6866",
-    "clientID": 2,
-    "clientName": [
-        {
-            "firstName": "Susan",
-            "middleName": "Jay",
-            "lastName": "Hingeberry",
-            "_id": "621f1d8c3a00830b5eae3802"
-        }
-    ],
-    "clientDemographics": [
-        {
-            "gender": "female",
-            "age": 40,
-            "birthday": "1995-02-02",
-            "raceEthnicity": "Hispanic",
-            "zipCode": "77099",
-            "numChildren": "0",
-            "is65orOlder": false,
-            "isVeteran": false,
-            "_id": "621ee0fcb728f6a33a71d4b5"
-        }
-    ],
-    "ssn": "123-45-6789",
-    "phoneNumber": "123-456-7890",
-    "driverLicense": "123456789",
-    "isNeedSupport": false,
-    "clientVaccineInfo": "null",
-    "dateTime": "null",
-    "organization": "Cool Org.",
-    "employeeID": "12345",
-    "__v": 0
+"\_id": "d0bad900-99d6-11ec-9fb4-f31fb6cb6866",
+"clientID": 2,
+"clientName": [
+{
+"firstName": "Susan",
+"middleName": "Jay",
+"lastName": "Hingeberry",
+"_id": "621f1d8c3a00830b5eae3802"
 }
+],
+"clientDemographics": [
+{
+"gender": "female",
+"age": 40,
+"birthday": "1995-02-02",
+"raceEthnicity": "Hispanic",
+"zipCode": "77099",
+"numChildren": "0",
+"is65orOlder": false,
+"isVeteran": false,
+"_id": "621ee0fcb728f6a33a71d4b5"
+}
+],
+"ssn": "123-45-6789",
+"phoneNumber": "123-456-7890",
+"driverLicense": "123456789",
+"isNeedSupport": false,
+"clientVaccineInfo": "null",
+"dateTime": "null",
+"organization": "Cool Org.",
+"employeeID": "12345",
+"\_\_v": 0
+}
+
 ```
 
 Where Client Object is:
@@ -996,32 +1009,34 @@ POST [http://localhost:3000/clients](http://localhost:3000/employees)
 Example Body:
 
 ```
+
 {
 "clientID":"999",
 "clientName": [{
-    "firstName":"Debra",
-    "middleName":"Jones",
-    "lastName":"Smith"
-    }],
+"firstName":"Debra",
+"middleName":"Jones",
+"lastName":"Smith"
+}],
 "clientDemographics": [{
-    "gender":"female",
-    "age": 45,
-    "birthday":"1995-02-02",
-    "raceEthnicity": "Hispanic",
-    "zipCode":"77099",
-    "numChildren":"0",
-    "is65orOlder":0,
-    "isVeteran":0
-    }],
-    "ssn":"123-45-6789",
-    "phoneNumber":"123-456-7890",
-    "driverLicense":"123456789",
-    "isNeedSupport":1,
-    "clientVaccineInfo":"null",
-    "dateTime":"null",
-    "organization":"Cool Org.",
-    "employeeID":"12345"
+"gender":"female",
+"age": 45,
+"birthday":"1995-02-02",
+"raceEthnicity": "Hispanic",
+"zipCode":"77099",
+"numChildren":"0",
+"is65orOlder":0,
+"isVeteran":0
+}],
+"ssn":"123-45-6789",
+"phoneNumber":"123-456-7890",
+"driverLicense":"123456789",
+"isNeedSupport":1,
+"clientVaccineInfo":"null",
+"dateTime":"null",
+"organization":"Cool Org.",
+"employeeID":"12345"
 }
+
 ```
 
 Example Response:
@@ -1029,7 +1044,9 @@ Example Response:
 POST /clients 200 94.042 ms - 50
 
 ```
+
 new clients record added to the database via POST.
+
 ```
 
 Where Client Object is:
@@ -1081,9 +1098,11 @@ PUT http://localhost:3000/clients/2
 Example Body:
 
 ```
+
 {
 "isNeedSupport": false
 }
+
 ```
 
 Example Response:
@@ -1091,7 +1110,9 @@ Example Response:
 PUT /clients/2 200 203.591 ms - 32
 
 ```
+
 clients record is edited via PUT
+
 ```
 
 Where Client Object is:
@@ -1141,11 +1162,13 @@ Example Response:
 DELETE /clients/5 200 64.628 ms - 31
 
 ```
- {
-    "msg": {
-         "deletedCount":1
-    }
- } 
+
+{
+"msg": {
+"deletedCount":1
+}
+}
+
 ```
 
 The ClientID is what is used to select the Client that will be deleted:
@@ -1177,59 +1200,61 @@ Example Response:
 GET /families 200 77.749 ms - 817
 
 ```
+
 [
-    {
-        "_id": "b3e190b0-9915-11ec-9baa-455c9077d07c",
-        "clientID": 1,
-        "familyMember": [
-            {
-                "occupationOrGrade": "Contract",
-                "_id": "621edc46f15cd59cae7eba4e"
-            }
-        ],
-        "__v": 0
-    },
-    {
-        "_id": "12410410-99d4-11ec-86bc-7f149b464e6c",
-        "clientID": 2,
-        "familyMember": [
-            {
-                "lastName": "Smith2",
-                "firstName": "Johnny2",
-                "gender": "male",
-                "birthday": "1995-01-01",
-                "age": 20,
-                "relation": "cousin",
-                "race": "German",
-                "pregnant": false,
-                "whereWorkOrStudy": "Great Company",
-                "occupationOrGrade": "Contract",
-                "_id": "621edd39f15cd59cae7eba66"
-            }
-        ],
-        "__v": 0
-    },
-    {
-        "_id": "85240f60-99eb-11ec-b04c-93a3a0763b6e",
-        "clientID": 999,
-        "familyMember": [
-            {
-                "lastName": "Smith",
-                "firstName": "Johnny",
-                "gender": "male",
-                "birthday": "1995-01-01",
-                "age": 40,
-                "relation": "father",
-                "race": "Hispanic",
-                "pregnant": false,
-                "whereWorkOrStudy": "Cool Company",
-                "occupationOrGrade": "Field Worker",
-                "_id": "621f03b93a00830b5eae37c9"
-            }
-        ],
-        "__v": 0
-    }
+{
+"\_id": "b3e190b0-9915-11ec-9baa-455c9077d07c",
+"clientID": 1,
+"familyMember": [
+{
+"occupationOrGrade": "Contract",
+"_id": "621edc46f15cd59cae7eba4e"
+}
+],
+"**v": 0
+},
+{
+"\_id": "12410410-99d4-11ec-86bc-7f149b464e6c",
+"clientID": 2,
+"familyMember": [
+{
+"lastName": "Smith2",
+"firstName": "Johnny2",
+"gender": "male",
+"birthday": "1995-01-01",
+"age": 20,
+"relation": "cousin",
+"race": "German",
+"pregnant": false,
+"whereWorkOrStudy": "Great Company",
+"occupationOrGrade": "Contract",
+"_id": "621edd39f15cd59cae7eba66"
+}
+],
+"**v": 0
+},
+{
+"\_id": "85240f60-99eb-11ec-b04c-93a3a0763b6e",
+"clientID": 999,
+"familyMember": [
+{
+"lastName": "Smith",
+"firstName": "Johnny",
+"gender": "male",
+"birthday": "1995-01-01",
+"age": 40,
+"relation": "father",
+"race": "Hispanic",
+"pregnant": false,
+"whereWorkOrStudy": "Cool Company",
+"occupationOrGrade": "Field Worker",
+"_id": "621f03b93a00830b5eae37c9"
+}
+],
+"\_\_v": 0
+}
 ]
+
 ```
 
 With the following fields:
@@ -1270,26 +1295,28 @@ Example Response:
 GET /families/2 200 62.989 ms - 329
 
 ```
+
 {
-    "_id": "12410410-99d4-11ec-86bc-7f149b464e6c",
-    "clientID": 2,
-    "familyMember": [
-        {
-            "lastName": "Smith2",
-            "firstName": "Johnny2",
-            "gender": "male",
-            "birthday": "1995-01-01",
-            "age": 20,
-            "relation": "cousin",
-            "race": "German",
-            "pregnant": false,
-            "whereWorkOrStudy": "Great Company",
-            "occupationOrGrade": "Contract",
-            "_id": "621edd39f15cd59cae7eba66"
-        }
-    ],
-    "__v": 0
+"\_id": "12410410-99d4-11ec-86bc-7f149b464e6c",
+"clientID": 2,
+"familyMember": [
+{
+"lastName": "Smith2",
+"firstName": "Johnny2",
+"gender": "male",
+"birthday": "1995-01-01",
+"age": 20,
+"relation": "cousin",
+"race": "German",
+"pregnant": false,
+"whereWorkOrStudy": "Great Company",
+"occupationOrGrade": "Contract",
+"_id": "621edd39f15cd59cae7eba66"
 }
+],
+"\_\_v": 0
+}
+
 ```
 
 Where Family Object is:
@@ -1324,21 +1351,23 @@ POST [http://localhost:3000/families](http://localhost:3000/employees)
 Example Body:
 
 ```
+
 {
 "clientID":"888",
 "familyMember": [{
-    "lastName":"Smith",
-    "firstName":"Johnny",
-    "gender":"male",
-    "birthday":"1995-01-01",
-    "age": 40,
-    "relation":"father",
-    "race":"Hispanic",
-    "pregnant":"0",
-    "whereWorkOrStudy":"Cool Company",
-    "occupationOrGrade":"Field Worker"
-    }]
+"lastName":"Smith",
+"firstName":"Johnny",
+"gender":"male",
+"birthday":"1995-01-01",
+"age": 40,
+"relation":"father",
+"race":"Hispanic",
+"pregnant":"0",
+"whereWorkOrStudy":"Cool Company",
+"occupationOrGrade":"Field Worker"
+}]
 }
+
 ```
 
 Example Response:
@@ -1346,7 +1375,9 @@ Example Response:
 POST /families 200 75.876 ms - 51
 
 ```
+
 new families record added to the database via POST.
+
 ```
 
 Where Family Object is:
@@ -1390,20 +1421,22 @@ Example Body:
 All data for a family member is embedded in an object array. For this reason, we must include all fields in familyMember, regardless if it is the desired field to be edited. Including only desired field will result in the entire embedded data to be entirely replaced by the edited field, so it is important to include all embedded fields in your BODY.
 
 ```
+
 {
 "familyMember": [{
-    "lastName":"Smith2",
-    "firstName":"Johnny2",
-    "gender":"male",
-    "birthday":"1995-01-01",
-    "age": 20,
-    "relation":"cousin",
-    "race":"German",
-    "pregnant":"0",
-    "whereWorkOrStudy":"Great Company",
-    "occupationOrGrade":"Contract"
-    }]
+"lastName":"Smith2",
+"firstName":"Johnny2",
+"gender":"male",
+"birthday":"1995-01-01",
+"age": 20,
+"relation":"cousin",
+"race":"German",
+"pregnant":"0",
+"whereWorkOrStudy":"Great Company",
+"occupationOrGrade":"Contract"
+}]
 }
+
 ```
 
 Example Response:
@@ -1411,7 +1444,9 @@ Example Response:
 PUT /families/888 200 66.971 ms - 33
 
 ```
+
 families record is edited via PUT
+
 ```
 
 Where Family Object is
@@ -1453,11 +1488,13 @@ DEL http://localhost:3000/families/999
 DELETE /families/999 200 65.163 ms - 26
 
 ```
- {
-    "msg": {
-         "deletedCount":1
-    }
- } 
+
+{
+"msg": {
+"deletedCount":1
+}
+}
+
 ```
 
 The ClientID is what is used to select the family member that will be deleted:
@@ -1489,51 +1526,53 @@ Example Response:
 GET /education 200 69.874 ms - 778
 
 ```
+
 [
-    {
-        "_id": "62144bb31923d7267b84ea99",
-        "clientID": 123,
-        "hasAttended": true,
-        "school": "University of Houston",
-        "lastGrade": "12",
-        "hasGraduated": true,
-        "degree": "Bachelors",
-        "certification": "Cybersecurity"
-    },
-    {
-        "_id": "4dd03e80-9996-11ec-b10e-f93ccc92a66d",
-        "clientID": 123,
-        "hasAttended": true,
-        "school": "Program",
-        "lastGrade": "3.7",
-        "hasGraduated": true,
-        "degree": "B.S in Biology",
-        "certification": "none",
-        "__v": 0
-    },
-    {
-        "_id": "f211ebe0-99d4-11ec-86bc-7f149b464e6c",
-        "clientID": 1,
-        "hasAttended": true,
-        "school": "Program",
-        "lastGrade": "3.7",
-        "hasGraduated": true,
-        "degree": "B.S in Biology",
-        "certification": "none",
-        "__v": 0
-    },
-    {
-        "_id": "f4783d80-99d4-11ec-86bc-7f149b464e6c",
-        "clientID": 2,
-        "hasAttended": true,
-        "school": "Program",
-        "lastGrade": "3.7",
-        "hasGraduated": true,
-        "degree": "B.S in Biology",
-        "certification": "Wildlife",
-        "__v": 0
-    }
+{
+"_id": "62144bb31923d7267b84ea99",
+"clientID": 123,
+"hasAttended": true,
+"school": "University of Houston",
+"lastGrade": "12",
+"hasGraduated": true,
+"degree": "Bachelors",
+"certification": "Cybersecurity"
+},
+{
+"_id": "4dd03e80-9996-11ec-b10e-f93ccc92a66d",
+"clientID": 123,
+"hasAttended": true,
+"school": "Program",
+"lastGrade": "3.7",
+"hasGraduated": true,
+"degree": "B.S in Biology",
+"certification": "none",
+"__v": 0
+},
+{
+"_id": "f211ebe0-99d4-11ec-86bc-7f149b464e6c",
+"clientID": 1,
+"hasAttended": true,
+"school": "Program",
+"lastGrade": "3.7",
+"hasGraduated": true,
+"degree": "B.S in Biology",
+"certification": "none",
+"__v": 0
+},
+{
+"_id": "f4783d80-99d4-11ec-86bc-7f149b464e6c",
+"clientID": 2,
+"hasAttended": true,
+"school": "Program",
+"lastGrade": "3.7",
+"hasGraduated": true,
+"degree": "B.S in Biology",
+"certification": "Wildlife",
+"__v": 0
+}
 ]
+
 ```
 
 With the following fields:
@@ -1570,17 +1609,19 @@ Example Response:
 GET /education/2 200 60.671 ms - 196
 
 ```
+
 {
-    "_id": "f4783d80-99d4-11ec-86bc-7f149b464e6c",
-    "clientID": 2,
-    "hasAttended": true,
-    "school": "Program",
-    "lastGrade": "3.7",
-    "hasGraduated": true,
-    "degree": "B.S in Biology",
-    "certification": "Wildlife",
-    "__v": 0
+"\_id": "f4783d80-99d4-11ec-86bc-7f149b464e6c",
+"clientID": 2,
+"hasAttended": true,
+"school": "Program",
+"lastGrade": "3.7",
+"hasGraduated": true,
+"degree": "B.S in Biology",
+"certification": "Wildlife",
+"\_\_v": 0
 }
+
 ```
 
 Where Education Document is:
@@ -1611,6 +1652,7 @@ POST [http://localhost:3000/education](http://localhost:3000/employees)
 Example Body:
 
 ```
+
 {
 "clientID":"888",
 "hasAttended": 1,
@@ -1620,6 +1662,7 @@ Example Body:
 "degree":"B.S in Biology",
 "certification": "none"
 }
+
 ```
 
 Example Response:
@@ -1627,7 +1670,9 @@ Example Response:
 POST /education 200 108.194 ms - 52
 
 ```
+
 new education record added to the database via POST.
+
 ```
 
 Where Education Object is:
@@ -1665,9 +1710,11 @@ PUT [http://localhost:3000/education/888](http://localhost:3000/clients/2)
 Example Body:
 
 ```
+
 {
-    "certification":"Wildlife"
+"certification":"Wildlife"
 }
+
 ```
 
 Example Response:
@@ -1675,7 +1722,9 @@ Example Response:
 PUT /education/888 200 66.660 ms - 34
 
 ```
+
 education record is edited via PUT
+
 ```
 
 Where Education Object is:
@@ -1713,11 +1762,13 @@ DEL [http://localhost:3000/education/999](http://localhost:3000/families/999)
 DELETE /education/999 200 65.163 ms - 26
 
 ```
- {
-    "msg": {
-         "deletedCount":1
-    }
- } 
+
+{
+"msg": {
+"deletedCount":1
+}
+}
+
 ```
 
 The ClientID is what is used to select the Client that will be deleted:
@@ -1748,28 +1799,30 @@ Example Response:
 GET /health 200 63.644 ms - 407
 
 ```
+
 [
-    {
-        "_id": "4232cb50-99dd-11ec-a6d2-bba274c57248",
-        "clientID": 1,
-        "hasHealthInsurance": true,
-        "healthInsuranceProgram": "Program",
-        "hasFoodStamps": true,
-        "foodStampsAmount": 1000,
-        "foodStampsReason": "in need",
-        "__v": 0
-    },
-    {
-        "_id": "44ab4560-99dd-11ec-a6d2-bba274c57248",
-        "clientID": 2,
-        "hasHealthInsurance": true,
-        "healthInsuranceProgram": "Program",
-        "hasFoodStamps": true,
-        "foodStampsAmount": 1000,
-        "foodStampsReason": "in need",
-        "__v": 0
-    }
+{
+"_id": "4232cb50-99dd-11ec-a6d2-bba274c57248",
+"clientID": 1,
+"hasHealthInsurance": true,
+"healthInsuranceProgram": "Program",
+"hasFoodStamps": true,
+"foodStampsAmount": 1000,
+"foodStampsReason": "in need",
+"__v": 0
+},
+{
+"_id": "44ab4560-99dd-11ec-a6d2-bba274c57248",
+"clientID": 2,
+"hasHealthInsurance": true,
+"healthInsuranceProgram": "Program",
+"hasFoodStamps": true,
+"foodStampsAmount": 1000,
+"foodStampsReason": "in need",
+"__v": 0
+}
 ]
+
 ```
 
 With the following fields:
@@ -1805,16 +1858,18 @@ Example Response:
 GET /health/2 200 63.795 ms - 202
 
 ```
+
 {
-    "_id": "44ab4560-99dd-11ec-a6d2-bba274c57248",
-    "clientID": 2,
-    "hasHealthInsurance": true,
-    "healthInsuranceProgram": "Program",
-    "hasFoodStamps": true,
-    "foodStampsAmount": 1000,
-    "foodStampsReason": "in need",
-    "__v": 0
+"\_id": "44ab4560-99dd-11ec-a6d2-bba274c57248",
+"clientID": 2,
+"hasHealthInsurance": true,
+"healthInsuranceProgram": "Program",
+"hasFoodStamps": true,
+"foodStampsAmount": 1000,
+"foodStampsReason": "in need",
+"\_\_v": 0
 }
+
 ```
 
 Where Health Document is:
@@ -1844,6 +1899,7 @@ POST [http://localhost:3000/health](http://localhost:3000/employees)
 Example Body:
 
 ```
+
 {
 "clientID":"888”,
 "hasHealthInsurance": 1,
@@ -1852,6 +1908,7 @@ Example Body:
 "foodStampsAmount":1000,
 "foodStampsReason":"in need"
 }
+
 ```
 
 Example Response:
@@ -1859,7 +1916,9 @@ Example Response:
 POST /health 200 96.582 ms - 49
 
 ```
+
 new health record added to the database via POST.
+
 ```
 
 Where Health Object is:
@@ -1896,9 +1955,11 @@ PUT [http://localhost:3000/health/888](http://localhost:3000/clients/2)
 Example Body:
 
 ```
+
 {
-    "foodStampsAmount":777000
+"foodStampsAmount":777000
 }
+
 ```
 
 Example Response:
@@ -1906,7 +1967,9 @@ Example Response:
 PUT /health/888 200 66.660 ms - 34
 
 ```
+
 education record is edited via PUT
+
 ```
 
 Where Health Object is:
@@ -1943,11 +2006,13 @@ DEL [http://localhost:3000/health/999](http://localhost:3000/families/999)
 DELETE /health/999 200 65.163 ms - 26
 
 ```
- {
-    "msg": {
-         "deletedCount":1
-    }
- } 
+
+{
+"msg": {
+"deletedCount":1
+}
+}
+
 ```
 
 The ClientID is what is used to select the Client that will be deleted:
@@ -1962,7 +2027,7 @@ Possible errors:
 | --- | --- |
 | 404 Cannot DELETE/ | URL may be missing one or several characters. |
 | SyntaxError | Body payload may be missing one or several characters. |
-  
+
   ## 2.7. Residences
 
 ### 2.7.1 GET All Residences
@@ -1978,44 +2043,46 @@ Example Response:
 GET /residences 200 65.692 ms - 619
 
 ```
+
 [
-    {
-        "_id": "62144f42c1de9d07f2742f82",
-        "clientID": 123,
-        "address": "7676 Holly Hall St. ",
-        "city": "Houston",
-        "state": "TX",
-        "county": "Harris",
-        "zip": 77054,
-        "totalRent": 1470,
-        "timeofResidence": {
-            "residenceYear": "5",
-            "residenceMonth": "3"
-        },
-        "livingArrangement": "alone",
-        "hasUtilities": true,
-        "isSubsidized": true,
-        "isSingleParent": false
-    },
-    {
-        "_id": "6220075c2012b3b414c445ac",
-        "clientID": 456,
-        "address": "7865 Calhoun Rd",
-        "city": "Houston",
-        "state": "TX",
-        "county": "Harris",
-        "zip": 77204,
-        "totalRent": 21345,
-        "timeofResidence": {
-            "residenceYear": 7,
-            "residenceMonth": 8
-        },
-        "livingArrangement": "family",
-        "hasUtillities": true,
-        "isSubsidized": true,
-        "isSingleParent": false
-    }
+{
+"_id": "62144f42c1de9d07f2742f82",
+"clientID": 123,
+"address": "7676 Holly Hall St. ",
+"city": "Houston",
+"state": "TX",
+"county": "Harris",
+"zip": 77054,
+"totalRent": 1470,
+"timeofResidence": {
+"residenceYear": "5",
+"residenceMonth": "3"
+},
+"livingArrangement": "alone",
+"hasUtilities": true,
+"isSubsidized": true,
+"isSingleParent": false
+},
+{
+"_id": "6220075c2012b3b414c445ac",
+"clientID": 456,
+"address": "7865 Calhoun Rd",
+"city": "Houston",
+"state": "TX",
+"county": "Harris",
+"zip": 77204,
+"totalRent": 21345,
+"timeofResidence": {
+"residenceYear": 7,
+"residenceMonth": 8
+},
+"livingArrangement": "family",
+"hasUtillities": true,
+"isSubsidized": true,
+"isSingleParent": false
+}
 ]
+
 ```
 
 With the following fields:
@@ -2059,24 +2126,26 @@ Example Response:
 GET /residences/456 200 73.399 ms - 305
 
 ```
+
 {
-    "_id": "6220075c2012b3b414c445ac",
-    "clientID": 456,
-    "address": "7865 Calhoun Rd",
-    "city": "Houston",
-    "state": "TX",
-    "county": "Harris",
-    "zip": 77204,
-    "totalRent": 21345,
-    "timeofResidence": {
-        "residenceYear": 7,
-        "residenceMonth": 8
-    },
-    "livingArrangement": "family",
-    "hasUtillities": true,
-    "isSubsidized": true,
-    "isSingleParent": false
+"\_id": "6220075c2012b3b414c445ac",
+"clientID": 456,
+"address": "7865 Calhoun Rd",
+"city": "Houston",
+"state": "TX",
+"county": "Harris",
+"zip": 77204,
+"totalRent": 21345,
+"timeofResidence": {
+"residenceYear": 7,
+"residenceMonth": 8
+},
+"livingArrangement": "family",
+"hasUtillities": true,
+"isSubsidized": true,
+"isSingleParent": false
 }
+
 ```
 
 Where Residences Document is:
@@ -2116,22 +2185,24 @@ Example Body:
 Adding a new Residence where clientID=999:
 
 ```
+
 {
-    "clientID": 999,
-    "address": "7865 Calhoun Rd",
-    "city": "Houston",
-    "state": "TX",
-    "county": "Harris",
-    "zip": 77204,
-    "totalRent": 21345,
-    "timeOfResidence": "5",
-    "residenceYear": 2007,
-    "residenceMonth": 8,
-    "livingArrangemets": "family",
-    "hasUtilities": true,
-    "isSubsidized": true,
-    "isSingleParent": false
+"clientID": 999,
+"address": "7865 Calhoun Rd",
+"city": "Houston",
+"state": "TX",
+"county": "Harris",
+"zip": 77204,
+"totalRent": 21345,
+"timeOfResidence": "5",
+"residenceYear": 2007,
+"residenceMonth": 8,
+"livingArrangemets": "family",
+"hasUtilities": true,
+"isSubsidized": true,
+"isSingleParent": false
 }
+
 ```
 
 Example Response:
@@ -2139,7 +2210,9 @@ Example Response:
 POST /residences 200 141.570 ms - 27
 
 ```
+
 Residences have been added.
+
 ```
 
 Where Residences Object is:
@@ -2184,9 +2257,11 @@ PUT [http://localhost:3000/residences/888](http://localhost:3000/clients/2)
 Example Body:
 
 ```
+
 {
 "livingArrangemets": "State Housing"
 }
+
 ```
 
 Example Response:
@@ -2194,7 +2269,9 @@ Example Response:
 PUT /residences/999 200 74.701 ms - 25
 
 ```
+
 residences edited via PUT
+
 ```
 
 Where Residences Object is:
@@ -2225,11 +2302,13 @@ DEL [http://localhost:3000/residences/999](http://localhost:3000/families/999)
 DELETE /residences/999 200 65.163 ms - 26
 
 ```
- {
-    "msg": {
-         "deletedCount":1
-    }
- } 
+
+{
+"msg": {
+"deletedCount":1
+}
+}
+
 ```
 
 The ClientID is what is used to select the Document that will be deleted:
@@ -2244,3 +2323,4 @@ Possible errors:
 | --- | --- |
 | 404 Cannot DELETE/ | URL may be missing one or several characters. |
 | SyntaxError | Body payload may be missing one or several characters. |
+```
