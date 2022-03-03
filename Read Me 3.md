@@ -1,4 +1,4 @@
-GET All Incomes
+<h3>GET All Incomes</h3>
 GET ALL Incomes: Getting income information
 GET http://localhost:3000/incomes
 
@@ -62,8 +62,32 @@ Possible errors
 | :---           |          ---: |
 | 404      | The Url is incorrect       |
 
+<h3>2.1.3 POST Adding Income</h3>
+    Adding Income
+  
+  POST http://localhost:3000/incomes
+  
+  [
+    {
+        "_id": "7f898u9j98j9876",
+        "clientID": 190,
+        "isHeadofHousehold": true,
+        "monthlyIncome": 677444,
+        "spousalSupport": 09766,
+        "childSupport": 36599,
+        "workComp": 35647,
+        "incomeFederalAid": {
+            "tanf": 097754,
+            "ssi": 34799,
+            "unemployment": 1652,
+            "socialSecurity": 5673453
+        },
+        "otherIncome": 43288
+    }
+]
 
-GET all Residences
+
+<h3>GET all Residences</h3>
 GET ALL Residences: Getting information for all residences
 GET http://localhost:3000/residences
 
@@ -131,7 +155,7 @@ Possible errors
 | :---           |          ---: |
 | 404      | The Url is incorrect       |
 
-GET all Client Vaccine Information
+<h3>GET all Client Vaccine Information</h3>
 GET ALL Client Vaccine Information: Getting vaccine information for all clients
 GET http://localhost:3000/clientvaccineinfo
 
