@@ -20,7 +20,7 @@ residencesRouter.get('/', (req, res, next) => {
 // GET a specific residence  info based on clientId
 residencesRouter.get('/:id', (req, res, next) => {
   const id = req.params.id;
-  residencesModel.findOne({ clientId: id }, (error, data) => {
+  residencesModel.findOne({ clientID: id }, (error, data) => {
     if (error) {
       return next(error);
     } else if (data === null) {
@@ -45,7 +45,7 @@ residencesRouter.post('/', (req, res, next) => {
 // Update residences with residence id
 residencesRouter.put('/:id', (req, res, next) => {
     residencesModel.findOneAndUpdate(
-    { residencesId: req.params.id },
+    { residencesID: req.params.id },
     {
       $set: req.body,
     },
