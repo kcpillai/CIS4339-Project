@@ -2342,7 +2342,6 @@ Possible errors:
 | --- | --- |
 | 404 Cannot DELETE/ | URL may be missing one or several characters. |
 | SyntaxError | Body payload may be missing one or several characters. |
-```
   
   
   
