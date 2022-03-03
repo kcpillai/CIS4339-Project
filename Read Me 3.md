@@ -4,7 +4,9 @@ GET http://localhost:3000/incomes
 
 Example Response: /incomes 200 320.389 ms - 269
 
-[
+Example Body:
+
+
     {
         "_id": "62144cc4c1de9d07f2742f7f",
         "clientID": 123,
@@ -38,7 +40,7 @@ Example Response: /incomes 200 320.389 ms - 269
         },
         "otherIncome": 78978
     }
-]
+
 
 | Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
@@ -62,12 +64,13 @@ Possible errors
 | :---           |          ---: |
 | 404      | The Url is incorrect       |
 
-<h3>2.1.3 POST Adding Income</h3>
+<h3>POST Adding Income</h3>
     Adding Income
   
   POST http://localhost:3000/incomes
   
-  [
+  Example Body:
+  
     {
         "_id": "7f898u9j98j9876",
         "clientID": 190,
@@ -84,16 +87,82 @@ Possible errors
         },
         "otherIncome": 43288
     }
+
+
+
+<h3>PUT Income</h3>
+Edit Client's information using Client ID
+PUT http://localhost:3000/incomes/190
+
+Example Response: PUT /incomes/190 200 73.654 ms - 21
+
+income edited via PUT
+
+  Example Body:
+[
+    {
+        "otherIncome": 98798
+    }
 ]
 
+| Field      | Type | Description     |
+| :---        |    :----:   |          ---: |
+| _id      | String       | Auto Generated uuid   |
+| clientId   | Number   | The client id number     |
+| isHeadofHousehold   | String   | States if client is the head of household    |
+| monthlyIncome   | Number   | Client's Monthly Income     |
+| spousalSupport   | Number   | Support from Spouse     |
+| childSupport   | Number   | Child Support    |
+| workComp   | Number   | Workers Compensation    |
+| incomeFederalAid   | Number   | Federal Aid Income     |
+| tanf  | Number   | Temporary Assistance for Needy Families      |
+| ssi   | Number   | Social Security Administration    |
+| unemployment   | Number   | Unemployment Number    |
+| socialSecurity  | Number   | Social Security Number |
+| otherIncome  | Number    |  Any other income info |
 
-GET all Residences
+Possible errors
+     
+| Error Code       | Description     |
+| :---           |          ---: |
+| Client does not exist      | Invalid ID       |
+
+<h3>DELETE Income</h3>
+Delete a category from Income
+DELETE http://localhost:3000/incomes/:id
+
+Example Response:
+DELETE /incomes/230 200 79.789 ms - 21
+
+income is deleted.
+
+{
+        "msg": {
+             "deletedCount":1
+        }
+     }
+     
+     
+| Field      | Type | Description     |
+| :---        |    :----:   |          ---: |
+| clientId   | Number   | clients ID    |
+  
+     
+Possible errors
+     
+| Error Code       | Description     |
+| :---           |          ---: |
+| No Record      | client's id does not exist      |
+
+
+    
+<h3>GET all Residences</h3>
 GET ALL Residences: Getting information for all residences
 GET http://localhost:3000/residences
 
 Example Response: /GET /residences 200 51.551 ms - 619
 
-[
+
     {
         "_id": "62144f42c1de9d07f2742f82",
         "clientID": 123,
@@ -130,7 +199,7 @@ Example Response: /GET /residences 200 51.551 ms - 619
         "isSubsidized": true,
         "isSingleParent": false
     }
-]
+
 
 | Field      | Type | Description     |
 | :---        |    :----:   |          ---: |
@@ -155,13 +224,13 @@ Possible errors
 | :---           |          ---: |
 | 404      | The Url is incorrect       |
 
-GET all Client Vaccine Information
+<h3>GET all Client Vaccine Information</h3>
 GET ALL Client Vaccine Information: Getting vaccine information for all clients
 GET http://localhost:3000/clientvaccineinfo
 
 Example Response: /clientvaccineinfo 200 50.833 ms - 283
 
-[
+
     {
         "_id": "62144b4ac1de9d07f2742f72",
         "clientID": 123,
@@ -176,7 +245,7 @@ Example Response: /clientvaccineinfo 200 50.833 ms - 283
         "isVaccinated": false,
         "vaccinePreferance": "does not want to be vaccinated"
     }
-]
+
 
 | Field      | Type | Description     |
 | :---        |    :----:   |          ---: |

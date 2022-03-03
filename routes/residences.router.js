@@ -20,7 +20,7 @@ residencesRouter.get('/', (req, res, next) => {
 // GET a specific residence  info based on clientId
 residencesRouter.get('/:id', (req, res, next) => {
   const id = req.params.id;
-  residencesModel.findOne({ clientId: id }, (error, data) => {
+  residencesModel.findOne({ clientID: id }, (error, data) => {
     if (error) {
       return next(error);
     } else if (data === null) {
@@ -43,9 +43,9 @@ residencesRouter.post('/', (req, res, next) => {
 });
 
 // Update residences with residence id
-residencesRouter.put('/residences/:id', (req, res, next) => {
-  residencesModel.findOneAndUpdate(
-    { residencesId: req.params.id },
+residencesRouter.put('/:id', (req, res, next) => {
+    residencesModel.findOneAndUpdate(
+    { residencesID: req.params.id },
     {
       $set: req.body,
     },
@@ -61,7 +61,7 @@ residencesRouter.put('/residences/:id', (req, res, next) => {
 });
 
 // DELETE residence records given id
-residencesRouter.delete('/residences/:id', (req, res, next) => {
+residencesRouter.delete('/:id', (req, res, next) => {
   //mongoose deletes record based off of document id
   residencesModel.findOneAndRemove(
     { residencesId: req.params.id },
