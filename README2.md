@@ -349,7 +349,7 @@ Possible errors:
 
 ### 2.4.4 PUT Updating Existing Client
 
-## Updating one Client in Clients Collection with clientiD
+## Updating one Client in Clients Collection with clientID
 
 PUT [http://localhost:3000/clients/:id](http://localhost:3000/employees/:id)
 
@@ -742,6 +742,266 @@ DELETE /families/999 200 65.163 ms - 26
 ```
 
 The ClientID is what is used to select the family member that will be deleted:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| clientID | Number | Unique identifier for the client. |
+
+Possible errors:
+
+| Error Code | Description |
+| --- | --- |
+| 404 Cannot DELETE/ | URL may be missing one or several characters. |
+| SyntaxError | Body payload may be missing one or several characters. |
+
+
+## 2.6. Education
+
+### 2.6.1 GET All Education
+
+## GET ALL Education: Getting All Education Collection
+
+Fetch all Documents from Education Collection:
+
+GET [http://localhost:3000/education](http://localhost:3000/employees)
+
+Example Response:
+
+GET /education 200 69.874 ms - 778
+
+```
+[
+    {
+        "_id": "62144bb31923d7267b84ea99",
+        "clientID": 123,
+        "hasAttended": true,
+        "school": "University of Houston",
+        "lastGrade": "12",
+        "hasGraduated": true,
+        "degree": "Bachelors",
+        "certification": "Cybersecurity"
+    },
+    {
+        "_id": "4dd03e80-9996-11ec-b10e-f93ccc92a66d",
+        "clientID": 123,
+        "hasAttended": true,
+        "school": "Program",
+        "lastGrade": "3.7",
+        "hasGraduated": true,
+        "degree": "B.S in Biology",
+        "certification": "none",
+        "__v": 0
+    },
+    {
+        "_id": "f211ebe0-99d4-11ec-86bc-7f149b464e6c",
+        "clientID": 1,
+        "hasAttended": true,
+        "school": "Program",
+        "lastGrade": "3.7",
+        "hasGraduated": true,
+        "degree": "B.S in Biology",
+        "certification": "none",
+        "__v": 0
+    },
+    {
+        "_id": "f4783d80-99d4-11ec-86bc-7f149b464e6c",
+        "clientID": 2,
+        "hasAttended": true,
+        "school": "Program",
+        "lastGrade": "3.7",
+        "hasGraduated": true,
+        "degree": "B.S in Biology",
+        "certification": "Wildlife",
+        "__v": 0
+    }
+]
+```
+
+With the following fields:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| __id | String | auto-generated uuid |
+| clientID | Number | Unique identifier for the client that the family member belongs to. |
+| hasAttended | Boolean | Indicates whether the client has attended school or not. |
+| School | String | The school the client has attended most recently. |
+| lastGrade | String | The client's current grade earned in education. |
+| hasGraduated | Boolean | Indicates whether the client has graduated. |
+| Degree | String | The degree earned by the client. |
+| Certification | String | The certification earned by the client. |
+
+Possible Errors:
+
+| Error Code | Description |
+| --- | --- |
+| 404 Cannot GET / | URL may be missing one or several characters. |
+
+### 2.6.2 GET One Education Document
+
+## GET ONE Education Document With clientID
+
+GET [http://localhost:3000/education/:id](http://localhost:3000/employees/:id)
+
+**Example: Getting documents where clientID=2:**
+
+GET [http://localhost:3000/education/2](http://localhost:3000/employees/:id)
+
+Example Response:
+
+GET /education/2 200 60.671 ms - 196
+
+```
+{
+    "_id": "f4783d80-99d4-11ec-86bc-7f149b464e6c",
+    "clientID": 2,
+    "hasAttended": true,
+    "school": "Program",
+    "lastGrade": "3.7",
+    "hasGraduated": true,
+    "degree": "B.S in Biology",
+    "certification": "Wildlife",
+    "__v": 0
+}
+```
+
+Where Education Document is:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| __id | String | auto-generated uuid |
+| clientID | Number | Unique identifier for the client that the family member belongs to. |
+| hasAttended | Boolean | Indicates whether the client has attended school or not. |
+| School | String | The school the client has attended most recently. |
+| lastGrade | String | The client's current grade earned in education. |
+| hasGraduated | Boolean | Indicates whether the client has graduated. |
+| Degree | String | The degree earned by the client. |
+| Certification | String | The certification earned by the client. |
+
+Possible errors:
+
+| Error Code | Description |
+| --- | --- |
+| 404 Cannot GET / | URL may be missing one or several characters. |
+
+### 2.6.3 POST Adding One Education Document
+
+## Inserting New Education Document
+
+POST [http://localhost:3000/education](http://localhost:3000/employees)
+
+Example Body:
+
+```
+{
+"clientID":"888",
+"hasAttended": 1,
+"school":"Program",
+"lastGrade":"3.7",
+"hasGraduated":1,
+"degree":"B.S in Biology",
+"certification": "none"
+}
+```
+
+Example Response:
+
+POST /education 200 108.194 ms - 52
+
+```
+new education record added to the database via POST.
+```
+
+Where Education Object is:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| __id | String | auto-generated uuid |
+| clientID | Number | Unique identifier for the client that the family member belongs to. |
+| hasAttended | Boolean | Indicates whether the client has attended school or not. |
+| School | String | The school the client has attended most recently. |
+| lastGrade | String | The client's current grade earned in education. |
+| hasGraduated | Boolean | Indicates whether the client has graduated. |
+| Degree | String | The degree earned by the client. |
+| Certification | String | The certification earned by the client. |
+
+Possible errors:
+
+| Error Code | Description |
+| --- | --- |
+| 404 Cannot POST / | URL may be missing one or several characters. |
+| SyntaxError | Body payload may be missing one or several characters. |
+
+### 2.6.4 PUT - Updating Existing Education Document
+
+## Updating one Education in Education Collection with clientiD
+
+PUT [http://localhost:3000/education/:id](http://localhost:3000/employees/:id)
+
+Example Input:
+
+Editing a Document with clientID = 888:
+
+PUT [http://localhost:3000/education/888](http://localhost:3000/clients/2)
+
+Example Body:
+
+```
+{
+    "certification":"Wildlife"
+}
+```
+
+Example Response:
+
+PUT /education/888 200 66.660 ms - 34
+
+```
+education record is edited via PUT
+```
+
+Where Education Object is:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| __id | String | auto-generated uuid |
+| clientID | Number | Unique identifier for the client that the family member belongs to. |
+| hasAttended | Boolean | Indicates whether the client has attended school or not. |
+| School | String | The school the client has attended most recently. |
+| lastGrade | String | The client's current grade earned in education. |
+| hasGraduated | Boolean | Indicates whether the client has graduated. |
+| Degree | String | The degree earned by the client. |
+| Certification | String | The certification earned by the client. |
+
+Possible errors:
+
+| Error Code | Description |
+| --- | --- |
+| 404 Cannot PUT / | URL may be missing one or several characters. |
+| SyntaxError | Body payload may be missing one or several characters. |
+
+### 2.6.5 DELETE Deleting One Education Document
+
+## Deleting one Education Document by clientID
+
+DELETE [http://localhost:3000/education/:id](http://localhost:3000/employees/:id)
+
+**Example: Deleting a education document with clientID=999:**
+
+DEL [http://localhost:3000/education/999](http://localhost:3000/families/999)
+
+**Example Response:**
+
+DELETE /education/999 200 65.163 ms - 26
+
+```
+ {
+    "msg": {
+         "deletedCount":1
+    }
+ } 
+```
+
+The ClientID is what is used to select the Client that will be deleted:
 
 | Field | Type | Description |
 | --- | --- | --- |
