@@ -413,10 +413,13 @@ Possible errors:
 
 ## Deleting one Client and their information from the Clients collection
 
-DELETE [http://localhost:3000/Clients/:id](http://localhost:3000/employees/:id)
+DELETE [http://localhost:3000/clients/:id]
+
+Example Input: deleting client where clientID=5:
+ [http://localhost:3000/clients/5]
 
 Example Response:
-DELETE /Clients/5 200 64.628 ms - 31
+DELETE /clients/5 200 64.628 ms - 31
 
 ```
  {
