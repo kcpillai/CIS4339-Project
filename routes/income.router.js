@@ -28,7 +28,7 @@ incomeRouter.post('/', (req, res, next) => {
 
 
 // Update income with income id
-incomeRouter.put('/income/:id', (req, res, next) => {
+incomeRouter.put('/:id', (req, res, next) => {
     incomeModel.findOneAndUpdate(
     { incomeId: req.params.id },
     {
@@ -46,7 +46,7 @@ incomeRouter.put('/income/:id', (req, res, next) => {
 });
 
 // DELETE income given id
-incomeRouter.delete('/income/:id', (req, res, next) => {
+incomeRouter.delete('/:id', (req, res, next) => {
   //mongoose deletes record based off of document id
   incomeModel.findOneAndRemove(
     { incomeId: req.params.id },
