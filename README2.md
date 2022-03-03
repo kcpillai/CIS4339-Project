@@ -1013,3 +1013,233 @@ Possible errors:
 | --- | --- |
 | 404 Cannot DELETE/ | URL may be missing one or several characters. |
 | SyntaxError | Body payload may be missing one or several characters. |
+
+## 2.7. Health
+
+### 2.7.1 GET All Health
+
+## GET ALL Health: Getting All Health Collection
+
+Fetch all Documents from Health Collection:
+
+GET [http://localhost:3000/health](http://localhost:3000/employees)
+
+Example Response:
+
+GET /health 200 63.644 ms - 407
+
+```
+[
+    {
+        "_id": "4232cb50-99dd-11ec-a6d2-bba274c57248",
+        "clientID": 1,
+        "hasHealthInsurance": true,
+        "healthInsuranceProgram": "Program",
+        "hasFoodStamps": true,
+        "foodStampsAmount": 1000,
+        "foodStampsReason": "in need",
+        "__v": 0
+    },
+    {
+        "_id": "44ab4560-99dd-11ec-a6d2-bba274c57248",
+        "clientID": 2,
+        "hasHealthInsurance": true,
+        "healthInsuranceProgram": "Program",
+        "hasFoodStamps": true,
+        "foodStampsAmount": 1000,
+        "foodStampsReason": "in need",
+        "__v": 0
+    }
+]
+```
+
+With the following fields:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| __id | String | auto-generated uuid |
+| clientID | Number | Unique identifier for the client. |
+| hasHealthInsurance | Boolean | Indicates whether the client has health insurance. |
+| healthInsuranceProgram | Boolean | Indicates whether the client is part of a health insurance program. |
+| hasFoodStamps | Boolean | Indicates whether the client is on food stamps. |
+| foodStampsAmount | Number | The amount of food stamps the client obtains. |
+| foodStampsReason | String | The reason why the client is on food stamps. |
+
+Possible Errors:
+
+| Error Code | Description |
+| --- | --- |
+| 404 Cannot GET / | URL may be missing one or several characters. |
+
+### 2.7.2 GET One Health Document
+
+## GET ONE Health Document With clientID
+
+GET [http://localhost:3000/health/:id](http://localhost:3000/employees/:id)
+
+**Example: Getting documents where clientID=2:**
+
+GET [http://localhost:3000/health/2](http://localhost:3000/employees/:id)
+
+Example Response:
+
+GET /health/2 200 63.795 ms - 202
+
+```
+{
+    "_id": "44ab4560-99dd-11ec-a6d2-bba274c57248",
+    "clientID": 2,
+    "hasHealthInsurance": true,
+    "healthInsuranceProgram": "Program",
+    "hasFoodStamps": true,
+    "foodStampsAmount": 1000,
+    "foodStampsReason": "in need",
+    "__v": 0
+}
+```
+
+Where Health Document is:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| __id | String | auto-generated uuid |
+| clientID | Number | Unique identifier for the client. |
+| hasHealthInsurance | Boolean | Indicates whether the client has health insurance. |
+| healthInsuranceProgram | Boolean | Indicates whether the client is part of a health insurance program. |
+| hasFoodStamps | Boolean | Indicates whether the client is on food stamps. |
+| foodStampsAmount | Number | The amount of food stamps the client obtains. |
+| foodStampsReason | String | The reason why the client is on food stamps. |
+
+Possible errors:
+
+| Error Code | Description |
+| --- | --- |
+| 404 Cannot GET / | URL may be missing one or several characters. |
+
+### 2.7.3 POST Adding One Health Document
+
+## Inserting New Health Document
+
+POST [http://localhost:3000/health](http://localhost:3000/employees)
+
+Example Body:
+
+```
+{
+"clientID":"888”,
+"hasHealthInsurance": 1,
+"healthInsuranceProgram":"Program",
+"hasFoodStamps":1,
+"foodStampsAmount":1000,
+"foodStampsReason":"in need"
+}
+```
+
+Example Response:
+
+POST /health 200 96.582 ms - 49
+
+```
+new health record added to the database via POST.
+```
+
+Where Health Object is:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| __id | String | auto-generated uuid |
+| clientID | Number | Unique identifier for the client. |
+| hasHealthInsurance | Boolean | Indicates whether the client has health insurance. |
+| healthInsuranceProgram | Boolean | Indicates whether the client is part of a health insurance program. |
+| hasFoodStamps | Boolean | Indicates whether the client is on food stamps. |
+| foodStampsAmount | Number | The amount of food stamps the client obtains. |
+| foodStampsReason | String | The reason why the client is on food stamps. |
+
+Possible errors:
+
+| Error Code | Description |
+| --- | --- |
+| 404 Cannot POST / | URL may be missing one or several characters. |
+| SyntaxError | Body payload may be missing one or several characters. |
+
+### 2.7.4 PUT - Updating Existing Health Document
+
+## Updating one Health in Health Collection with clientiD
+
+PUT [http://localhost:3000/health/:id](http://localhost:3000/employees/:id)
+
+Example Input:
+
+Editing a Document with clientID = 888:
+
+PUT [http://localhost:3000/health/888](http://localhost:3000/clients/2)
+
+Example Body:
+
+```
+{
+    "foodStampsAmount":777000
+}
+```
+
+Example Response:
+
+PUT /health/888 200 66.660 ms - 34
+
+```
+education record is edited via PUT
+```
+
+Where Health Object is:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| __id | String | auto-generated uuid |
+| clientID | Number | Unique identifier for the client. |
+| hasHealthInsurance | Boolean | Indicates whether the client has health insurance. |
+| healthInsuranceProgram | Boolean | Indicates whether the client is part of a health insurance program. |
+| hasFoodStamps | Boolean | Indicates whether the client is on food stamps. |
+| foodStampsAmount | Number | The amount of food stamps the client obtains. |
+| foodStampReason | String | The reason why the client is on food stamps. |
+
+Possible errors:
+
+| Error Code | Description |
+| --- | --- |
+| 404 Cannot PUT / | URL may be missing one or several characters. |
+| SyntaxError | Body payload may be missing one or several characters. |
+
+### 2.7.5 DELETE Deleting One Health Document
+
+## Deleting one Health Document by clientID
+
+DELETE [http://localhost:3000/health/:id](http://localhost:3000/employees/:id)
+
+**Example: Deleting a Health document with clientID=999:**
+
+DEL [http://localhost:3000/health/999](http://localhost:3000/families/999)
+
+**Example Response:**
+
+DELETE /health/999 200 65.163 ms - 26
+
+```
+ {
+    "msg": {
+         "deletedCount":1
+    }
+ } 
+```
+
+The ClientID is what is used to select the Client that will be deleted:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| clientID | Number | Unique identifier for the client. |
+
+Possible errors:
+
+| Error Code | Description |
+| --- | --- |
+| 404 Cannot DELETE/ | URL may be missing one or several characters. |
+| SyntaxError | Body payload may be missing one or several characters. |
