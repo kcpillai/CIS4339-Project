@@ -2343,3 +2343,318 @@ Possible errors:
 | 404 Cannot DELETE/ | URL may be missing one or several characters. |
 | SyntaxError | Body payload may be missing one or several characters. |
 ```
+
+  
+ 
+================
+  
+  
+  <h3>2.8. Incomes </h3>
+  <h3>2.8.1 GET All Incomes</h3>
+GET ALL Incomes: Getting income information
+GET http://localhost:3000/incomes
+
+Example Response: /incomes 200 320.389 ms - 269
+
+Example Body:
+
+
+    {
+        "_id": "62144cc4c1de9d07f2742f7f",
+        "clientID": 123,
+        "isHeadofHousehold": true,
+        "monthlyIncome": 67890,
+        "spousalSupport": 12345,
+        "childSupport": 67890,
+        "workComp": 12345,
+        "incomeFederalAid": {
+            "tanf": 12345,
+            "ssi": 67890,
+            "unemployment": 12345,
+            "socialSecurity": 67890
+        },
+        "otherIncome": 12345
+    }
+    
+    {
+        "_id": "622005cd2012b3b414c445a9",
+        "clientID": 190,
+        "isHeadofHousehold": true,
+        "monthlyIncome": 763456,
+        "spousalSupport": 78425,
+        "childSupport": 93638,
+        "workComp": 56348,
+        "incomeFederalAid": {
+            "tanf": 679408,
+            "ssi": 93568,
+            "unemployment": 8654,
+            "socialSecurity": 45687567
+        },
+        "otherIncome": 78978
+    }
+
+
+| Field      | Type | Description     |
+| :---        |    :----:   |          ---: |
+| _id      | String       | Auto Generated uuid   |
+| clientId   | Number   | The client id number     |
+| isHeadofHousehold   | String   | States if client is the head of household    |
+| monthlyIncome   | Number   | Client's Monthly Income     |
+| spousalSupport   | Number   | Support from Spouse     |
+| childSupport   | Number   | Child Support    |
+| workComp   | Number   | Workers Compensation    |
+| incomeFederalAid   | Number   | Federal Aid Income     |
+| tanf  | Number   | Temporary Assistance for Needy Families      |
+| ssi   | Number   | Social Security Administration    |
+| unemployment   | Number   | Unemployment Number    |
+| socialSecurity  | Number   | Social Security Number |
+| otherIncome  | Number    |  Any other income info |
+
+Possible errors
+     
+| Error Code       | Description     |
+| :---           |          ---: |
+| 404      | The Url is incorrect       |
+
+<h3>2.8.2 POST Adding Income</h3>
+    Adding Income
+  
+  POST http://localhost:3000/incomes
+  
+  Example Response:
+  POST /incomes 200 69.655 ms - 13
+  income added.
+  
+  Example Body:
+  
+    {
+        "_id": "7f898u9j98j9876",
+        "clientID": 190,
+        "isHeadofHousehold": true,
+        "monthlyIncome": 677444,
+        "spousalSupport": 09766,
+        "childSupport": 36599,
+        "workComp": 35647,
+        "incomeFederalAid": {
+            "tanf": 097754,
+            "ssi": 34799,
+            "unemployment": 1652,
+            "socialSecurity": 5673453
+        },
+        "otherIncome": 43288
+    }
+
+| Field      | Type | Description     |
+| :---        |    :----:   |          ---: |
+| _id      | String       | Auto Generated uuid   |
+| clientId   | Number   | The client id number     |
+| isHeadofHousehold   | String   | States if client is the head of household    |
+| monthlyIncome   | Number   | Client's Monthly Income     |
+| spousalSupport   | Number   | Support from Spouse     |
+| childSupport   | Number   | Child Support    |
+| workComp   | Number   | Workers Compensation    |
+| incomeFederalAid   | Number   | Federal Aid Income     |
+| tanf  | Number   | Temporary Assistance for Needy Families      |
+| ssi   | Number   | Social Security Administration    |
+| unemployment   | Number   | Unemployment Number    |
+| socialSecurity  | Number   | Social Security Number |
+| otherIncome  | Number    |  Any other income info |
+
+Possible errors
+     
+| Error Code       | Description     |
+| :---           |          ---: |
+| Syntax Error      | Unexpected number in JSON at position 126     |
+
+<h3>2.8.3PUT Income</h3>
+Edit Client's information using Client ID
+PUT http://localhost:3000/incomes/190
+
+Example Response: PUT /incomes/190 200 73.654 ms - 21
+
+income edited via PUT
+
+  Example Body:
+[
+    {
+        "otherIncome": 98798
+    }
+]
+
+| Field      | Type | Description     |
+| :---        |    :----:   |          ---: |
+| _id      | String       | Auto Generated uuid   |
+| clientId   | Number   | The client id number     |
+| isHeadofHousehold   | String   | States if client is the head of household    |
+| monthlyIncome   | Number   | Client's Monthly Income     |
+| spousalSupport   | Number   | Support from Spouse     |
+| childSupport   | Number   | Child Support    |
+| workComp   | Number   | Workers Compensation    |
+| incomeFederalAid   | Number   | Federal Aid Income     |
+| tanf  | Number   | Temporary Assistance for Needy Families      |
+| ssi   | Number   | Social Security Administration    |
+| unemployment   | Number   | Unemployment Number    |
+| socialSecurity  | Number   | Social Security Number |
+| otherIncome  | Number    |  Any other income info |
+
+Possible errors
+     
+| Error Code       | Description     |
+| :---           |          ---: |
+| Client does not exist      | Invalid ID       |
+
+<h3>2.8.4 DELETE Income</h3>
+Delete a category from Income
+DELETE http://localhost:3000/incomes/:id
+
+Example Response:
+DELETE /incomes/230 200 79.789 ms - 21
+
+income is deleted.
+
+{
+        "msg": {
+             "deletedCount":1
+        }
+     }
+     
+     
+| Field      | Type | Description     |
+| :---        |    :----:   |          ---: |
+| clientId   | Number   | clients ID    |
+  
+     
+Possible errors
+     
+| Error Code       | Description     |
+| :---           |          ---: |
+| No Record      | client's id does not exist      |
+
+
+   
+  <h3>2.9. Client Vaccine Information </h3>
+<h3>2.9.1 GET all Client Vaccine Information</h3>
+GET ALL Client Vaccine Information: Getting vaccine information for all clients
+GET http://localhost:3000/clientvaccineinfo
+
+Example Response: /clientvaccineinfo 200 50.833 ms - 283
+
+
+    {
+        "_id": "62144b4ac1de9d07f2742f72",
+        "clientID": 123,
+        "isGettingVaccine": true,
+        "isVaccinated": true,
+        "vaccinePreference": "is vaccinated"
+    },
+    {
+        "_id": "622009062012b3b414c445af",
+        "clientID": 578,
+        "isGettingVaccinated": false,
+        "isVaccinated": false,
+        "vaccinePreference": "does not want to be vaccinated"
+    }
+
+
+| Field      | Type | Description     |
+| :---        |    :----:   |          ---: |
+| _id      | String       | Auto Generated uuid   |
+| clientId   | Number   | The client id number     |
+| isGettingVaccinated   | Boolean   | States if Client is Going to Get Vaccinated    |
+| isVaccinated  | Boolean   | States if the Client is Vaccinationed     |
+| vaccinePreferance   | String   | Vaccine Preferance    |
+
+Possible errors
+     
+| Error Code       | Description     |
+| :---           |          ---: |
+| 404      | The Url is incorrect       |
+
+<h3>2.9.2 POST Adding Client Vaccine Info</h3>
+Adding a client's vaccine information
+
+POST http://localhost:3000/clientvaccineinfo
+
+Example Response:
+POST /clientvaccineinfo 200 63.854 ms - 35
+client vaccine info has been added.
+
+Example Body:
+
+{
+        "_id": "62144b4ac1de9d07f2742f72",
+        "clientID": 376,
+        "isGettingVaccine": true,
+        "isVaccinated": false,
+        "vaccinePreference": "wants to get vacciated"
+ }
+
+
+| Field      | Type | Description     |
+| :---        |    :----:   |          ---: |
+| _id      | String       | Auto Generated uuid   |
+| clientId   | Number   | The client id number     |
+| isGettingVaccinated   | Boolean   | States if Client is Going to Get Vaccinated    |
+| isVaccinated  | Boolean   | States if the Client is Vaccinationed     |
+| vaccinePreferance   | String   | Vaccine Preferance    |
+
+Possible errors
+     
+| Error Code       | Description     |
+| :---           |          ---: |
+| Vallidation Error      | The Url is incorrect       |
+
+
+
+<h3>2.9.3 PUT Editing a Client's Vaccine Information</h3>
+Editing/Updating Vaccine Information for a specific client
+
+PUT http://localhost:3000/clientvaccineinfo/:id
+
+Example Response: PUT /clientvaccineinfo/578 200 501.407 ms - 34
+client vaccine info edited via PUT
+
+Example Body:
+{"vaccinePreference": "wants to be vaccinated"}
+
+| Field      | Type | Description     |
+| :---        |    :----:   |          ---: |
+| _id      | String       | Auto Generated uuid   |
+| clientId   | Number   | The client id number     |
+| isGettingVaccinated   | Boolean   | States if Client is Going to Get Vaccinated    |
+| isVaccinated  | Boolean   | States if the Client is Vaccinationed     |
+| vaccinePreferance   | String   | Vaccine Preferance    |
+
+Possible errors
+     
+| Error Code       | Description     |
+| :---           |          ---: |
+| not found      | The ID is incorrect       |
+
+<h3>2.9.4 DELETE Client Vaccine Information</h3>
+Deleting a client's vaccine information
+
+DELETE http://localhost:3000/clientvaccineinfo/:id
+
+Example Response:
+    DELETE /clientvaccineinfo/47 200 76.780 ms - 46
+    client vaccine info is deleted.
+     
+     {
+        "msg": {
+             "deletedCount":1
+        }
+     }
+     
+| Field      | Type | Description     |
+| :---        |    :----:   |          ---: |
+| clientId   | Number   | Client's ID     |
+  
+     
+Possible errors
+     
+| Error Code       | Description     |
+| :---           |          ---: |
+| not found      | client id does not exist      |
+
+
