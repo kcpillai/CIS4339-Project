@@ -28,7 +28,7 @@ residencesRouter.post('/', (req, res, next) => {
 
 
 // Update residences with residence id
-residencesRouter.put('/residences/:id', (req, res, next) => {
+residencesRouter.put('/:id', (req, res, next) => {
     residencesModel.findOneAndUpdate(
     { residencesId: req.params.id },
     {
@@ -46,7 +46,7 @@ residencesRouter.put('/residences/:id', (req, res, next) => {
 });
 
 // DELETE residence records given id
-residencesRouter.delete('/residences/:id', (req, res, next) => {
+residencesRouter.delete('/:id', (req, res, next) => {
   //mongoose deletes record based off of document id
   residencesModel.findOneAndRemove(
     { residencesId: req.params.id },
