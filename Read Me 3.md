@@ -87,7 +87,7 @@ Possible errors
 ]
 
 
-GET all Residences
+<h3>GET all Residences</h3>
 GET ALL Residences: Getting information for all residences
 GET http://localhost:3000/residences
 
@@ -155,7 +155,7 @@ Possible errors
 | :---           |          ---: |
 | 404      | The Url is incorrect       |
 
-GET all Client Vaccine Information
+<h3>GET all Client Vaccine Information</h3>
 GET ALL Client Vaccine Information: Getting vaccine information for all clients
 GET http://localhost:3000/clientvaccineinfo
 
