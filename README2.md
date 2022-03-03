@@ -441,3 +441,315 @@ Possible errors:
 | --- | --- |
 | 404 Cannot DELETE / | URL may be missing one or several characters. |
 | SyntaxError | Body payload may be missing one or several characters. |
+
+## 2.5. Families
+Family members are linked by the clientID of the client that they are related to.
+
+### 2.5.1 GET All Families
+
+## GET ALL Families: Getting Entire Family Collection
+
+Family members are stored under their relative’s ID, the client ID.
+
+GET [http://localhost:3000/families](http://localhost:3000/employees)
+
+Example Response:
+
+GET /families 200 77.749 ms - 817
+
+```
+[
+    {
+        "_id": "b3e190b0-9915-11ec-9baa-455c9077d07c",
+        "clientID": 1,
+        "familyMember": [
+            {
+                "occupationOrGrade": "Contract",
+                "_id": "621edc46f15cd59cae7eba4e"
+            }
+        ],
+        "__v": 0
+    },
+    {
+        "_id": "12410410-99d4-11ec-86bc-7f149b464e6c",
+        "clientID": 2,
+        "familyMember": [
+            {
+                "lastName": "Smith2",
+                "firstName": "Johnny2",
+                "gender": "male",
+                "birthday": "1995-01-01",
+                "age": 20,
+                "relation": "cousin",
+                "race": "German",
+                "pregnant": false,
+                "whereWorkOrStudy": "Great Company",
+                "occupationOrGrade": "Contract",
+                "_id": "621edd39f15cd59cae7eba66"
+            }
+        ],
+        "__v": 0
+    },
+    {
+        "_id": "85240f60-99eb-11ec-b04c-93a3a0763b6e",
+        "clientID": 999,
+        "familyMember": [
+            {
+                "lastName": "Smith",
+                "firstName": "Johnny",
+                "gender": "male",
+                "birthday": "1995-01-01",
+                "age": 40,
+                "relation": "father",
+                "race": "Hispanic",
+                "pregnant": false,
+                "whereWorkOrStudy": "Cool Company",
+                "occupationOrGrade": "Field Worker",
+                "_id": "621f03b93a00830b5eae37c9"
+            }
+        ],
+        "__v": 0
+    }
+]
+```
+
+With the following fields:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| __id | String | auto-generated uuid |
+| clientID | Number | Unique identifier for the client that the family member belongs to. |
+| familyMember | String | Object array containing demographic information of the family member. |
+| firstName | String | The family member's first name. |
+| gender | String | The family member's gender. |
+| birthday | String | The family member's date of birth. |
+| age | Number | The family member's age. |
+| relation | String | The family member's relation to the client. |
+| race | String | The family member's race/ethnicity. |
+| pregnant | Boolean | Stores a Boolean value that indicates if the family member is pregnant. |
+| whereWorkorStudy | String | The family member's current location of occupation. |
+| occupationOrGrade | String | The family member's job title or current grade earned in education. |
+
+Possible Errors:
+
+| Error Code | Description |
+| --- | --- |
+| 404 Cannot GET / | URL may be missing one or several characters. |
+
+### 2.5.2 GET One Family Document
+
+## GET ONE Family With clientID
+
+GET [http://localhost:3000/families/:id](http://localhost:3000/employees/:id)
+
+**Example: Getting documents where clientID=2:**
+
+GET [http://localhost:3000/families/2](http://localhost:3000/employees/:id)
+
+Example Response:
+
+GET /families/2 200 62.989 ms - 329
+
+```
+{
+    "_id": "12410410-99d4-11ec-86bc-7f149b464e6c",
+    "clientID": 2,
+    "familyMember": [
+        {
+            "lastName": "Smith2",
+            "firstName": "Johnny2",
+            "gender": "male",
+            "birthday": "1995-01-01",
+            "age": 20,
+            "relation": "cousin",
+            "race": "German",
+            "pregnant": false,
+            "whereWorkOrStudy": "Great Company",
+            "occupationOrGrade": "Contract",
+            "_id": "621edd39f15cd59cae7eba66"
+        }
+    ],
+    "__v": 0
+}
+```
+
+Where Family Object is:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| __id | String | auto-generated uuid |
+| clientID | Number | Unique identifier for the client that the family member belongs to. |
+| familyMember | String | Object array containing demographic information of the family member. |
+| firstName | String | The family member's first name. |
+| gender | String | The family member's gender. |
+| birthday | String | The family member's date of birth. |
+| age | Number | The family member's age. |
+| relation | String | The family member's relation to the client. |
+| race | String | The family member's race/ethnicity. |
+| pregnant | Boolean | Stores a Boolean value that indicates if the family member is pregnant. |
+| whereWorkorStudy | String | The family member's current location of occupation. |
+| occupationOrGrade | String | The family member's job title or current grade earned in education. |
+
+Possible errors:
+
+| Error Code | Description |
+| --- | --- |
+| 404 Cannot GET / | URL may be missing one or several characters. |
+
+### 2.5.3 POST Adding One Family Member
+
+## Inserting New Family Document
+
+POST [http://localhost:3000/families](http://localhost:3000/employees)
+
+Example Body:
+
+```
+{
+"clientID":"888",
+"familyMember": [{
+    "lastName":"Smith",
+    "firstName":"Johnny",
+    "gender":"male",
+    "birthday":"1995-01-01",
+    "age": 40,
+    "relation":"father",
+    "race":"Hispanic",
+    "pregnant":"0",
+    "whereWorkOrStudy":"Cool Company",
+    "occupationOrGrade":"Field Worker"
+    }]
+}
+```
+
+Example Response:
+
+POST /families 200 75.876 ms - 51
+
+```
+new families record added to the database via POST.
+```
+
+Where Family Object is:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| __id | String | auto-generated uuid |
+| clientID | Number | Unique identifier for the client that the family member belongs to. |
+| familyMember | String | Object array containing demographic information of the family member. |
+| firstName | String | The family member's first name. |
+| gender | String | The family member's gender. |
+| birthday | String | The family member's date of birth. |
+| age | Number | The family member's age. |
+| relation | String | The family member's relation to the client. |
+| race | String | The family member's race/ethnicity. |
+| pregnant | Boolean | Stores a Boolean value that indicates if the family member is pregnant. |
+| whereWorkorStudy | String | The family member's current location of occupation. |
+| occupationOrGrade | String | The family member's job title or current grade earned in education. |
+
+Possible errors
+
+| Error Code | Description |
+| --- | --- |
+| 404 Cannot POST / | URL may be missing one or several characters. |
+| SyntaxError | Body payload may be missing one or several characters. |
+
+### 2.5.4 PUT - Updating Existing Family Member
+
+## Updating one Family in Families Collection with clientiD
+
+PUT [http://localhost:3000/families/:id](http://localhost:3000/employees/:id)
+
+Example Input:
+
+Editing a Document with clientID = 888:
+
+PUT [http://localhost:3000/families/888](http://localhost:3000/clients/2)
+
+Example Body:
+
+All data for a family member is embedded in an object array. For this reason, we must include all fields in familyMember, regardless if it is the desired field to be edited. Including only desired field will result in the entire embedded data to be entirely replaced by the edited field, so it is important to include all embedded fields in your BODY.
+
+```
+{
+"familyMember": [{
+    "lastName":"Smith2",
+    "firstName":"Johnny2",
+    "gender":"male",
+    "birthday":"1995-01-01",
+    "age": 20,
+    "relation":"cousin",
+    "race":"German",
+    "pregnant":"0",
+    "whereWorkOrStudy":"Great Company",
+    "occupationOrGrade":"Contract"
+    }]
+}
+```
+
+Example Response:
+
+PUT /families/888 200 66.971 ms - 33
+
+```
+families record is edited via PUT
+```
+
+Where Family Object is
+
+| Field | Type | Description |
+| --- | --- | --- |
+| __id | String | auto-generated uuid |
+| clientID | Number | Unique identifier for the client that the family member belongs to. |
+| familyMember | String | Object array containing demographic information of the family member. |
+| firstName | String | The family member's first name. |
+| gender | String | The family member's gender. |
+| birthday | String | The family member's date of birth. |
+| age | Number | The family member's age. |
+| relation | String | The family member's relation to the client. |
+| race | String | The family member's race/ethnicity. |
+| pregnant | Boolean | Stores a Boolean value that indicates if the family member is pregnant. |
+| whereWorkorStudy | String | The family member's current location of occupation. |
+| occupationOrGrade | String | The family member's job title or current grade earned in education. |
+
+Possible errors
+
+| Error Code | Description |
+| --- | --- |
+| 404 Cannot PUT / | URL may be missing one or several characters. |
+| SyntaxError | Body payload may be missing one or several characters. |
+
+### 2.5.5 DELETE Deleting One Family Document
+
+## Deleting one Family Document by clientID
+
+DELETE [http://localhost:3000/families/:id](http://localhost:3000/employees/:id)
+
+**Example: Deleting a families document where clientID=999:**
+
+DEL http://localhost:3000/families/999
+
+**Example Response:**
+
+DELETE /families/999 200 65.163 ms - 26
+
+```
+ {
+    "msg": {
+         "deletedCount":1
+    }
+ } 
+```
+
+The ClientID is what is used to select the family member that will be deleted:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| clientID | Number | Unique identifier for the client. |
+
+Possible errors:
+
+| Error Code | Description |
+| --- | --- |
+| 404 Cannot DELETE/ | URL may be missing one or several characters. |
+| SyntaxError | Body payload may be missing one or several characters. |
