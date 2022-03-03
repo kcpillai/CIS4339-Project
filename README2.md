@@ -436,5 +436,5 @@ Possible errors:
 
 | Error Code | Description |
 | --- | --- |
-| 404 Cannot POST / | URL may be missing one or several characters. |
+| 404 Cannot DELETE / | URL may be missing one or several characters. |
 | SyntaxError | Body payload may be missing one or several characters. |
